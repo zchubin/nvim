@@ -110,8 +110,8 @@ if has('multi_byte')
 	" 文件默认编码
 	set fileencoding=utf-8
 
-    " 打开文件时自动匹配字符编码顺序
-    set fileencodings=utf-8,ucs-bom,gbk,cp936,gb2312,big5,euc-jp,euc-kr,latin1
+    	" 打开文件时自动匹配字符编码顺序
+   	 set fileencodings=utf-8,ucs-bom,gbk,cp936,gb2312,big5,euc-jp,euc-kr,latin1
 endif
 
 " vim显示信息
