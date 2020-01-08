@@ -144,8 +144,8 @@ set ts=4
 augroup PythonTab
 	au!
 	" 如果你不需要 python 里用 tab，
-    " 那么注释下面这行字，
-    " 否则vim会在打开py文件时自动设置成空格缩进。
+   	 " 那么注释下面这行字，
+   	 " 否则vim会在打开py文件时自动设置成空格缩进。
 	au FileType python setlocal shiftwidth=4 tabstop=4 noexpandtab
 augroup END
 
@@ -168,7 +168,7 @@ if has('folding')
 	set foldenable
 
 	" 代码折叠默认使用缩进
-    " fdm = foldmethod
+    	" fdm = foldmethod
 	set fdm=indent
 
 	" 默认打开所有缩进
