@@ -155,7 +155,8 @@ else
 endif
 " 如遇Unicode值大于255的文本，不必等到空格再折行
 set formatoptions+=m
-
+" 仅对 C/C++/Python/Vim 遵循旧式80列限制
+au FileType c,cpp,python,vim set textwidth=80
 set lbr
 
 if has('folding')
