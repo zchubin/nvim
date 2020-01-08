@@ -11,11 +11,11 @@
 "=== Auto load for first time uses ===
 "=====================================
 
-if empty(glob('~/.config/vim/autoload/plug.vim'))
-silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
+"if empty(glob('~/.config/vim/autoload/plug.vim'))
+"silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+"    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+"endif
 
 "===================
 "=== specialized ===
@@ -188,7 +188,7 @@ set scrolloff=8
 set sidescrolloff=15
 
 " 显示最后一行
-"set display=lastline
+set display=lastline
 
 "======================
 "=== Vim Status bar ===
@@ -325,8 +325,10 @@ let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 "=*└─────┴────┴────┴───────────────────────┴────┴────┴────┴────┘ └───┴───┴───┘ └───────┴───┴───┘ *
 "=************************************************************************************************
 
+"let g:python3_host_prog='**'
+
 inoremap ' ''<ESC>i
-"inoremap " ""<ESC>i
+""inoremap " ""<ESC>i
 inoremap ( ()<ESC>i
 inoremap [ []<ESC>i
 inoremap { {<CR>}<ESC>O<Tab>
@@ -393,3 +395,8 @@ map <leader>W :call DeleteTrailingWS()<CR>
 "       |_____|\ V / | | | | | | |      "
 "               \_/  |_|_| |_| |_|      "
 """""""""""""""""""""""""""""""""""""""""
+call plug#begin('~/AppData/Local/nvim/plugged')
+
+Plug 'vim-airline/vim-airline-themes'
+
+call plug#end()
