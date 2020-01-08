@@ -190,6 +190,9 @@ set sidescrolloff=15
 " 显示最后一行
 set display=lastline
 
+" 检查’"标记是否已被定义，如果是，则跳转到该标记
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
 "======================
 "=== Vim Status bar ===
 "======================
