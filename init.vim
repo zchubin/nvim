@@ -194,6 +194,14 @@ set display=lastline
 "=== Vim Status bar ===
 "======================
 
+" 背景透明
+hi Normal ctermfg=252 ctermbg=none
+"set statusline=%1*\%<%.50F\             "显示文件名和文件路径 (%<应该可以去掉)
+"set statusline+=%=%2*\%y%m%r%h%w\ %*        "显示文件类型及文件状态
+"set statusline+=%3*\%{&ff}\[%{&fenc}]\ %*   "显示文件编码类型
+"set statusline+=%4*\ row:%l/%L,col:%c\ %*   "显示光标所在行和列
+"set statusline+=%5*\%3p%%\%*            "显示光标前文本所占总文本的比例
+
 set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ %-14.(%l,%c%V%)\ %P
 set laststatus=2
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
