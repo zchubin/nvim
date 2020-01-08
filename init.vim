@@ -148,8 +148,11 @@ set cindent
 
 " 启动自动换行
 set wrap
-" 文件换行符，默认使用 unix 换行符
-set ffs=unix,dos,mac
+if has("win32")
+    set fileformats=dos,unix,mac
+else
+    set fileformats=unix,mac,dos
+endif
 " 如遇Unicode值大于255的文本，不必等到空格再折行
 set formatoptions+=m
 
