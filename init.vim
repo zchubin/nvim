@@ -50,7 +50,8 @@ set nu
 set relativenumber
 
 " 启用鼠标
-set mouse=a
+"set mouse=a
+if has("mouse") | set mouse=a | endif
 set mousemodel=popup
 
 " 高亮显示当前行
@@ -132,7 +133,9 @@ set sw=4
 " 如果后面设置了 expandtab 那么展开 tab 为多少字符
 "ts = softtapstop
 set ts=4
-
+set expandtab
+"使用C/C++缩进
+set cindent
 augroup PythonTab
 	au!
 	" 如果你不需要 python 里用 tab，
@@ -140,11 +143,6 @@ augroup PythonTab
    	 " 否则vim会在打开py文件时自动设置成空格缩进。
 	au FileType python setlocal shiftwidth=4 tabstop=4 noexpandtab
 augroup END
-
-set expandtab
-
-"使用C/C++缩进
-set cindent
 
 " 启动自动换行
 set wrap
@@ -167,6 +165,8 @@ set linebreak
 " 折行后的后续行，使用与第一行相同的缩进
 set breakindent
 
+" (*),[*],{*} 可折叠
+set wrapmargin=2
 if has('folding')
 	" 允许代码折叠
 	set foldenable
@@ -178,9 +178,6 @@ if has('folding')
 	" 默认打开所有缩进
 	set foldlevel=99
 endif
-
-"When (*),[*],{*} to folding
-set wrapmargin=2
 
 " 移动光标上下保持8行行距
 set scrolloff=8
