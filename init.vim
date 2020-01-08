@@ -198,7 +198,7 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 "======================
 
 " 背景透明
-hi Normal ctermfg=252 ctermbg=none
+"hi Normal ctermfg=252 ctermbg=none
 "set statusline=%1*\%<%.50F\             "显示文件名和文件路径 (%<应该可以去掉)
 "set statusline+=%=%2*\%y%m%r%h%w\ %*        "显示文件类型及文件状态
 "set statusline+=%3*\%{&ff}\[%{&fenc}]\ %*   "显示文件编码类型
@@ -399,6 +399,7 @@ map <leader>W :call DeleteTrailingWS()<CR>
 "    iabbrev xdate <c-r>=strftime("%Y-%m-%d")<CR>  " 当前日期
 "    iabbrev xtime <c-r>=strftime("%H:%M:%S")<CR>  " 当前时间
 "endif
+
 " """""""""""""""""""""""""""""""""""""""
 "                     _                 "
 "             __   __(_)_ __ ___        "
