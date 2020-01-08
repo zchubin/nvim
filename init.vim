@@ -148,6 +148,9 @@ set cindent
 
 " 启动自动换行
 set wrap
+" TXT/Markdown/XML 等比较需要折行
+"au FileType text,markdown,html,xml set wrap
+" 换行符
 if has("win32")
     set fileformats=dos,unix,mac
 else
@@ -157,7 +160,12 @@ endif
 set formatoptions+=m
 " 仅对 C/C++/Python/Vim 遵循旧式80列限制
 au FileType c,cpp,python,vim set textwidth=80
-set lbr
+" 在81列显示分页线
+"set colorcolumn=81
+" 折行时，以单词为界，以免切断单词
+set linebreak
+" 折行后的后续行，使用与第一行相同的缩进
+set breakindent
 
 if has('folding')
 	" 允许代码折叠
