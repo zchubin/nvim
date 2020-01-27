@@ -114,6 +114,9 @@ endif
 language messages zh_CN.utf-8
 let &termencoding=&encoding
 
+" 让配置变更立即生效
+autocmd BufWritePost $MYVIMRC source $MYVIMRC
+
 filetype on
 filetype indent on
 filetype plugin on
