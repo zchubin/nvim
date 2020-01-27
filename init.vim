@@ -412,13 +412,15 @@ map <leader>W :call DeleteTrailingWS()<CR>
 """""""""""""""""""""""""""""""""""""""""
 call plug#begin('~/AppData/Local/nvim/plugged')
 
-"Plug 'vim-airline/vim-airline-themes'
+" 主题
 Plug 'rakr/vim-one'
-
+" 状态栏
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-
+" 侧边栏，文件目录
 Plug 'preservim/nerdtree'
+" 给关键字添加下划线，方便关注
+Plug 'vim-scripts/vim-cursorword'
 
 call plug#end()
 
