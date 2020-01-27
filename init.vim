@@ -11,11 +11,11 @@
 "=== Auto load for first time uses ===
 "=====================================
 
-"if empty(glob('~/.config/vim/autoload/plug.vim'))
-"silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-"    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-"autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-"endif
+if empty(glob('~/.config/vim/autoload/plug.vim'))
+silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
 "===================
 "=== specialized ===
@@ -339,28 +339,27 @@ let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 "=*└─────┴────┴────┴───────────────────────┴────┴────┴────┴────┘ └───┴───┴───┘ └───────┴───┴───┘ *
 "=************************************************************************************************
 
-"let g:python3_host_prog='**'
-
-inoremap ' ''<ESC>i
-""inoremap " ""<ESC>i
-inoremap ( ()<ESC>i
-inoremap [ []<ESC>i
-inoremap { {<CR>}<ESC>O<Tab>
+"inoremap ' ''<ESC>i
+"inoremap " ""<ESC>i
+"inoremap ( ()<ESC>i
+"inoremap [ []<ESC>i
+"inoremap { {<CR>}<ESC>O<Tab>
 
 inoremap --- <++>
 
 let mapleader=" "
 noremap <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4l
 noremap <LEADER><CR> :nohlsearch<CR>
+map <LEADER>fd /\(\<\w\+\)\_s*\1
 
 "ctr-a/c/z/s
-inoremap <C-a> <ESC>mmggVG
-vmap <C-c> "*y<ESC>'mA
-inoremap <C-z> <ESC>ui
-inoremap <C-s> <ESC>:w<CR>A
+inoremap <C-A> <ESC>mmggVG
+vmap <C-C> "*y<ESC>'mA
+inoremap <C-Z> <ESC>ui
+inoremap <C-S> <ESC>:w<CR>A
 
-noremap <C-n> :tabe<CR>
-"" Move around tabs with tn and ti
+noremap <C-N> :tabe<CR>
+" Move around tabs with tn and ti
 noremap tb :-tabnext<CR>
 noremap tn :+tabnext<CR>
 " Move the tabs with tmn and tmi
@@ -421,6 +420,14 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'preservim/nerdtree'
 " 给关键字添加下划线，方便关注
 Plug 'vim-scripts/vim-cursorword'
+" emmet,html快速补齐
+Plug 'mattn/emmet-vim'
+" 智能匹配插件
+Plug 'tmsvg/pear-tree'
+" 突出显示括号方阵
+Plug 'ccampbell/rainbow'
+" 快速注释
+Plug 'preservim/nerdcommenter'
 
 call plug#end()
 
@@ -478,14 +485,13 @@ let g:airline#extensions#tabline#formatter = 'default'
 "=== NERDTree
 "===
 
-" 打开vim打开nerdtree
-
 map tt :NERDTreeToggle<CR>
 
+" 打开vim打开nerdtree
 "autocmd vimenter * NERDTree
 
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+"autocmd StdinReadPre * let s:std_in=1
+"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
 " 更改默认箭头
@@ -494,3 +500,121 @@ let g:NERDTreeDirArrowCollapsible = '▾'
 
 " 如果唯一打开的窗口时NERDTree,如何关闭vim
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+"===
+"=== emmet+html5+webapi
+"===
+
+" 在什么模式中启用脚本
+"let g:user_emmet_mode='n'    "only enable normal mode functions.
+"let g:user_emmet_mode='inv'  "enable all functions, which is equal to
+"let g:user_emmet_mode='a'    "enable all function in all mode.
+
+" 仅在html/css中启用脚本
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
+
+" 定义触发键
+let g:user_emmet_leader_key=';'
+
+"===
+"=== pear tree
+"===
+
+" Default rules for matching:
+let g:pear_tree_pairs = {
+            \ '(': {'closer': ')'},
+            \ '[': {'closer': ']'},
+            \ '{': {'closer': '}'},
+            \ "'": {'closer': "'"},
+            \ '"': {'closer': '"'}
+            \ }
+" See pear-tree/after/ftplugin/ for filetype-specific matching rules
+
+" Pear Tree is enabled for all filetypes by default:
+let g:pear_tree_ft_disabled = []
+
+" Pair expansion is dot-repeatable by default:
+let g:pear_tree_repeatable_expand = 1
+
+" Smart pairs are disabled by default:
+let g:pear_tree_smart_openers = 0
+let g:pear_tree_smart_closers = 0
+let g:pear_tree_smart_backspace = 0
+
+" If enabled, smart pair functions timeout after 60ms:
+let g:pear_tree_timeout = 60
+
+" Automatically map <BS>, <CR>, and <Esc>
+let g:pear_tree_map_special_keys = 1
+
+" Default mappings:
+imap <BS> <Plug>(PearTreeBackspace)
+imap <CR> <Plug>(PearTreeExpand)
+imap <Esc> <Plug>(PearTreeFinishExpansion)
+
+"===
+"=== rainbow
+"===
+
+" 自动启用插件
+let g:rainbow_active = 1
+" 配色方案
+let g:rainbow_conf = {
+\   'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
+\   'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
+\   'operators': '_,_',
+\   'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
+\   'separately': {
+\       '*': {},
+\       'tex': {
+\           'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/'],
+\       },
+\       'lisp': {
+\           'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick', 'darkorchid3'],
+\       },
+\       'vim': {
+\           'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/', 'start=/{/ end=/}/ fold', 'start=/(/ end=/)/ containedin=vimFuncBody', 'start=/\[/ end=/\]/ containedin=vimFuncBody', 'start=/{/ end=/}/ fold containedin=vimFuncBody'],
+\       },
+\       'html': {
+\           'parentheses': ['start=/\v\<((area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr)[ >])@!\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'|[^ '."'".'"><=`]*))?)*\>/ end=#</\z1># fold'],
+\       },
+\       'css': 0,
+\   }
+\}
+"===
+"=== NERD Commenter
+"===
+
+" 默认注释定界符后添加空格
+let g:NERDSpaceDelims = 1
+
+" 对紧凑的多行注释使用紧凑语法
+let g:NERDCompactSexyComs = 1
+
+" 将行注释的定界符向左对齐，而不是跟随代码缩进
+let g:NERDDefaultAlign = 'left'
+
+" 设定编程语言使用其默认的定界符
+let g:NERDAltDelims_java = 1
+
+" 添加自定义格式或覆盖默认值
+let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+
+" 允许注释和反转空行
+let g:NERDCommentEmptyLines = 1
+
+" 取消注释时启用尾随空白的修剪
+let g:NERDTrimTrailingWhitespace = 1
+
+" 启用NERDToggle检查检查所选定的行是否已注释
+let g:NERDToggleCheckAllLines = 1
+" <LEADER>ca 在可选的注释方式之间切换
+" <LEADER>cc 注释当前行
+" <LEADER>cs 以“ 性感” 的方式注释
+" <LEADER>cA 在当前行尾添加注释
+" <LEADER>cu 取消注释
+" <LEADER>cm 添加块注释
+
+
+
