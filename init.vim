@@ -11,6 +11,7 @@
 "=== Auto load for first time uses ===
 "=====================================
 
+
 "if empty(glob('~/.config/vim/autoload/plug.vim'))
 if empty(glob('~/AppData/Local/nvim/autoload/plug.vim'))
 silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
@@ -99,7 +100,7 @@ set indentexpr=
 "linux
 "set guifont=Monaco\\ 18
 "windows
-set guifont=Monaco:20
+"set guifont=source_code_pro_medium:20
 
 if has('multi_byte')
 	" 内部工作编码
@@ -357,15 +358,16 @@ let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 "=*│ Ctrl│    │Alt │         Space         │ Alt│    │    │Ctrl│ │ ← │ ↓ │ → │ │   0   │ . │←─┘│ *
 "=*└─────┴────┴────┴───────────────────────┴────┴────┴────┴────┘ └───┴───┴───┘ └───────┴───┴───┘ *
 "=************************************************************************************************
-let g:python3_host_prog='D:\Python\python.exe'
 
-"inoremap ' ''<ESC>i
-"inoremap " ""<ESC>i
-"inoremap ( ()<ESC>i
-"inoremap [ []<ESC>i
-"inoremap { {<CR>}<ESC>O<Tab>
+" inoremap ' ''<ESC>i
+" inoremap " ""<ESC>i
+" inoremap ( ()<ESC>i
+" inoremap [ []<ESC>i
+" inoremap { {<CR>}<ESC>O<Tab>
 
 inoremap --- <++>
+inoremap === "===<CR>"===<Space><CR>"===<Enter><Enter><++><ESC>3kA
+imap ;q <ESC>
 
 let mapleader=" "
 noremap <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4l
@@ -396,7 +398,7 @@ noremap <LWADER><down> :res -5<CR>
 noremap <LWADER><left> :vertical resize-5<CR>
 noremap <LWADER><right> :vertical resize+5<CR>
 
-autocmd Filetype markdown inoremap ;f <Esc>/<++><CR>:nohlsearch<CR>c4l
+inoremap ;f <Esc>/<++><CR>:nohlsearch<CR>c4l
 autocmd Filetype markdown inoremap ;n ---<Enter><Enter>
 autocmd Filetype markdown inoremap ;b **** <++><Esc>F*hi
 autocmd Filetype markdown inoremap ;s ~~~~ <++><Esc>F~hi
@@ -455,22 +457,37 @@ Plug 'rakr/vim-one'
 " 状态栏
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+
 " 侧边栏，文件目录
 Plug 'preservim/nerdtree'
+
 " 给关键字添加下划线，方便关注
 Plug 'vim-scripts/vim-cursorword'
-" emmet,html快速补齐
-Plug 'mattn/emmet-vim'
+
+" emmet快速补齐
+Plug 'mattn/emmet-vim',
 " 智能匹配
 Plug 'tmsvg/pear-tree'
+
 " 突出显示括号方阵
 Plug 'ccampbell/rainbow'
-" 快速注释
-Plug 'preservim/nerdcommenter'
 " css3颜色显示
 Plug 'gko/vim-coloresque'
+
+" 快速注释
+Plug 'preservim/nerdcommenter'
 " 拼写检查
 Plug 'dense-analysis/ale'
+
+" 自定义补全
+" 跟踪引擎
+" Plug 'SirVer/ultisnips'
+" 片段与引擎分离
+" Plug 'honza/vim-snippets'
+
+" markdown
+Plug 'jamshedvesuna/vim-markdown-preview', { 'for' :['markdown', 'vim-plug', 'html'] }
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() },  'for' :['markdown', 'vim-plug'] }
 
 call plug#end()
 
@@ -505,6 +522,7 @@ let g:one_allow_italics = 1 " I love italic for comments
 "===
 
 " 打开一个选项卡时自动显示所有缓冲区
+" 显示多窗口tab和buffer
 let g:airline#extensions#tabline#enabled = 1
 
 " 为制表行单独配置分隔符，这是定义'直接'制表符的d方式
@@ -515,6 +533,8 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 " 这会影响文件路径在单独的选项卡中的显示方式以及右上角的当前缓冲区指示符，
 " 为此，使用以下命令设置格式器字段：
 let g:airline#extensions#tabline#formatter = 'default'
+
+let g:airline_powerline_fonts = 1  " 支持 powerline 字体
 
 " 配合拼写检查插件ale，将提示信息整合到airline栏
 let s:error_symbol = get(g:, 'airline#extensions#ale#error_symbol', '✗ ')
@@ -573,7 +593,7 @@ let g:user_emmet_leader_key=';'
 "=== pear tree
 "===
 
-" 默认o匹配规则
+" 默认匹配规则
 let g:pear_tree_pairs = {
             \ '(': {'closer': ')'},
             \ '[': {'closer': ']'},
@@ -742,3 +762,64 @@ function! LinterStatus() abort
     \  all_errors
     \)
 endfunction
+
+"===
+"=== snippet
+"===
+
+" 触发器, 如果使用YouCompleteMe, 不要使用 <Tab>
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsListSnippets = "<c-tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-n>"
+let g:UltiSnipsJumpBackwardTrigger="<c-b>"
+
+" If you want :UltiSnipsEdit to split your window.
+" let g:UltiSnipsEditSplit="vertical"
+" let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
+
+"===
+"=== markdown_preview
+"===
+
+let g:mkdp_auto_start = 0
+let g:mkdp_auto_close = 1
+let g:mkdp_refresh_slow = 1
+let g:mkdp_command_for_global = 0
+let g:mkdp_open_to_the_world = 0
+let g:mkdp_open_ip = ''
+let g:mkdp_browser = ''
+let g:mkdp_echo_preview_url = 0
+let g:mkdp_browserfunc = ''
+let g:mkdp_preview_options = {
+    \ 'mkit': {},
+    \ 'katex': {},
+    \ 'uml': {},
+    \ 'maid': {},
+    \ 'disable_sync_scroll': 0,
+    \ 'sync_scroll_type': 'middle',
+    \ 'hide_yaml_meta': 1,
+    \ 'sequence_diagrams': {}
+    \ }
+let g:mkdp_markdown_css = ''
+let g:mkdp_highlight_css = ''
+let g:mkdp_port = ''
+let g:mkdp_page_title = '「${name}」'
+let vim_markdown_preview_hotkey='<C-m>'
+
+" 缓冲区写入时显示图像
+let vim_markdown_preview_toggle=2
+
+let vim_markdown_preview_browser='Mozilla Firefox'
+
+" 使用 GitHub 风格的 markdown
+let vim_markdown_preview_github=1
+" 使用 John Gruber 风格的 markdown
+"let vim_markdown_preview_perl=1
+
+" 使用 John MacFarlane's Pandoc 风格的 HTML
+let vim_markdown_preview_pandoc=1
+
+" 如果你的浏览器不附带 see 而想使用 xdg-open, 进行如下设置
+let vim_markdown_preview_use_xdg_open=1
+
+
