@@ -11,7 +11,8 @@
 "=== Auto load for first time uses ===
 "=====================================
 
-if empty(glob('~/.config/vim/autoload/plug.vim'))
+"if empty(glob('~/.config/vim/autoload/plug.vim'))
+if empty(glob('~/AppData/Local/nvim/autoload/plug.vim'))
 silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
@@ -24,6 +25,7 @@ endif
 "source ~/.vim/snippits.vim
 "source ~/.vim/markdown.vim
 "source ~/.vim/map.vim
+"source C:\Users\zhong\AppData\Local\nvim\autoload\plug.vim
 
 "====================
 "=== Bash Setting ===
@@ -200,7 +202,6 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 "=== Vim Status bar ===
 "======================
 
-" 背景透明
 "hi Normal ctermfg=252 ctermbg=none
 "set statusline=%1*\%<%.50F\             "显示文件名和文件路径 (%<应该可以去掉)
 "set statusline+=%=%2*\%y%m%r%h%w\ %*        "显示文件类型及文件状态
@@ -208,9 +209,9 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 "set statusline+=%4*\ row:%l/%L,col:%c\ %*   "显示光标所在行和列
 "set statusline+=%5*\%3p%%\%*            "显示光标前文本所占总文本的比例
 
+set statusline=%{LinterStatus()}
 set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ %-14.(%l,%c%V%)\ %P
 set laststatus=2
-au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 set viminfo='10,\"100,:20,%,n~/.viminfo
 
 "==============
@@ -314,6 +315,24 @@ augroup InitFileTypesGroup
 
 augroup END
 
+" 高亮显示行尾不想要的空格
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches() " for performance
+
+" 这个函数通过替换命令删除行尾空格
+func! DeleteTrailingWS()
+    exec "normal mz"
+    %s/\s\+$//ge
+    exec "normal `z"
+endfunc
+" 保存时自动删除行尾空格
+au BufWrite * :call DeleteTrailingWS()
+map <leader>W :call DeleteTrailingWS()<CR>
+
 "====================
 "=== Cursor style ===
 "====================
@@ -338,6 +357,7 @@ let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 "=*│ Ctrl│    │Alt │         Space         │ Alt│    │    │Ctrl│ │ ← │ ↓ │ → │ │   0   │ . │←─┘│ *
 "=*└─────┴────┴────┴───────────────────────┴────┴────┴────┴────┘ └───┴───┴───┘ └───────┴───┴───┘ *
 "=************************************************************************************************
+let g:python3_host_prog='D:\Python\python.exe'
 
 "inoremap ' ''<ESC>i
 "inoremap " ""<ESC>i
@@ -376,31 +396,23 @@ noremap <LWADER><down> :res -5<CR>
 noremap <LWADER><left> :vertical resize-5<CR>
 noremap <LWADER><right> :vertical resize+5<CR>
 
-" 高亮显示行尾不想要的空格
-highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-autocmd BufWinLeave * call clearmatches() " for performance
-
-" 这个函数通过替换命令删除行尾空格
-func! DeleteTrailingWS()
-    exec "normal mz"
-    %s/\s\+$//ge
-    exec "normal `z"
-endfunc
-" 保存时自动删除行尾空格
-au BufWrite * :call DeleteTrailingWS()
-map <leader>W :call DeleteTrailingWS()<CR>
-
-"iabbrev xname <YouName>  " 改成你自己的名字
-"iabbrev xmail <YouEmail> " 改成你自己的电邮
-"iabbrev xfile <c-r>=expand("%:t")<CR>
-"if exists("*strftime")
-"    iabbrev xdate <c-r>=strftime("%Y-%m-%d")<CR>  " 当前日期
-"    iabbrev xtime <c-r>=strftime("%H:%M:%S")<CR>  " 当前时间
-"endif
+autocmd Filetype markdown inoremap ;f <Esc>/<++><CR>:nohlsearch<CR>c4l
+autocmd Filetype markdown inoremap ;n ---<Enter><Enter>
+autocmd Filetype markdown inoremap ;b **** <++><Esc>F*hi
+autocmd Filetype markdown inoremap ;s ~~~~ <++><Esc>F~hi
+autocmd Filetype markdown inoremap ;i ** <++><Esc>F*i
+autocmd Filetype markdown inoremap ;d `` <++><Esc>F`i
+autocmd Filetype markdown inoremap ;c ```<Enter><++><Enter>```<Enter><Enter><++><Esc>4kA
+autocmd Filetype markdown inoremap ;h ====<Space><++><Esc>F=hi
+autocmd Filetype markdown inoremap ;p ![](<++>) <++><Esc>F[a
+autocmd Filetype markdown inoremap ;a [](<++>) <++><Esc>F[a
+autocmd Filetype markdown inoremap ;1 #<Space><Enter><++><Esc>kA
+autocmd Filetype markdown inoremap ;2 ##<Space><Enter><++><Esc>kA
+autocmd Filetype markdown inoremap ;3 ###<Space><Enter><++><Esc>kA
+autocmd Filetype markdown inoremap ;4 ####<Space><Enter><++><Esc>kA
+autocmd Filetype markdown inoremap ;5 #####<Space><Enter><++><Esc>kA
+autocmd Filetype markdown inoremap ;6 ######<Space><Enter><++><Esc>kA
+autocmd Filetype markdown inoremap ;l --------<Enter>
 
 """""""""""""""""""""""""""""""""""""""""
 "                     _                 "
@@ -409,6 +421,33 @@ map <leader>W :call DeleteTrailingWS()<CR>
 "       |_____|\ V / | | | | | | |      "
 "               \_/  |_|_| |_| |_|      "
 """""""""""""""""""""""""""""""""""""""""
+" 编译调用的插件
+"map r :call CompileRunGcc()<CR>
+"func! CompileRunGcc()
+"  exec "w"
+"  if &filetype == 'c'
+"    exec "!g++ % -o %<"
+"    exec "!time ./%<"
+"  elseif &filetype == 'cpp'
+"    exec "!g++ % -o %<"
+"    exec "!time ./%<"
+"  elseif &filetype == 'java'
+"    exec "!javac %"
+"    exec "!time java %<"
+"  elseif &filetype == 'sh'
+"    :!time bash %
+"  elseif &filetype == 'python'
+"    silent! exec "!clear"
+"    exec "!time python3 %"
+"  elseif &filetype == 'html'
+"    exec "!firefox % &"
+"  elseif &filetype == 'markdown'
+"    exec "MarkdownPreview"
+"  elseif &filetype == 'vimwiki'
+"    exec "MarkdownPreview"
+"  endif
+"endfunc
+
 call plug#begin('~/AppData/Local/nvim/plugged')
 
 " 主题
@@ -422,12 +461,16 @@ Plug 'preservim/nerdtree'
 Plug 'vim-scripts/vim-cursorword'
 " emmet,html快速补齐
 Plug 'mattn/emmet-vim'
-" 智能匹配插件
+" 智能匹配
 Plug 'tmsvg/pear-tree'
 " 突出显示括号方阵
 Plug 'ccampbell/rainbow'
 " 快速注释
 Plug 'preservim/nerdcommenter'
+" css3颜色显示
+Plug 'gko/vim-coloresque'
+" 拼写检查
+Plug 'dense-analysis/ale'
 
 call plug#end()
 
@@ -436,18 +479,10 @@ call plug#end()
 "====
 
 " 真色彩支持
-"Credit joshdick
-"Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
-"If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
-"(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
 if (empty($TMUX))
   if (has("nvim"))
-  "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
   endif
-  "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
-  "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
-  " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
   if (has("termguicolors"))
     set termguicolors
   endif
@@ -481,6 +516,10 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 " 为此，使用以下命令设置格式器字段：
 let g:airline#extensions#tabline#formatter = 'default'
 
+" 配合拼写检查插件ale，将提示信息整合到airline栏
+let s:error_symbol = get(g:, 'airline#extensions#ale#error_symbol', '✗ ')
+let s:warning_symbol = get(g:, 'airline#extensions#ale#warning_symbol', '⚡ ')
+
 "===
 "=== NERDTree
 "===
@@ -489,11 +528,9 @@ map tt :NERDTreeToggle<CR>
 
 " 打开vim打开nerdtree
 "autocmd vimenter * NERDTree
-
-"autocmd StdinReadPre * let s:std_in=1
-"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+
 " 更改默认箭头
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
@@ -501,8 +538,23 @@ let g:NERDTreeDirArrowCollapsible = '▾'
 " 如果唯一打开的窗口时NERDTree,如何关闭vim
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
+" 打开上一级目录
+let NERDTreeMapUpdirKeepOpen = "l"
+" 新建分屏页并打开文件
+let NERDTreeMapActivateNode = "i"
+" 新建标签页并打开文件
+let NERDTreeMapOpenInTab = "o"
+" 关闭路径
+let NERDTreeMapCloseDir = "n"
+" 合并路径
+let NERDTreeMapChangeRoot = "y"
+
+let NERDTreeMapPreview = ""
+let NERDTreeMapOpenSplit = ""
+let NERDTreeOpenVSplit = ""
+
 "===
-"=== emmet+html5+webapi
+"=== emmet
 "===
 
 " 在什么模式中启用脚本
@@ -521,7 +573,7 @@ let g:user_emmet_leader_key=';'
 "=== pear tree
 "===
 
-" Default rules for matching:
+" 默认o匹配规则
 let g:pear_tree_pairs = {
             \ '(': {'closer': ')'},
             \ '[': {'closer': ']'},
@@ -529,9 +581,8 @@ let g:pear_tree_pairs = {
             \ "'": {'closer': "'"},
             \ '"': {'closer': '"'}
             \ }
-" See pear-tree/after/ftplugin/ for filetype-specific matching rules
 
-" Pear Tree is enabled for all filetypes by default:
+" 默认启用
 let g:pear_tree_ft_disabled = []
 
 " Pair expansion is dot-repeatable by default:
@@ -559,6 +610,7 @@ imap <Esc> <Plug>(PearTreeFinishExpansion)
 
 " 自动启用插件
 let g:rainbow_active = 1
+
 " 配色方案
 let g:rainbow_conf = {
 \   'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
@@ -582,9 +634,19 @@ let g:rainbow_conf = {
 \       'css': 0,
 \   }
 \}
+
 "===
 "=== NERD Commenter
 "===
+
+"""""""""""""""""""""""""""""""""""""""
+" <LEADER>ca  在可选的注释方式之间切换"
+" <LEADER>cc  注释当前行              "
+" <LEADER>cs  添加 "性感"注释         "
+" <LEADER>cA  在当前行尾添加注释      "
+" <LEADER>cu  取消注释                "
+" <LEADER>cm  添加块注释              "
+"""""""""""""""""""""""""""""""""""""""
 
 " 默认注释定界符后添加空格
 let g:NERDSpaceDelims = 1
@@ -609,12 +671,74 @@ let g:NERDTrimTrailingWhitespace = 1
 
 " 启用NERDToggle检查检查所选定的行是否已注释
 let g:NERDToggleCheckAllLines = 1
-" <LEADER>ca 在可选的注释方式之间切换
-" <LEADER>cc 注释当前行
-" <LEADER>cs 以“ 性感” 的方式注释
-" <LEADER>cA 在当前行尾添加注释
-" <LEADER>cu 取消注释
-" <LEADER>cm 添加块注释
 
+"===
+"=== ale
+"===
 
+" 清除颜色
+highlight clear ALEErrorSign
+highlight clear ALEWarningSign
 
+" 使用 quickfix 代替 loclist
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
+
+"打开文件时不进行检查
+let g:ale_lint_on_enter = 0
+
+"文件内容发生变化时不进行检查
+let g:ale_lint_on_text_changed = 'never'
+
+" 保持标志槽打开
+let g:ale_sign_column_always = 1
+let g:ale_sign_error = '✗'
+let g:ale_sign_warning = '⚡'
+
+" 在vim-bar显示警告或错误
+let g:airline#extensions#ale#enabled = 1
+
+"在vim自带的状态栏中整合ale
+let g:ale_statusline_format = ['✗ %d', '⚡ %d', '✔ OK']
+
+"显示Linter名称,出错或警告等相关信息
+let g:ale_echo_msg_error_str = '✗'
+let g:ale_echo_msg_warning_str = '⚡'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+
+"普通模式下，sp前往上一个错误或警告，sn前往下一个错误或警告
+nmap sp <Plug>(ale_previous_wrap)
+nmap sn <Plug>(ale_next_wrap)
+
+"<Leader>s触发/关闭语法检查
+nmap <Leader>s :ALEToggle<CR>
+
+"<Leader>d查看错误或警告的详细信息
+nmap <Leader>d :ALEDetail<CR>
+
+"使用clang对c和c++进行语法检查，对python使用pylint进行语法检查
+let g:ale_linters = {
+\   'c++': ['clang'],
+\   'c': ['clang'],
+\   'python': ['pylint'],
+\}
+
+let g:ale_linters = {'python': ['flake8'], 'reStructuredText': ['rstcheck']}
+let g:ale_fixers = {'python': ['remove_trailing_lines', 'trim_whitespace', 'autopep8']}
+
+" java 报错不乱码
+let g:ale_java_javac_options = '-encoding UTF-8  -J-Duser.language=en'
+
+" ale 整合到 airline
+function! LinterStatus() abort
+    let l:counts = ale#statusline#Count(bufnr(''))
+
+    let l:all_errors = l:counts.error + l:counts.style_error
+    let l:all_non_errors = l:counts.total - l:all_errors
+
+    return l:counts.total == 0 ? 'OK' : printf(
+    \  '%dW %dE',
+    \  all_non_errors,
+    \  all_errors
+    \)
+endfunction
