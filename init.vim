@@ -232,6 +232,8 @@ inoremap ( ()<++><ESC>5ha
 inoremap [ []<++><ESC>5ha
 inoremap { {}<++><ESC>5ha
 autocmd Filetype css inoremap [ <SPACE>{<CR><CR>}<CR><CR><++><ESC>3kA<SPACE><SPACE><SPACE><SPACE>
+inoremap <LEADER><Del> <ESC>lc5l
+vnoremap y "*y
 
 inoremap ;f <Esc>/<++><CR>:nohlsearch<CR>c4l
 inoremap ;q <ESC>
