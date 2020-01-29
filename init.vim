@@ -228,6 +228,11 @@ set tags=./.tags;,.tag
 "=== Mapkeys ===
 "===============
 
+inoremap ( ()<++><ESC>5ha
+inoremap [ []<++><ESC>5ha
+inoremap { {}<++><ESC>5ha
+autocmd Filetype css inoremap [ <SPACE>{<CR><CR>}<CR><CR><++><ESC>3kA<SPACE><SPACE><SPACE><SPACE>
+
 inoremap ;f <Esc>/<++><CR>:nohlsearch<CR>c4l
 inoremap ;q <ESC>
 inoremap "= "===<CR>===<SPACE><CR>===<CR><ESC>0C<CR><++><ESC>3kA
@@ -279,22 +284,18 @@ Plug 'mattn/emmet-vim', { 'for': ['html', 'css'] }
 Plug 'othree/html5.vim', { 'for': 'html' }
 Plug 'cakebaker/scss-syntax.vim', { 'for': ['scss', 'css'] }
 
-" 智能匹配
-" Plug 'tmsvg/pear-tree'
-
 " 突出显示括号方阵
-"Plug 'ccampbell/rainbow'
+Plug 'ccampbell/rainbow'
+
 " css3颜色显示
-"Plug 'gko/vim-coloresque', { 'for': ['html', 'css', 'less', 'sass'] }
+Plug 'gko/vim-coloresque', { 'for': ['html', 'css', 'less', 'sass'] }
 
 " 快速注释
-"Plug 'preservim/nerdcommenter'
+Plug 'preservim/nerdcommenter'
 " 拼写检查
 Plug 'dense-analysis/ale'
 
-
 " markdown
-Plug 'jamshedvesuna/vim-markdown-preview', { 'for' :['markdown', 'vim-plug', 'html'] }
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() },  'for' :['markdown', 'vim-plug'] }
 
 call plug#end()
@@ -370,10 +371,6 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#formatter = 'default'
 
 let g:airline_powerline_fonts = 1  " 支持 powerline 字体
-
-" 配合拼写检查插件ale，将提示信息整合到airline栏
-let s:error_symbol = get(g:, 'airline#extensions#ale#error_symbol', '✗ ')
-let s:warning_symbol = get(g:, 'airline#extensions#ale#warning_symbol', '⚡ ')
 
 "===
 "=== NERDTree
@@ -549,34 +546,6 @@ let g:ale_fixers = {'python': ['remove_trailing_lines', 'trim_whitespace', 'auto
 " java 报错不乱码
 let g:ale_java_javac_options = '-encoding UTF-8  -J-Duser.language=en'
 
-" ale 整合到 airline
-function! LinterStatus() abort
-    let l:counts = ale#statusline#Count(bufnr(''))
-
-    let l:all_errors = l:counts.error + l:counts.style_error
-    let l:all_non_errors = l:counts.total - l:all_errors
-
-    return l:counts.total == 0 ? 'OK' : printf(
-    \  '%dW %dE',
-    \  all_non_errors,
-    \  all_errors
-    \)
-endfunction
-
-"===
-"=== snippet
-"===
-
-" 触发器, 如果使用YouCompleteMe, 不要使用 <Tab>
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsListSnippets = "<c-tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-n>"
-let g:UltiSnipsJumpBackwardTrigger="<c-b>"
-
-" If you want :UltiSnipsEdit to split your window.
-" let g:UltiSnipsEditSplit="vertical"
-" let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
-
 "===
 "=== markdown_preview
 "===
@@ -606,23 +575,9 @@ let g:mkdp_port = ''
 let g:mkdp_page_title = '「${name}」'
 let vim_markdown_preview_hotkey='<C-m>'
 
-" 缓冲区写入时显示图像
-let vim_markdown_preview_toggle=2
-
-let vim_markdown_preview_browser='Mozilla Firefox'
-
-" 使用 GitHub 风格的 markdown
-let vim_markdown_preview_github=1
-" 使用 John Gruber 风格的 markdown
-"let vim_markdown_preview_perl=1
-
-" 使用 John MacFarlane's Pandoc 风格的 HTML
-let vim_markdown_preview_pandoc=1
-
-" 如果你的浏览器不附带 see 而想使用 xdg-open, 进行如下设置
-let vim_markdown_preview_use_xdg_open=1
-
-" markdown-keys
+"===
+"=== markdown-keys
+"===
 
 autocmd Filetype markdown inoremap ;n ---<Enter><Enter>
 autocmd Filetype markdown inoremap ;b **** <++><Esc>F*hi
