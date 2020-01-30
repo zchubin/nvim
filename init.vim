@@ -8,6 +8,9 @@ autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 " 让配置变更立即生效
 autocmd BufWritePost $MYVIMRC source $MYVIMRC
+" let g:python_host_prog='#'
+let g:python3_host_prog='D:/Pyhton'
+let g:mkdp_browser = 'firefox'
 "==============
 "=== Ignore ===
 "==============
@@ -224,6 +227,8 @@ set fillchars=vert:\ ,stl:\ ,stlnc:\
 " 或者 Vim 当前目录包含 .tags 文件
 set tags=./.tags;,.tag
 
+set pyxversion=3
+
 "===============
 "=== Mapkeys ===
 "===============
@@ -231,6 +236,10 @@ set tags=./.tags;,.tag
 inoremap ( ()<++><ESC>5ha
 inoremap [ []<++><ESC>5ha
 inoremap { {}<++><ESC>5ha
+inoremap ' ''<++><ESC>5ha
+inoremap " ""<++><ESC>5ha
+
+inoremap <TAB> <c-r>=SkipPair()<CR>
 autocmd Filetype css inoremap [ <SPACE>{<CR><CR>}<CR><CR><++><ESC>3kA<SPACE><SPACE><SPACE><SPACE>
 inoremap <LEADER><Del> <ESC>lc5l
 vnoremap y "*y
@@ -242,7 +251,7 @@ inoremap "= "===<CR>===<SPACE><CR>===<CR><ESC>0C<CR><++><ESC>3kA
 map <LEADER>fd /\(\<\w\+\)\_s*\1
 noremap <LEADER><CR> :nohlsearch<CR>
 
-noremap <C-N> :tabe<CR>
+noremap tu :tabe<CR>
 " Move around tabs with tn and ti
 noremap tb :-tabnext<CR>
 noremap tn :+tabnext<CR>
@@ -254,11 +263,51 @@ noremap tk :set nosplitbelow<CR>:split<CR>:set splitbelow<CR>
 noremap tj :set splitbelow<CR>:split<CR>
 noremap th :set nosplitright<CR>:vsplit<CR>:set splitright<CR>
 noremap tl :set splitright<CR>:vsplit<CR>
+" Place the two screens up and down
+noremap th <C-w>t<C-w>K
+" Place the two screens side by side
+noremap tv <C-w>t<C-w>H
 
 noremap `<up> :res +5<CR>
 noremap `<down> :res -5<CR>
 noremap `<left> :vertical resize-5<CR>
 noremap `<right> :vertical resize+5<CR>
+
+" 编译调用的插件
+map <Leader>r :call CompileRunGcc()<CR>
+func! CompileRunGcc()
+	exec "w"
+	if &filetype == 'c'
+		exec "!g++ % -o %<"
+		exec "!time ./%<"
+	elseif &filetype == 'cpp'
+		set splitbelow
+		exec "!g++ -std=c++11 % -Wall -o %<"
+		:sp
+		:res -15
+		:term ./%<
+	elseif &filetype == 'java'
+		exec "!javac %"
+		exec "!time java %<"
+	elseif &filetype == 'sh'
+		:!time bash %
+	elseif &filetype == 'python'
+		set splitbelow
+		:sp
+		:term python3 %
+	elseif &filetype == 'html'
+		silent! exec "!".g:mkdp_browser." % &"
+	elseif &filetype == 'markdown'
+		exec "MarkdownPreview"
+	elseif &filetype == 'tex'
+		silent! exec "VimtexStop"
+		silent! exec "VimtexCompile"
+	elseif &filetype == 'go'
+		set splitbelow
+		:sp
+		:term go run %
+	endif
+endfunc
 
 "==============
 "=== Plugin ===
@@ -279,7 +328,7 @@ Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'vim-scripts/vim-cursorword'
 
 " 语法 (高亮) 缩进 语言包
-Plug 'sheerun/vim-polyglot'
+" Plug 'sheerun/vim-polyglot'
 
 " Html,css
 Plug 'mattn/emmet-vim', { 'for': ['html', 'css'] }
@@ -301,33 +350,6 @@ Plug 'dense-analysis/ale'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() },  'for' :['markdown', 'vim-plug'] }
 
 call plug#end()
-
-" 编译调用的插件
-map <Leader>r :call CompileRunGcc()<CR>
-func! CompileRunGcc()
-  exec "w"
-  if &filetype == 'c'
-    exec "!g++ % -o %<"
-    exec "!time ./%<"
-  elseif &filetype == 'cpp'
-    exec "!g++ % -o %<"
-    exec "!time ./%<"
-  elseif &filetype == 'java'
-    exec "!javac %"
-    exec "!time java %<"
-  elseif &filetype == 'sh'
-    :!time bash %
-  elseif &filetype == 'python'
-    silent! exec "!clear"
-    exec "!time python3 %"
-  elseif &filetype == 'html'
-    exec "!firefox % &"
-  elseif &filetype == 'markdown'
-    exec "MarkdownPreview"
-  elseif &filetype == 'vimwiki'
-    exec "MarkdownPreview"
-  endif
-endfunc
 
 "====
 "==== Vim-one
@@ -581,7 +603,14 @@ let vim_markdown_preview_hotkey='<C-m>'
 "=== markdown-keys
 "===
 
+autocmd Filetype markdown inoremap ;1 #<Space><Enter><++><Esc>kA
+autocmd Filetype markdown inoremap ;2 ##<Space><Enter><++><Esc>kA
+autocmd Filetype markdown inoremap ;3 ###<Space><Enter><++><Esc>kA
+autocmd Filetype markdown inoremap ;4 ####<Space><Enter><++><Esc>kA
+autocmd Filetype markdown inoremap ;5 #####<Space><Enter><++><Esc>kA
+autocmd Filetype markdown inoremap ;6 ######<Space><Enter><++><Esc>kA
 autocmd Filetype markdown inoremap ;n ---<Enter><Enter>
+autocmd Filetype markdown inoremap ;m - [ ] <Enter><++><ESC>kA
 autocmd Filetype markdown inoremap ;b **** <++><Esc>F*hi
 autocmd Filetype markdown inoremap ;s ~~~~ <++><Esc>F~hi
 autocmd Filetype markdown inoremap ;i ** <++><Esc>F*i
@@ -590,10 +619,4 @@ autocmd Filetype markdown inoremap ;c ```<Enter><++><Enter>```<Enter><Enter><++>
 autocmd Filetype markdown inoremap ;h ====<Space><++><Esc>F=hi
 autocmd Filetype markdown inoremap ;p ![](<++>) <++><Esc>F[a
 autocmd Filetype markdown inoremap ;a [](<++>) <++><Esc>F[a
-autocmd Filetype markdown inoremap ;1 #<Space><Enter><++><Esc>kA
-autocmd Filetype markdown inoremap ;2 ##<Space><Enter><++><Esc>kA
-autocmd Filetype markdown inoremap ;3 ###<Space><Enter><++><Esc>kA
-autocmd Filetype markdown inoremap ;4 ####<Space><Enter><++><Esc>kA
-autocmd Filetype markdown inoremap ;5 #####<Space><Enter><++><Esc>kA
-autocmd Filetype markdown inoremap ;6 ######<Space><Enter><++><Esc>kA
 autocmd Filetype markdown inoremap ;l --------<Enter>
