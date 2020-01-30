@@ -30,6 +30,7 @@ documentation, you should read `:help provider-python` and the Wiki.
 
 ### Mapkeys
 **<leader> map**
+  
 | key               | mapkyes                            |
 |-------------------|------------------------------------|
 | '`<LEADER>`'      | '`<SPACE>`'                        |
@@ -39,6 +40,7 @@ documentation, you should read `:help provider-python` and the Wiki.
 | '`<leader>W`'     | '`:call DeleteTrailingWS()<CR>`'   |
   
 **imap**
+
 | key          | mapkeys                                                |
 |--------------|--------------------------------------------------------|
 | ';f'         | '<ESC>/<++><CR>:nohlsearh<CR>c4l'                      |
@@ -51,10 +53,13 @@ documentation, you should read `:help provider-python` and the Wiki.
 | '"='         | '"===<CR>===<SPACE><CR>===<CR><ESC>0C<CR><++><ESC>3kA' |
   
 **vmap**
+
 | key | mapkeys |
 |-----|---------|
 | 'y' | '`"*y`' |
+
 **nmap**
+
 | key           | mapkeys                                             |
 |---------------|-----------------------------------------------------|
 | '`<C-D>`'     | '`:table`'                                          |
