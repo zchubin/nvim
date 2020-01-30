@@ -86,3 +86,5 @@ noremap `<right> :vertical resize+5<CR>
 - [11] 'preservim/nerdcommenter'
 - [12] 'dense-analysis/ale'
 - [13] 'iamcco/markdown-preview.vim'
+
+11
