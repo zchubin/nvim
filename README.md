@@ -134,17 +134,6 @@ Plug 'dense-analysis/ale'
 " markdown
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() },  'for' :['markdown', 'vim-plug'] }
 
-" Shougo
-"  框架
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-let g:deoplete#enable_at_startup = 1
-"  暗色目录
-Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
-" 代码片段化
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'Shougo/neosnippet.vim'
-Plug 'Shougo/neosnippet-snippets'
-Plug 'honza/vim-snippets'
 " 补全
 Plug 'Shougo/neocomplete.vim'
 
