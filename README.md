@@ -4,7 +4,7 @@ This is Neovim configuration on **windows10** for a new recruit.
 ## Installation
 
 Note: init.vim requires Neovim(0.5.0+) with Python3. See
-[requires](##requires)
+[requires](## requires)
 requires if you aren't sure whethre you have this.
 
 You can use `git clone https://github.com/zchubin/nvim-Z.git`
