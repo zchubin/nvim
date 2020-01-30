@@ -4,7 +4,7 @@ This is Neovim configuration on **windows10** for a new recruit.
 ## Installation
 
 Note: init.vim requires Neovim(0.5.0+) with Python3. See
-[requires](href="## requires")
+[requires](##requires)
 requires if you aren't sure whethre you have this.
 
 You can use `git clone https://github.com/zchubin/nvim-Z.git`
@@ -30,7 +30,6 @@ documentation, you should read `:help provider-python` and the Wiki.
 
 ### Mapkeys
 **<leader> map**
-  
 | key               | mapkyes                            |
 |-------------------|------------------------------------|
 | '`<LEADER>`'      | '`<SPACE>`'                        |
@@ -38,9 +37,8 @@ documentation, you should read `:help provider-python` and the Wiki.
 | '`<LEADER><DEL>`' | '`<ESC>lc5l`'                      |
 | '`<leader>fd`'    | '`/\(\<\w\+\)\_s*\1`'              |
 | '`<leader>W`'     | '`:call DeleteTrailingWS()<CR>`'   |
-  
-**imap**
 
+**imap**
 | key          | mapkeys                                                |
 |--------------|--------------------------------------------------------|
 | ';f'         | '<ESC>/<++><CR>:nohlsearh<CR>c4l'                      |
@@ -51,15 +49,13 @@ documentation, you should read `:help provider-python` and the Wiki.
 | '['          | '[]<++><ESC>5ha'                                       |
 | '{'          | '{}<++><ESC>5ha'                                       |
 | '"='         | '"===<CR>===<SPACE><CR>===<CR><ESC>0C<CR><++><ESC>3kA' |
-  
-**vmap**
 
+**vmap**
 | key | mapkeys |
 |-----|---------|
 | 'y' | '`"*y`' |
 
 **nmap**
-
 | key           | mapkeys                                             |
 |---------------|-----------------------------------------------------|
 | '`<C-D>`'     | '`:table`'                                          |
@@ -89,8 +85,8 @@ noremap `<right> :vertical resize+5<CR>
 - [6] 'mattn/emment-vim'
 - [7] 'othree/html5.vim'
 - [8] 'cakebaker/scss-syntax.vim'
-- [9] 'ccampbell/rainbow'
-- [10] 'gko/vim-coloresque'
-- [11] 'preservim/nerdcommenter'
-- [12] 'dense-analysis/ale'
-- [13] 'iamcco/markdown-preview.vim'
+- [10] 'ccampbell/rainbow'
+- [1] 'gko/vim-coloresque'
+- [1] 'preservim/nerdcommenter'
+- [1] 'dense-analysis/ale'
+- [1] 'iamcco/markdown-preview.vim'
