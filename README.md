@@ -37,6 +37,7 @@ documentation, you should read `:help provider-python` and the Wiki.
 | '`<LEADER><DEL>`' | '`<ESC>lc5l`'                      |
 | '`<leader>fd`'    | '`/\(\<\w\+\)\_s*\1`'              |
 | '`<leader>W`'     | '`:call DeleteTrailingWS()<CR>`'   |
+  
 **imap**
 | key          | mapkeys                                                |
 |--------------|--------------------------------------------------------|
@@ -48,6 +49,7 @@ documentation, you should read `:help provider-python` and the Wiki.
 | '['          | '[]<++><ESC>5ha'                                       |
 | '{'          | '{}<++><ESC>5ha'                                       |
 | '"='         | '"===<CR>===<SPACE><CR>===<CR><ESC>0C<CR><++><ESC>3kA' |
+  
 **vmap**
 | key | mapkeys |
 |-----|---------|
@@ -64,6 +66,7 @@ documentation, you should read `:help provider-python` and the Wiki.
 | 'tj'          | '`splitbelow<CR>:split<CR>`'                        |
 | 'th'          | '`nosplitright<CR>:vsplit<CR>:set splitright<CR>`'  |
 | 'tl'          | '`splitright<CR>:vsplit<CR>`'                       |
+
 and
 ```vim
 noremap `<up> :res +5<CR>
@@ -86,5 +89,3 @@ noremap `<right> :vertical resize+5<CR>
 - [11] 'preservim/nerdcommenter'
 - [12] 'dense-analysis/ale'
 - [13] 'iamcco/markdown-preview.vim'
-
-11
