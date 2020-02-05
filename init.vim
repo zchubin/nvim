@@ -39,6 +39,8 @@ set wildignore+=*.linux2,*.win32,*.darwin,*.freebsd,*.linux,*.android
 set nocompatible
 " 设置 <Leader>
 let mapleader=" "
+" 设置响应超时
+set timeoutlen=500
 " 启用正则表达式
 set magic
 " 设置行号
@@ -97,7 +99,7 @@ autocmd FileType c,cpp,python,vim set textwidth=80
 if has('multi_byte')
 	set encoding=utf-8
 	set fileencoding=utf-8
-   	 set fileencodings=utf-8,ucs-bom,gbk,cp936,gb2312,big5,euc-jp,euc-kr,latin1
+   	set fileencodings=utf-8,ucs-bom,gbk,cp936,gb2312,big5,euc-jp,euc-kr,latin1
 endif
 " 单词 = 单词 + 连字符
 set iskeyword+=_,$,@,%,#,-
@@ -239,8 +241,7 @@ inoremap { {}<++><ESC>5ha
 inoremap ' ''<++><ESC>5ha
 inoremap " ""<++><ESC>5ha
 
-inoremap <TAB> <c-r>=SkipPair()<CR>
-autocmd Filetype css inoremap [ <SPACE>{<CR><CR>}<CR><CR><++><ESC>3kA<SPACE><SPACE><SPACE><SPACE>
+autocmd Filetype css,java inoremap [ <SPACE>{<CR><CR>}<CR><CR><++><ESC>3kA<SPACE><SPACE><SPACE><SPACE>
 inoremap <LEADER><Del> <ESC>lc5l
 vnoremap y "*y
 
@@ -248,7 +249,7 @@ inoremap ;f <Esc>/<++><CR>:nohlsearch<CR>c4l
 inoremap ;q <ESC>
 inoremap "= "===<CR>===<SPACE><CR>===<CR><ESC>0C<CR><++><ESC>3kA
 
-map <LEADER>fd /\(\<\w\+\)\_s*\1
+map <LEADER>fw /\(\<\w\+\)\_s*\1<CR>
 noremap <LEADER><CR> :nohlsearch<CR>
 
 noremap tu :tabe<CR>
@@ -264,14 +265,14 @@ noremap tj :set splitbelow<CR>:split<CR>
 noremap th :set nosplitright<CR>:vsplit<CR>:set splitright<CR>
 noremap tl :set splitright<CR>:vsplit<CR>
 " Place the two screens up and down
-noremap th <C-w>t<C-w>K
+noremap sh <C-w>t<C-w>K
 " Place the two screens side by side
-noremap tv <C-w>t<C-w>H
+noremap sv <C-w>t<C-w>H
 
 noremap `<up> :res +5<CR>
 noremap `<down> :res -5<CR>
-noremap `<left> :vertical resize-5<CR>
-noremap `<right> :vertical resize+5<CR>
+noremap `<left> :vertical resize+5<CR>
+noremap `<right> :vertical resize-5<CR>
 
 " 编译调用的插件
 map <Leader>r :call CompileRunGcc()<CR>
@@ -286,6 +287,9 @@ func! CompileRunGcc()
 		:sp
 		:res -15
 		:term ./%<
+    elseif &filetype == 'cs'
+        exec "!mcs %"
+        exec "!time mono %<.exe"
 	elseif &filetype == 'java'
 		exec "!javac %"
 		exec "!time java %<"
@@ -320,6 +324,9 @@ Plug 'rakr/vim-one'
 " 状态栏
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+
+" 按键提示
+Plug 'liuchengxu/vim-which-key'
 
 " 侧边栏，文件目录
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -396,6 +403,68 @@ let g:airline#extensions#tabline#formatter = 'default'
 
 let g:airline_powerline_fonts = 1  " 支持 powerline 字体
 
+"===
+"=== vim-which-key
+"===
+
+let g:mapleader = "\<Space>"
+let g:maplocalleader = ','
+nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
+nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
+
+let g:which_key_map =  {}
+
+let g:which_key_map.f = { 'name' : '+file' }
+
+nnoremap <silent> <leader>fd :e $MYVIMRC<CR>
+let g:which_key_map.f.d = 'open-vimrc'
+let g:which_key_map.f.w = '查找相邻两个相同的单词'
+
+let g:which_key_map['w'] = {
+      \ 'name' : '+windows' ,
+      \ 'w' : ['<C-W>w'     , 'other-window']          ,
+      \ 'd' : ['<C-W>c'     , 'delete-window']         ,
+      \ '-' : ['<C-W>s'     , 'split-window-below']    ,
+      \ '|' : ['<C-W>v'     , 'split-window-right']    ,
+      \ '2' : ['<C-W>v'     , 'layout-double-columns'] ,
+      \ 'h' : ['<C-W>h'     , 'window-left']           ,
+      \ 'j' : ['<C-W>j'     , 'window-below']          ,
+      \ 'l' : ['<C-W>l'     , 'window-right']          ,
+      \ 'k' : ['<C-W>k'     , 'window-up']             ,
+      \ 'H' : ['<C-W>5<'    , 'expand-window-left']    ,
+      \ 'J' : ['resize +5'  , 'expand-window-below']   ,
+      \ 'L' : ['<C-W>5>'    , 'expand-window-right']   ,
+      \ 'K' : ['resize -5'  , 'expand-window-up']      ,
+      \ '=' : ['<C-W>='     , 'balance-window']        ,
+      \ 's' : ['<C-W>s'     , 'split-window-below']    ,
+      \ 'v' : ['<C-W>v'     , 'split-window-below']    ,
+      \ '?' : ['Windows'    , 'fzf-window']            ,
+      \ }
+
+let g:which_key_map.c = {
+      \ 'name' : '+open',
+      \ 'a' : '在可选注释之间切换',
+      \ 'A' : '在当前行尾添加注释',
+      \ '$' : '在当前光标后添加注释',
+      \ 'c' : '注释当前行',
+      \ 's' : '使用"sexy"进行注释',
+      \ 'u' : '取消注释',
+      \ 'm' : '进行块注释',
+      \ 'y' : '注释并复制内容',
+      \ }
+
+call which_key#register('<Space>', "g:which_key_map")
+nnoremap <silent> <leader> :<c-u>WhichKey '<Space>'<CR>
+vnoremap <silent> <leader> :<c-u>WhichKeyVisual '<Space>'<CR>
+
+" 自定义提示键位
+nnoremap <silent> ` :<c-u>WhichKey '`'<CR>
+nnoremap <silent> t :<c-u>WhichKey 't'<CR>
+nnoremap <silent> s :<c-u>WhichKey 's'<CR>
+
+" autocmd! FileType which_key
+" autocmd  FileType which_key set laststatus=0 noshowmode noruler
+  " \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 "===
 "=== NERDTree
 "===
