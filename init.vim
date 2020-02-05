@@ -11,6 +11,9 @@ autocmd BufWritePost $MYVIMRC source $MYVIMRC
 " let g:python_host_prog='#'
 let g:python3_host_prog='D:/Pyhton'
 let g:mkdp_browser = 'firefox'
+" 自动补全字典
+set dictionary-=$VIM/dictionary/dic.txt dictionary+=$VIM/dictionary/dic.txt
+
 "==============
 "=== Ignore ===
 "==============
@@ -48,6 +51,8 @@ set nu
 " set relativenumber
 " 高亮显示当前行
 set cursorline
+" 高亮显示当前列
+" set cursorcolumn
 " 光标
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_SR = "\<Esc>]50;CursorShape=2\x7"
@@ -102,7 +107,7 @@ if has('multi_byte')
    	set fileencodings=utf-8,ucs-bom,gbk,cp936,gb2312,big5,euc-jp,euc-kr,latin1
 endif
 " 单词 = 单词 + 连字符
-set iskeyword+=_,$,@,%,#,-
+set iskeyword+=_,$,@,%,#,-,.
 augroup InitFileTypesGroup
 	" 清除同组的历史 autocommand
 	au!
@@ -219,7 +224,7 @@ set display=lastline
 " 合并两行中文时不加入空格
 "fo = formatoptions
 set fo+=mB
-" 让 vim 不全菜单行为与 ide 一致
+" 让 vim 补全菜单行为与 ide 一致
 set completeopt=longest,menu
 " 分屏时中间显示分隔线便于阅读
 set fillchars=vert:\ ,stl:\ ,stlnc:\
@@ -230,6 +235,31 @@ set fillchars=vert:\ ,stl:\ ,stlnc:\
 set tags=./.tags;,.tag
 
 set pyxversion=3
+
+" 相当于 i 模式 <C-X><C-K> = <C-N> 查看字典,进行补全
+set complete-=k complete+=k
+" 使用 <Tab> 进行自动补全
+inoremap <tab> <c-r>=Smart_TabComplete()<CR>
+function! Smart_TabComplete()
+  let line = getline('.')                         " current line
+
+  let substr = strpart(line, -1, col('.')+1)      " from the start of the current
+                                                  " line to one character right
+                                                  " of the cursor
+  let substr = matchstr(substr, "[^ \t]*$")       " word till cursor
+  if (strlen(substr)==0)                          " nothing to match on empty string
+    return "\<tab>"
+  endif
+  let has_period = match(substr, '\.') != -1      " position of period, if any
+  let has_slash = match(substr, '\/') != -1       " position of slash, if any
+  if (!has_period && !has_slash)
+    return "\<C-X>\<C-P>"                         " existing text matching
+  elseif ( has_slash )
+    return "\<C-X>\<C-F>"                         " file matching
+  else
+    return "\<C-X>\<C-O>"                         " plugin matching
+  endif
+endfunction
 
 "===============
 "=== Mapkeys ===
@@ -320,7 +350,8 @@ endfunc
 call plug#begin('~/AppData/Local/nvim/plugged')
 
 " 主题
-Plug 'rakr/vim-one'
+" Plug 'rakr/vim-one'
+Plug 'morhetz/gruvbox'
 " 状态栏
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -345,6 +376,9 @@ Plug 'cakebaker/scss-syntax.vim', { 'for': ['scss', 'css'] }
 " 突出显示括号方阵
 Plug 'ccampbell/rainbow'
 
+" 快速添加包围符号
+Plug 'tpope/vim-surround'
+
 " css3颜色显示
 Plug 'gko/vim-coloresque', { 'for': ['html', 'css', 'less', 'sass'] }
 
@@ -359,7 +393,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() },  'for' 
 call plug#end()
 
 "====
-"==== Vim-one
+"==== Vim-themes
 "====
 
 " 真色彩支持
@@ -375,9 +409,11 @@ endif
 set t_8b=^[[48;2;%lu;%lu;%lum
 set t_8f=^[[38;2;%lu;%lu;%lum
 
-let g:airline_theme='one'
+" let g:airline_theme='one'
+let g:airline_theme='gruvbox'
 
-colorscheme one
+" colorscheme one
+colorscheme gruvbox
 set background=dark " for the dark version
 " set background=light " for the light version
 
@@ -688,4 +724,3 @@ autocmd Filetype markdown inoremap ;c ```<Enter><++><Enter>```<Enter><Enter><++>
 autocmd Filetype markdown inoremap ;h ====<Space><++><Esc>F=hi
 autocmd Filetype markdown inoremap ;p ![](<++>) <++><Esc>F[a
 autocmd Filetype markdown inoremap ;a [](<++>) <++><Esc>F[a
-autocmd Filetype markdown inoremap ;l --------<Enter>
