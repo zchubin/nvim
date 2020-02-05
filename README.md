@@ -92,6 +92,9 @@ Plug 'rakr/vim-one'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+" 按键提示
+Plug 'liuchengxu/vim-which-key'
+
 " 侧边栏，文件目录
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 
