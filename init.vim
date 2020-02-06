@@ -8,12 +8,12 @@ autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 " 让配置变更立即生效
 autocmd BufWritePost $MYVIMRC source $MYVIMRC
-" let g:python_host_prog='#'
+
+set pyxversion=3
 let g:python3_host_prog='D:/Pyhton'
 let g:mkdp_browser = 'firefox'
 " 自动补全字典
-set dictionary-=$VIM/dictionary/dic.txt dictionary+=$VIM/dictionary/dic.txt
-
+set dictionary-=$VIM/dictionary/dic.txt dictionary+=$VIM/dictonary/dic.txt
 "==============
 "=== Ignore ===
 "==============
@@ -42,6 +42,10 @@ set wildignore+=*.linux2,*.win32,*.darwin,*.freebsd,*.linux,*.android
 set nocompatible
 " 设置 <Leader>
 let mapleader=" "
+" 设置字体
+set guifont=Envy\ Code\ R\ VS:h18
+" 设置为双字宽显示，否则无法完整显示如:☆
+set ambiwidth=double
 " 设置响应超时
 set timeoutlen=500
 " 启用正则表达式
@@ -66,11 +70,32 @@ set showmode
 set showcmd
 set wildmenu
 set wildmode=longest:list,full
+" 设置状态行显示常用信息
+" %F 完整文件路径名
+" %m 当前缓冲被修改标记
+" %m 当前缓冲只读标记
+" %h 帮助缓冲标记
+" %w 预览缓冲标记
+" %Y 文件类型
+" %b ASCII值
+" %B 十六进制值
+" %l 行数
+" %v 列数
+" %p 当前行数占总行数的的百分比
+" %L 总行数
+" %{...} 评估表达式的值，并用值代替
+" %{"[fenc=".(&fenc==""?&enc:&fenc).((exists("+bomb") && &bomb)?"+":"")."]"} 显示文件编码
+" %{&ff} 显示文件类型
 set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ %-14.(%l,%c%V%)\ %P
+" 设置 laststatus = 0 ，不显式状态行
+" 设置 laststatus = 1 ，仅当窗口多于一个时，显示状态行
+" 设置 laststatus = 2 ，总是显式状态行
 set laststatus=2
 set viminfo='10,\"100,:20,%,n~/.viminfo
-" vim显示信息
+" 设置中文提示
 language messages zh_CN.utf-8
+" 设置中文帮助
+set helplang=cn
 let &termencoding=&encoding
 " 移动光标上下保持8行行距
 set scrolloff=8
@@ -84,7 +109,10 @@ set backspace=indent,eol,start
 set whichwrap+=<,>,h,l
 set smarttab
 
-set undofile
+if has('persistent_undo')
+	set undofile
+	set undodir=$VIM/undo
+endif
 set history=1000
 set nobackup
 set noswapfile
@@ -234,8 +262,6 @@ set fillchars=vert:\ ,stl:\ ,stlnc:\
 " 或者 Vim 当前目录包含 .tags 文件
 set tags=./.tags;,.tag
 
-set pyxversion=3
-
 " 相当于 i 模式 <C-X><C-K> = <C-N> 查看字典,进行补全
 set complete-=k complete+=k
 " 使用 <Tab> 进行自动补全
@@ -260,18 +286,17 @@ function! Smart_TabComplete()
     return "\<C-X>\<C-O>"                         " plugin matching
   endif
 endfunction
-
 "===============
 "=== Mapkeys ===
 "===============
 
-inoremap ( ()<++><ESC>5ha
-inoremap [ []<++><ESC>5ha
-inoremap { {}<++><ESC>5ha
-inoremap ' ''<++><ESC>5ha
-inoremap " ""<++><ESC>5ha
+" inoremap ( ()<++><ESC>5ha
+" inoremap [ []<++><ESC>5ha
+" inoremap { {}<++><ESC>5ha
+" inoremap ' ''<++><ESC>5ha
+" inoremap " ""<++><ESC>5ha
 
-autocmd Filetype css,java inoremap [ <SPACE>{<CR><CR>}<CR><CR><++><ESC>3kA<SPACE><SPACE><SPACE><SPACE>
+" autocmd Filetype css,java inoremap [ <SPACE>{<CR><CR>}<CR><CR><++><ESC>3kA<SPACE><SPACE><SPACE><SPACE>
 inoremap <LEADER><Del> <ESC>lc5l
 vnoremap y "*y
 
@@ -298,6 +323,10 @@ noremap tl :set splitright<CR>:vsplit<CR>
 noremap sh <C-w>t<C-w>K
 " Place the two screens side by side
 noremap sv <C-w>t<C-w>H
+
+" Rotate screens
+noremap srh <C-w>b<C-w>K
+noremap srv <C-w>b<C-w>H
 
 noremap `<up> :res +5<CR>
 noremap `<down> :res -5<CR>
@@ -373,6 +402,8 @@ Plug 'mattn/emmet-vim', { 'for': ['html', 'css'] }
 Plug 'othree/html5.vim', { 'for': 'html' }
 Plug 'cakebaker/scss-syntax.vim', { 'for': ['scss', 'css'] }
 
+" 自动匹配括号
+Plug 'jiangmiao/auto-pairs'
 " 突出显示括号方阵
 Plug 'ccampbell/rainbow'
 
