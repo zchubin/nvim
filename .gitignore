@@ -1,0 +1,5 @@
+*.swp
+view/
+plugged/
+sessions/
+tmp/
