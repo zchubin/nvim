@@ -48,6 +48,9 @@ set guifont=Envy\ Code\ R\ VS:h18
 set ambiwidth=double
 " 设置响应超时
 set timeoutlen=500
+" 禁止显示菜单和工具条
+set guioptions-=m
+set guioptions-=T
 " 启用正则表达式
 set magic
 " 设置行号
@@ -110,8 +113,8 @@ set whichwrap+=<,>,h,l
 set smarttab
 
 if has('persistent_undo')
-	set undofile
-	set undodir=$VIM/undo
+set undofile
+set undodir=$VIM/undo
 endif
 set history=1000
 set nobackup
@@ -124,44 +127,44 @@ filetype on
 filetype indent on
 filetype plugin on
 if has('autocmd')
-	filetype plugin indent on
+filetype plugin indent on
 endif
 " 仅对 C/C++/Python/Vim 遵循旧式80列限制
 autocmd FileType c,cpp,python,vim set textwidth=80
 " 代码编码方式
 if has('multi_byte')
-	set encoding=utf-8
-	set fileencoding=utf-8
-   	set fileencodings=utf-8,ucs-bom,gbk,cp936,gb2312,big5,euc-jp,euc-kr,latin1
+set encoding=utf-8
+set fileencoding=utf-8
+set fileencodings=utf-8,ucs-bom,gbk,cp936,gb2312,big5,euc-jp,euc-kr,latin1
 endif
 " 单词 = 单词 + 连字符
 set iskeyword+=_,$,@,%,#,-,.
 augroup InitFileTypesGroup
-	" 清除同组的历史 autocommand
-	au!
-	" C/C++ 文件使用 // 作为注释
-	au FileType c,cpp setlocal commentstring=//\ %s
-	" markdown 允许自动换行
-	au FileType markdown setlocal wrap
-	" lisp 进行微调
-	au FileType lisp setlocal ts=8 sts=2 sw=2 et
-	" scala 微调
-	au FileType scala setlocal sts=4 sw=4 noet
-	" haskell 进行微调
-	au FileType haskell setlocal et
-	" quickfix 隐藏行号
-	au FileType qf setlocal nonumber
-	" 强制对某些扩展名的 filetype 进行纠正
-	au BufNewFile,BufRead *.as setlocal filetype=actionscript
-	au BufNewFile,BufRead *.pro setlocal filetype=prolog
-	au BufNewFile,BufRead *.es setlocal filetype=erlang
-	au BufNewFile,BufRead *.asc setlocal filetype=asciidoc
-	au BufNewFile,BufRead *.vl setlocal filetype=verilog
+" 清除同组的历史 autocommand
+au!
+" C/C++ 文件使用 // 作为注释
+au FileType c,cpp setlocal commentstring=//\ %s
+" markdown 允许自动换行
+au FileType markdown setlocal wrap
+" lisp 进行微调
+au FileType lisp setlocal ts=8 sts=2 sw=2 et
+" scala 微调
+au FileType scala setlocal sts=4 sw=4 noet
+" haskell 进行微调
+au FileType haskell setlocal et
+" quickfix 隐藏行号
+au FileType qf setlocal nonumber
+" 强制对某些扩展名的 filetype 进行纠正
+au BufNewFile,BufRead *.as setlocal filetype=actionscript
+au BufNewFile,BufRead *.pro setlocal filetype=prolog
+au BufNewFile,BufRead *.es setlocal filetype=erlang
+au BufNewFile,BufRead *.asc setlocal filetype=asciidoc
+au BufNewFile,BufRead *.vl setlocal filetype=verilog
 augroup END
 " 启用代码高亮
 if has('syntax')
-	syntax enable
-	syntax on
+syntax enable
+syntax on
 endif
 " 启动自动换行
 " set wrap
@@ -173,9 +176,9 @@ set linebreak
 set breakindent
 " 换行符
 if has("win32")
-    set fileformats=dos,unix,mac
+set fileformats=dos,unix,mac
 else
-    set fileformats=unix,mac,dos
+set fileformats=unix,mac,dos
 endif
 " 检查文件标记并跳转
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
@@ -196,11 +199,11 @@ set expandtab
 "使用 C/C++ 缩进
 set cindent
 augroup PythonTab
-	au!
-    " 如果你不需要 python 里用 <Tab>
-    " 那么注释下面这行字
-    " 否则 vim 会在打开 .py 文件时自动设置成空格缩进
-	au FileType python setlocal shiftwidth=4 tabstop=4 noexpandtab
+au!
+" 如果你不需要 python 里用 <Tab>
+" 那么注释下面这行字
+" 否则 vim 会在打开 .py 文件时自动设置成空格缩进
+au FileType python setlocal shiftwidth=4 tabstop=4 noexpandtab
 augroup END
 " 文件被其它编辑器修改后自动载入
 set autoread
@@ -229,9 +232,9 @@ autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches() " for performance
 " 函数通过替换命令删除行尾空格
 func! DeleteTrailingWS()
-    exec "normal mz"
-    %s/\s\+$//ge
-    exec "normal `z"
+exec "normal mz"
+%s/\s\+$//ge
+exec "normal `z"
 endfunc
 " 保存时自动删除行尾空格
 autocmd BufWrite * :call DeleteTrailingWS()
@@ -239,13 +242,13 @@ map <leader>W :call DeleteTrailingWS()<CR>
 " (*),[*],{*} 可折叠
 set wrapmargin=2
 if has('folding')
-	" 允许代码折叠
-	set foldenable
-	" 代码折叠默认使用缩进
-    	" fdm = foldmethod
-	set fdm=indent
-	" 默认打开所有缩进
-	set foldlevel=99
+" 允许代码折叠
+set foldenable
+" 代码折叠默认使用缩进
+    " fdm = foldmethod
+set fdm=indent
+" 默认打开所有缩进
+set foldlevel=99
 endif
 " 显示最后一行
 set display=lastline
@@ -265,27 +268,27 @@ set tags=./.tags;,.tag
 " 相当于 i 模式 <C-X><C-K> = <C-N> 查看字典,进行补全
 set complete-=k complete+=k
 " 使用 <Tab> 进行自动补全
-inoremap <tab> <c-r>=Smart_TabComplete()<CR>
-function! Smart_TabComplete()
-  let line = getline('.')                         " current line
-
-  let substr = strpart(line, -1, col('.')+1)      " from the start of the current
-                                                  " line to one character right
-                                                  " of the cursor
-  let substr = matchstr(substr, "[^ \t]*$")       " word till cursor
-  if (strlen(substr)==0)                          " nothing to match on empty string
-    return "\<tab>"
-  endif
-  let has_period = match(substr, '\.') != -1      " position of period, if any
-  let has_slash = match(substr, '\/') != -1       " position of slash, if any
-  if (!has_period && !has_slash)
-    return "\<C-X>\<C-P>"                         " existing text matching
-  elseif ( has_slash )
-    return "\<C-X>\<C-F>"                         " file matching
-  else
-    return "\<C-X>\<C-O>"                         " plugin matching
-  endif
-endfunction
+" inoremap <tab> <c-r>=Smart_TabComplete()<CR>
+" function! Smart_TabComplete()
+" let line = getline('.')                         " current line
+"
+" let substr = strpart(line, -1, col('.')+1)      " from the start of the current
+"                                               " line to one character right
+"                                               " of the cursor
+" let substr = matchstr(substr, "[^ \t]*$")       " word till cursor
+" if (strlen(substr)==0)                          " nothing to match on empty string
+" return "\<tab>"
+" endif
+" let has_period = match(substr, '\.') != -1      " position of period, if any
+" let has_slash = match(substr, '\/') != -1       " position of slash, if any
+" if (!has_period && !has_slash)
+" return "\<C-X>\<C-P>"                         " existing text matching
+" elseif ( has_slash )
+" return "\<C-X>\<C-F>"                         " file matching
+" else
+" return "\<C-X>\<C-O>"                         " plugin matching
+" endif
+" endfunction
 "===============
 "=== Mapkeys ===
 "===============
@@ -336,40 +339,40 @@ noremap `<right> :vertical resize-5<CR>
 " 编译调用的插件
 map <Leader>r :call CompileRunGcc()<CR>
 func! CompileRunGcc()
-	exec "w"
-	if &filetype == 'c'
-		exec "!g++ % -o %<"
-		exec "!time ./%<"
-	elseif &filetype == 'cpp'
-		set splitbelow
-		exec "!g++ -std=c++11 % -Wall -o %<"
-		:sp
-		:res -15
-		:term ./%<
-    elseif &filetype == 'cs'
-        exec "!mcs %"
-        exec "!time mono %<.exe"
-	elseif &filetype == 'java'
-		exec "!javac %"
-		exec "!time java %<"
-	elseif &filetype == 'sh'
-		:!time bash %
-	elseif &filetype == 'python'
-		set splitbelow
-		:sp
-		:term python3 %
-	elseif &filetype == 'html'
-		silent! exec "!".g:mkdp_browser." % &"
-	elseif &filetype == 'markdown'
-		exec "MarkdownPreview"
-	elseif &filetype == 'tex'
-		silent! exec "VimtexStop"
-		silent! exec "VimtexCompile"
-	elseif &filetype == 'go'
-		set splitbelow
-		:sp
-		:term go run %
-	endif
+exec "w"
+if &filetype == 'c'
+    exec "!g++ % -o %<"
+    exec "!time ./%<"
+elseif &filetype == 'cpp'
+    set splitbelow
+    exec "!g++ -std=c++11 % -Wall -o %<"
+    :sp
+    :res -15
+    :term ./%<
+elseif &filetype == 'cs'
+    exec "!mcs %"
+    exec "!time mono %<.exe"
+elseif &filetype == 'java'
+    exec "!javac %"
+    exec "!time java %<"
+elseif &filetype == 'sh'
+    :!time bash %
+elseif &filetype == 'python'
+    set splitbelow
+    :sp
+    :term python3 %
+elseif &filetype == 'html'
+    silent! exec "!".g:mkdp_browser." % &"
+elseif &filetype == 'markdown'
+    exec "MarkdownPreview"
+elseif &filetype == 'tex'
+    silent! exec "VimtexStop"
+    silent! exec "VimtexCompile"
+elseif &filetype == 'go'
+    set splitbelow
+    :sp
+    :term go run %
+endif
 endfunc
 
 "==============
@@ -409,6 +412,12 @@ Plug 'ccampbell/rainbow'
 
 " 快速添加包围符号
 Plug 'tpope/vim-surround'
+" SnipMate depends on vim-addon-mw-utils and tlib.
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'tomtom/tlib_vim'
+Plug 'garbas/vim-snipmate'
+" Optional:
+Plug 'honza/vim-snippets'
 
 " css3颜色显示
 Plug 'gko/vim-coloresque', { 'for': ['html', 'css', 'less', 'sass'] }
@@ -429,12 +438,12 @@ call plug#end()
 
 " 真色彩支持
 if (empty($TMUX))
-  if (has("nvim"))
-  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-  endif
-  if (has("termguicolors"))
-    set termguicolors
-  endif
+if (has("nvim"))
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+endif
+if (has("termguicolors"))
+set termguicolors
+endif
 endif
 
 set t_8b=^[[48;2;%lu;%lu;%lum
@@ -707,6 +716,14 @@ let g:ale_fixers = {'python': ['remove_trailing_lines', 'trim_whitespace', 'auto
 let g:ale_java_javac_options = '-encoding UTF-8  -J-Duser.language=en'
 
 "===
+"=== snipMate
+"===
+
+let g:snipMate = get(g:, 'snipMate', {}) " Allow for vimrc re-sourcing
+let g:snipMate.scope_aliases = {}
+let g:snipMate.scope_aliases['ruby'] = 'ruby,rails'
+
+"===
 "=== markdown_preview
 "===
 
@@ -755,3 +772,4 @@ autocmd Filetype markdown inoremap ;c ```<Enter><++><Enter>```<Enter><Enter><++>
 autocmd Filetype markdown inoremap ;h ====<Space><++><Esc>F=hi
 autocmd Filetype markdown inoremap ;p ![](<++>) <++><Esc>F[a
 autocmd Filetype markdown inoremap ;a [](<++>) <++><Esc>F[a
+
