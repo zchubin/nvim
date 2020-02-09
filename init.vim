@@ -44,6 +44,7 @@ set nocompatible
 let mapleader=" "
 " 设置字体
 set guifont=Envy\ Code\ R\ VS:h18
+" set guifont=DroidSansMono\ Nerd\ Font\ 18
 " 设置为双字宽显示，否则无法完整显示如:☆
 set ambiwidth=double
 " 设置响应超时
@@ -381,6 +382,11 @@ endfunc
 
 call plug#begin('~/AppData/Local/nvim/plugged')
 
+" 向各种 vim 插件提供文件类型标志符号 ( 图标 )
+Plug 'ryanoasis/vim-devicons'
+
+" 为 (N)vim 更改开始屏幕
+Plug 'mhinz/vim-startify'
 " 主题
 " Plug 'rakr/vim-one'
 Plug 'morhetz/gruvbox'
@@ -419,6 +425,9 @@ Plug 'garbas/vim-snipmate'
 " Optional:
 Plug 'honza/vim-snippets'
 
+" Plug 'SirVer/ultisnips'
+" Plug 'honza/vim-snippets'
+
 " css3颜色显示
 Plug 'gko/vim-coloresque', { 'for': ['html', 'css', 'less', 'sass'] }
 
@@ -431,6 +440,64 @@ Plug 'dense-analysis/ale'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() },  'for' :['markdown', 'vim-plug'] }
 
 call plug#end()
+
+"===
+"=== devicon
+"===
+" let g:WebDevIconsOS = 'Darwin'
+let g:WebDevIconsOS = 'icomoon'
+" loading the plugin
+let g:webdevicons_enable = 1
+
+" adding the flags to NERDTree
+let g:webdevicons_enable_nerdtree = 1
+
+" adding to vim-airline's tabline
+let g:webdevicons_enable_airline_tabline = 1
+
+" adding to vim-airline's statusline
+let g:webdevicons_enable_airline_statusline = 1
+
+" adding to vim-startify screen
+let g:webdevicons_enable_startify = 1
+
+" turn on/off file node glyph decorations (not particularly useful)
+let g:WebDevIconsUnicodeDecorateFileNodes = 1
+
+" use double-width(1) or single-width(0) glyphs
+" only manipulates padding, has no effect on terminal or set(guifont) font
+let g:WebDevIconsUnicodeGlyphDoubleWidth = 1
+
+" whether or not to show the nerdtree brackets around flags
+let g:webdevicons_conceal_nerdtree_brackets = 0
+
+" the amount of space to use after the glyph character (default ' ')
+let g:WebDevIconsNerdTreeAfterGlyphPadding = '  '
+
+" Force extra padding in NERDTree so that the filetype icons line up vertically
+let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
+
+" Adding the custom source to denite
+" let g:webdevicons_enable_denite = 1
+
+" change the default character when no match found
+let g:WebDevIconsUnicodeDecorateFileNodesDefaultSymbol = 'ƛ'
+
+" set a byte character marker (BOM) utf-8 symbol when retrieving file encoding
+" disabled by default with no value
+let g:WebDevIconsUnicodeByteOrderMarkerDefaultSymbol = ''
+
+" enable folder/directory glyph flag (disabled by default with 0)
+let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+
+" enable pattern matching glyphs on folder/directory (enabled by default with 1)
+let g:DevIconsEnableFolderPatternMatching = 1
+
+" enable file extension pattern matching glyphs on folder/directory (disabled by default with 0)
+let g:DevIconsEnableFolderExtensionPatternMatching = 1
+
+" enable custom folder/directory glyph exact matching
+let WebDevIconsUnicodeDecorateFolderNodesExactMatches = 1
 
 "====
 "==== Vim-themes
@@ -478,6 +545,14 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#formatter = 'default'
 
 let g:airline_powerline_fonts = 1  " 支持 powerline 字体
+
+let g:airline_left_sep = "\uE0B4"
+let g:airline_right_sep = "\uE0B6"
+let g:airline_section_z = airline#section#create(["\uE0A1" . '%{line(".")}' . "\uE0A3" . '%{col(".")}'])
+"===
+"=== startify
+"===
+
 
 "===
 "=== vim-which-key
@@ -723,6 +798,13 @@ let g:snipMate = get(g:, 'snipMate', {}) " Allow for vimrc re-sourcing
 let g:snipMate.scope_aliases = {}
 let g:snipMate.scope_aliases['ruby'] = 'ruby,rails'
 
+" let g:tex_flavor = "latex"
+" inoremap <c-n> <nop>
+" let g:UltiSnipsExpandTrigger="<Tab>"
+" let g:UltiSnipsJumpForwardTrigger="<c-b>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" let g:UltiSnipsSnippetDirectories = [$HOME.'~/AppData/Local/nvim/Ultisnips/', 'UltiSnips']
+" silent! au BufEnter,BufRead,BufNewFile * silent! unmap <c-r>
 "===
 "=== markdown_preview
 "===
