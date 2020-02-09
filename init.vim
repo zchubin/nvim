@@ -7,7 +7,7 @@ silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
 autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 " 让配置变更立即生效
-autocmd BufWritePost $MYVIMRC source $MYVIMRC
+" autocmd BufWritePost $MYVIMRC source $MYVIMRC
 
 set pyxversion=3
 let g:python3_host_prog='D:/Pyhton'
@@ -44,7 +44,6 @@ set nocompatible
 let mapleader=" "
 " 设置字体
 set guifont=Envy\ Code\ R\ VS:h18
-" set guifont=DroidSansMono\ Nerd\ Font\ 18
 " 设置为双字宽显示，否则无法完整显示如:☆
 set ambiwidth=double
 " 设置响应超时
@@ -75,25 +74,8 @@ set showcmd
 set wildmenu
 set wildmode=longest:list,full
 " 设置状态行显示常用信息
-" %F 完整文件路径名
-" %m 当前缓冲被修改标记
-" %m 当前缓冲只读标记
-" %h 帮助缓冲标记
-" %w 预览缓冲标记
-" %Y 文件类型
-" %b ASCII值
-" %B 十六进制值
-" %l 行数
-" %v 列数
-" %p 当前行数占总行数的的百分比
-" %L 总行数
-" %{...} 评估表达式的值，并用值代替
-" %{"[fenc=".(&fenc==""?&enc:&fenc).((exists("+bomb") && &bomb)?"+":"")."]"} 显示文件编码
-" %{&ff} 显示文件类型
 set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ %-14.(%l,%c%V%)\ %P
-" 设置 laststatus = 0 ，不显式状态行
-" 设置 laststatus = 1 ，仅当窗口多于一个时，显示状态行
-" 设置 laststatus = 2 ，总是显式状态行
+" 设置 laststatus = 0 ，不显式状态行 1 ，仅当窗口多于一个时，显示状态行 2 ，总是显式状态行
 set laststatus=2
 set viminfo='10,\"100,:20,%,n~/.viminfo
 " 设置中文提示
@@ -133,10 +115,10 @@ endif
 " 仅对 C/C++/Python/Vim 遵循旧式80列限制
 autocmd FileType c,cpp,python,vim set textwidth=80
 " 代码编码方式
-if has('multi_byte')
 set encoding=utf-8
-set fileencoding=utf-8
-set fileencodings=utf-8,ucs-bom,gbk,cp936,gb2312,big5,euc-jp,euc-kr,latin1
+if has('multi_byte')
+    set fileencoding=utf-8
+    set fileencodings=utf-8,ucs-bom,gbk,cp936,gb2312,big5,euc-jp,euc-kr,latin1
 endif
 " 单词 = 单词 + 连字符
 set iskeyword+=_,$,@,%,#,-,.
@@ -200,12 +182,6 @@ set expandtab
 "使用 C/C++ 缩进
 set cindent
 augroup PythonTab
-au!
-" 如果你不需要 python 里用 <Tab>
-" 那么注释下面这行字
-" 否则 vim 会在打开 .py 文件时自动设置成空格缩进
-au FileType python setlocal shiftwidth=4 tabstop=4 noexpandtab
-augroup END
 " 文件被其它编辑器修改后自动载入
 set autoread
 set autochdir
@@ -268,28 +244,6 @@ set tags=./.tags;,.tag
 
 " 相当于 i 模式 <C-X><C-K> = <C-N> 查看字典,进行补全
 set complete-=k complete+=k
-" 使用 <Tab> 进行自动补全
-" inoremap <tab> <c-r>=Smart_TabComplete()<CR>
-" function! Smart_TabComplete()
-" let line = getline('.')                         " current line
-"
-" let substr = strpart(line, -1, col('.')+1)      " from the start of the current
-"                                               " line to one character right
-"                                               " of the cursor
-" let substr = matchstr(substr, "[^ \t]*$")       " word till cursor
-" if (strlen(substr)==0)                          " nothing to match on empty string
-" return "\<tab>"
-" endif
-" let has_period = match(substr, '\.') != -1      " position of period, if any
-" let has_slash = match(substr, '\/') != -1       " position of slash, if any
-" if (!has_period && !has_slash)
-" return "\<C-X>\<C-P>"                         " existing text matching
-" elseif ( has_slash )
-" return "\<C-X>\<C-F>"                         " file matching
-" else
-" return "\<C-X>\<C-O>"                         " plugin matching
-" endif
-" endfunction
 "===============
 "=== Mapkeys ===
 "===============
@@ -387,6 +341,7 @@ Plug 'ryanoasis/vim-devicons'
 
 " 为 (N)vim 更改开始屏幕
 Plug 'mhinz/vim-startify'
+
 " 主题
 " Plug 'rakr/vim-one'
 Plug 'morhetz/gruvbox'
@@ -397,19 +352,19 @@ Plug 'vim-airline/vim-airline-themes'
 " 按键提示
 Plug 'liuchengxu/vim-which-key'
 
-" 侧边栏，文件目录
+" NERDTree
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'Xuyuanp/nerdtree-git-plugin',
 
 " 给关键字添加下划线，方便关注
 Plug 'vim-scripts/vim-cursorword'
-
-" 语法 (高亮) 缩进 语言包
-" Plug 'sheerun/vim-polyglot'
 
 " Html,css
 Plug 'mattn/emmet-vim', { 'for': ['html', 'css'] }
 Plug 'othree/html5.vim', { 'for': 'html' }
 Plug 'cakebaker/scss-syntax.vim', { 'for': ['scss', 'css'] }
+" css3颜色显示
+Plug 'gko/vim-coloresque', { 'for': ['html', 'css', 'less', 'sass'] }
 
 " 自动匹配括号
 Plug 'jiangmiao/auto-pairs'
@@ -418,6 +373,7 @@ Plug 'ccampbell/rainbow'
 
 " 快速添加包围符号
 Plug 'tpope/vim-surround'
+
 " SnipMate depends on vim-addon-mw-utils and tlib.
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
@@ -427,9 +383,6 @@ Plug 'honza/vim-snippets'
 
 " Plug 'SirVer/ultisnips'
 " Plug 'honza/vim-snippets'
-
-" css3颜色显示
-Plug 'gko/vim-coloresque', { 'for': ['html', 'css', 'less', 'sass'] }
 
 " 快速注释
 Plug 'preservim/nerdcommenter'
@@ -442,62 +395,53 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() },  'for' 
 call plug#end()
 
 "===
+"=== startify
+"===
+" 是否自动加载目录下的Session.vim, 很好用
+let g:startify_session_autoload = 1
+
+" 过滤列表，支持正则表达式
+let g:startify_skiplist = [
+       \ '\.vimgolf',
+       \ '^/tmp',
+       \ '/project/.*/documentation',
+       \ ]
+
+let g:startify_bookmarks = [
+            \ '~/Code/blog/startify/1.txt',
+            \ '~/Code/blog/startify/2.txt',
+            \]
+
+let g:startify_custom_header = [
+            \ '+--------------------------------------------+',
+            \ '|  b:在同一个窗口打开        t:在tab中打开   |',
+            \ '|  s:水平切分窗口            v:垂直切分窗口  |',
+            \ '+--------------------------------------------+',
+            \]
+
+let g:startify_custom_footer = [
+            \ '+------------------------------+',
+            \ '|  -zchubin-work-menu-         |',
+            \ '+------------------------------+',
+            \]
+
+"===
 "=== devicon
 "===
-" let g:WebDevIconsOS = 'Darwin'
-let g:WebDevIconsOS = 'icomoon'
+let g:WebDevIconsOS = 'Darwin'
 " loading the plugin
 let g:webdevicons_enable = 1
-
-" adding the flags to NERDTree
+" 为 NERDTree,airline,startify 提供支持
 let g:webdevicons_enable_nerdtree = 1
-
-" adding to vim-airline's tabline
 let g:webdevicons_enable_airline_tabline = 1
-
-" adding to vim-airline's statusline
 let g:webdevicons_enable_airline_statusline = 1
-
-" adding to vim-startify screen
 let g:webdevicons_enable_startify = 1
-
-" turn on/off file node glyph decorations (not particularly useful)
-let g:WebDevIconsUnicodeDecorateFileNodes = 1
-
-" use double-width(1) or single-width(0) glyphs
-" only manipulates padding, has no effect on terminal or set(guifont) font
-let g:WebDevIconsUnicodeGlyphDoubleWidth = 1
-
-" whether or not to show the nerdtree brackets around flags
-let g:webdevicons_conceal_nerdtree_brackets = 0
-
-" the amount of space to use after the glyph character (default ' ')
-let g:WebDevIconsNerdTreeAfterGlyphPadding = '  '
-
-" Force extra padding in NERDTree so that the filetype icons line up vertically
+" 设置标志占位2个字符，保证垂直对齐
 let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
-
-" Adding the custom source to denite
-" let g:webdevicons_enable_denite = 1
-
-" change the default character when no match found
+" 遇到未知文件使用以下图标表示
 let g:WebDevIconsUnicodeDecorateFileNodesDefaultSymbol = 'ƛ'
-
-" set a byte character marker (BOM) utf-8 symbol when retrieving file encoding
-" disabled by default with no value
-let g:WebDevIconsUnicodeByteOrderMarkerDefaultSymbol = ''
-
-" enable folder/directory glyph flag (disabled by default with 0)
+" 启用文件夹/目录字形图标
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1
-
-" enable pattern matching glyphs on folder/directory (enabled by default with 1)
-let g:DevIconsEnableFolderPatternMatching = 1
-
-" enable file extension pattern matching glyphs on folder/directory (disabled by default with 0)
-let g:DevIconsEnableFolderExtensionPatternMatching = 1
-
-" enable custom folder/directory glyph exact matching
-let WebDevIconsUnicodeDecorateFolderNodesExactMatches = 1
 
 "====
 "==== Vim-themes
@@ -549,10 +493,6 @@ let g:airline_powerline_fonts = 1  " 支持 powerline 字体
 let g:airline_left_sep = "\uE0B4"
 let g:airline_right_sep = "\uE0B6"
 let g:airline_section_z = airline#section#create(["\uE0A1" . '%{line(".")}' . "\uE0A3" . '%{col(".")}'])
-"===
-"=== startify
-"===
-
 
 "===
 "=== vim-which-key
@@ -613,9 +553,6 @@ nnoremap <silent> ` :<c-u>WhichKey '`'<CR>
 nnoremap <silent> t :<c-u>WhichKey 't'<CR>
 nnoremap <silent> s :<c-u>WhichKey 's'<CR>
 
-" autocmd! FileType which_key
-" autocmd  FileType which_key set laststatus=0 noshowmode noruler
-  " \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 "===
 "=== NERDTree
 "===
@@ -634,20 +571,18 @@ let g:NERDTreeDirArrowCollapsible = '▾'
 " 如果唯一打开的窗口时NERDTree,如何关闭vim
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-" 打开上一级目录
-let NERDTreeMapUpdirKeepOpen = "l"
-" 新建分屏页并打开文件
-let NERDTreeMapActivateNode = "i"
-" 新建标签页并打开文件
-let NERDTreeMapOpenInTab = "o"
-" 关闭路径
-let NERDTreeMapCloseDir = "n"
-" 合并路径
-let NERDTreeMapChangeRoot = "y"
-
-let NERDTreeMapPreview = ""
-let NERDTreeMapOpenSplit = ""
-let NERDTreeOpenVSplit = ""
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ 'Ignored'   : '☒',
+    \ "Unknown"   : "?"
+    \ }
 
 "===
 "=== emmet
