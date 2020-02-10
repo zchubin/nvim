@@ -43,7 +43,8 @@ set nocompatible
 " 设置 <Leader>
 let mapleader=" "
 " 设置字体
-set guifont=Envy\ Code\ R\ VS:h18
+" set guifont=Envy\ Code\ R\ VS:h18
+set guifont=GoMono\ Nerd\ Font\ Mono:h18
 " 设置为双字宽显示，否则无法完整显示如:☆
 set ambiwidth=double
 " 设置响应超时
@@ -96,8 +97,8 @@ set whichwrap+=<,>,h,l
 set smarttab
 
 if has('persistent_undo')
-set undofile
-set undodir=$VIM/undo
+    set undofile
+    set undodir=$VIM/undo
 endif
 set history=1000
 set nobackup
@@ -109,9 +110,7 @@ set errorformat+=[%f:%l]\ ->\ %m,[%f:%l]:%m
 filetype on
 filetype indent on
 filetype plugin on
-if has('autocmd')
-filetype plugin indent on
-endif
+if has('autocmd') | filetype plugin indent on | endif
 " 仅对 C/C++/Python/Vim 遵循旧式80列限制
 autocmd FileType c,cpp,python,vim set textwidth=80
 " 代码编码方式
@@ -125,29 +124,29 @@ set iskeyword+=_,$,@,%,#,-,.
 augroup InitFileTypesGroup
 " 清除同组的历史 autocommand
 au!
-" C/C++ 文件使用 // 作为注释
-au FileType c,cpp setlocal commentstring=//\ %s
-" markdown 允许自动换行
-au FileType markdown setlocal wrap
-" lisp 进行微调
-au FileType lisp setlocal ts=8 sts=2 sw=2 et
-" scala 微调
-au FileType scala setlocal sts=4 sw=4 noet
-" haskell 进行微调
-au FileType haskell setlocal et
-" quickfix 隐藏行号
-au FileType qf setlocal nonumber
-" 强制对某些扩展名的 filetype 进行纠正
-au BufNewFile,BufRead *.as setlocal filetype=actionscript
-au BufNewFile,BufRead *.pro setlocal filetype=prolog
-au BufNewFile,BufRead *.es setlocal filetype=erlang
-au BufNewFile,BufRead *.asc setlocal filetype=asciidoc
-au BufNewFile,BufRead *.vl setlocal filetype=verilog
+    " C/C++ 文件使用 // 作为注释
+    au FileType c,cpp setlocal commentstring=//\ %s
+    " markdown 允许自动换行
+    au FileType markdown setlocal wrap
+    " lisp 进行微调
+    au FileType lisp setlocal ts=8 sts=2 sw=2 et
+    " scala 微调
+    au FileType scala setlocal sts=4 sw=4 noet
+    " haskell 进行微调
+    au FileType haskell setlocal et
+    " quickfix 隐藏行号
+    au FileType qf setlocal nonumber
+    " 强制对某些扩展名的 filetype 进行纠正
+    au BufNewFile,BufRead *.as setlocal filetype=actionscript
+    au BufNewFile,BufRead *.pro setlocal filetype=prolog
+    au BufNewFile,BufRead *.es setlocal filetype=erlang
+    au BufNewFile,BufRead *.asc setlocal filetype=asciidoc
+    au BufNewFile,BufRead *.vl setlocal filetype=verilog
 augroup END
 " 启用代码高亮
 if has('syntax')
-syntax enable
-syntax on
+    syntax enable
+    syntax on
 endif
 " 启动自动换行
 " set wrap
@@ -159,9 +158,9 @@ set linebreak
 set breakindent
 " 换行符
 if has("win32")
-set fileformats=dos,unix,mac
+    set fileformats=dos,unix,mac
 else
-set fileformats=unix,mac,dos
+    set fileformats=unix,mac,dos
 endif
 " 检查文件标记并跳转
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
@@ -209,9 +208,9 @@ autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches() " for performance
 " 函数通过替换命令删除行尾空格
 func! DeleteTrailingWS()
-exec "normal mz"
-%s/\s\+$//ge
-exec "normal `z"
+    exec "normal mz"
+    %s/\s\+$//ge
+    exec "normal `z"
 endfunc
 " 保存时自动删除行尾空格
 autocmd BufWrite * :call DeleteTrailingWS()
@@ -219,13 +218,13 @@ map <leader>W :call DeleteTrailingWS()<CR>
 " (*),[*],{*} 可折叠
 set wrapmargin=2
 if has('folding')
-" 允许代码折叠
-set foldenable
-" 代码折叠默认使用缩进
-    " fdm = foldmethod
-set fdm=indent
-" 默认打开所有缩进
-set foldlevel=99
+    " 允许代码折叠
+    set foldenable
+    " 代码折叠默认使用缩进
+        " fdm = foldmethod
+    set fdm=indent
+    " 默认打开所有缩进
+    set foldlevel=99
 endif
 " 显示最后一行
 set display=lastline
@@ -308,8 +307,8 @@ elseif &filetype == 'cs'
     exec "!mcs %"
     exec "!time mono %<.exe"
 elseif &filetype == 'java'
-    exec "!javac %"
-    exec "!time java %<"
+    exec "!javac -encoding utf-8 %"
+    exec "!java %"
 elseif &filetype == 'sh'
     :!time bash %
 elseif &filetype == 'python'
