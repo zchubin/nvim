@@ -45,6 +45,7 @@ let mapleader=" "
 " 设置字体
 " set guifont=Envy\ Code\ R\ VS:h18
 set guifont=GoMono\ Nerd\ Font\ Mono:h18
+" set guifont=Meslo\ LG\ M:h18
 " 设置为双字宽显示，否则无法完整显示如:☆
 set ambiwidth=double
 " 设置响应超时
