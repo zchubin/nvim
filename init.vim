@@ -1,14 +1,18 @@
-"=====================================
-"=== Auto load for first time uses ===
-"=====================================
+"====================================="
+"=== Auto load for first time uses ==="
+"====================================="
 if empty(glob('~/AppData/Local/nvim/autoload/plug.vim'))
 silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
-" 让配置变更立即生效
-" autocmd BufWritePost $MYVIMRC source $MYVIMRC
-
+" autocmd BufWritePost $MYVIMRC source $MYVIMRC " 让配置变更立即生效
+let mapleader=" "    " 默认<leader>是'\'
+" 设置字体
+" set guifont=Envy\ Code\ R\ VS:h18
+set guifont=GoMono\ Nerd\ Font\ Mono:h18
+" set guifont=Fantasque\ Sans\ Mono:h18
+" set guifont=Meslo\ LG\ M:h18
 set pyxversion=3
 let g:python3_host_prog='D:/Pyhton'
 let g:mkdp_browser = 'firefox'
@@ -40,12 +44,6 @@ set wildignore+=*.linux2,*.win32,*.darwin,*.freebsd,*.linux,*.android
 "====================
 " 禁用 vi
 set nocompatible
-" 设置 <Leader>
-let mapleader=" "
-" 设置字体
-" set guifont=Envy\ Code\ R\ VS:h18
-set guifont=GoMono\ Nerd\ Font\ Mono:h18
-" set guifont=Meslo\ LG\ M:h18
 " 设置为双字宽显示，否则无法完整显示如:☆
 set ambiwidth=double
 " 设置响应超时
@@ -343,7 +341,7 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'mhinz/vim-startify'
 
 " 主题
-" Plug 'rakr/vim-one'
+Plug 'rakr/vim-one'
 Plug 'morhetz/gruvbox'
 " 状态栏
 Plug 'vim-airline/vim-airline'
@@ -375,14 +373,14 @@ Plug 'ccampbell/rainbow'
 Plug 'tpope/vim-surround'
 
 " SnipMate depends on vim-addon-mw-utils and tlib.
-Plug 'MarcWeber/vim-addon-mw-utils'
-Plug 'tomtom/tlib_vim'
-Plug 'garbas/vim-snipmate'
-" Optional:
-Plug 'honza/vim-snippets'
-
-" Plug 'SirVer/ultisnips'
+" Plug 'MarcWeber/vim-addon-mw-utils'
+" Plug 'tomtom/tlib_vim'
+" Plug 'garbas/vim-snipmate'
 " Plug 'honza/vim-snippets'
+
+Plug 'SirVer/ultisnips'
+" Optional
+Plug 'honza/vim-snippets'
 
 " 快速注释
 Plug 'preservim/nerdcommenter'
@@ -447,52 +445,37 @@ let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 "==== Vim-themes
 "====
 
-" 真色彩支持
-if (empty($TMUX))
-if (has("nvim"))
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-endif
-if (has("termguicolors"))
-set termguicolors
-endif
-endif
-
-set t_8b=^[[48;2;%lu;%lu;%lum
-set t_8f=^[[38;2;%lu;%lu;%lum
-
-" let g:airline_theme='one'
-let g:airline_theme='gruvbox'
-
 " colorscheme one
 colorscheme gruvbox
+
 set background=dark " for the dark version
 " set background=light " for the light version
 
 " 支持斜体
-let g:one_allow_italics = 1 " I love italic for comments
+let g:one_allow_italics = 1
+
+" call one#highlight('vimLineComment', '535c68', ' ', 'italic')
 
 "===
 "=== Vim airline
 "===
 
-" 打开一个选项卡时自动显示所有缓冲区
-" 显示多窗口tab和buffer
+" let g:airline_theme='one'
+let g:airline_theme='gruvbox'
+
+" smart tab line 更智能的标签线
 let g:airline#extensions#tabline#enabled = 1
 
-" 为制表行单独配置分隔符，这是定义'直接'制表符的d方式
+" 为制表行单独配置分隔符，这是定义'直接'制表符的方式
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 
 " 路径格式化程序，
 " 这会影响文件路径在单独的选项卡中的显示方式以及右上角的当前缓冲区指示符，
 " 为此，使用以下命令设置格式器字段：
-let g:airline#extensions#tabline#formatter = 'default'
+let g:airline#extensions#tabline#formatter = 'unique_tail'
 
 let g:airline_powerline_fonts = 1  " 支持 powerline 字体
-
-let g:airline_left_sep = "\uE0B4"
-let g:airline_right_sep = "\uE0B6"
-let g:airline_section_z = airline#section#create(["\uE0A1" . '%{line(".")}' . "\uE0A3" . '%{col(".")}'])
 
 "===
 "=== vim-which-key
