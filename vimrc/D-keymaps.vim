@@ -1,10 +1,5 @@
 let mapleader=" "    " 默认<leader>是'\'
 
-inoremap <C-h> <left>
-inoremap <C-j> <down>
-inoremap <C-k> <up>
-inoremap <C-l> <right>
-
 " inoremap ( ()<++><ESC>5ha
 " inoremap [ []<++><ESC>5ha
 " inoremap { {}<++><ESC>5ha
