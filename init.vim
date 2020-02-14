@@ -48,3 +48,12 @@ LocalScript vimrc/D-keymaps.vim
 
 " 加载插件
 LocalScript vimrc/E-plugins.vim
+
+" 插件配色
+LocalScript vimrc/F-color.vim
+
+" 加载全局配置
+LocalScript vimrc/G-pluginsconfig.vim
+
+" 为插件配置颜色
+" LocalScript vimrc/H-color.vim

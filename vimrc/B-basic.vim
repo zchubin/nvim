@@ -217,23 +217,6 @@ set linebreak
 " 换行后保持缩进
 set breakindent
 
-" 高亮行尾空格
-highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-autocmd BufWinLeave * call clearmatches() " for performance
-" 函数通过替换命令删除行尾空格
-func! DeleteTrailingWS()
- 	exec "normal mz"
-	%s/\s\+$//ge
-	exec "normal `z"
-endfunc
-" 保存时自动删除行尾空格
-autocmd BufWrite * :call DeleteTrailingWS()
-map <leader>W :call DeleteTrailingWS()<CR>
-
 " 文件被其它编辑器修改后自动载入
 set autoread
 set autochdir

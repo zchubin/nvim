@@ -1,18 +1,28 @@
-let mapleader=" "    " 默认<leader>是'\'
+let g:mapleader="\<Space>"    " 默认<leader>是'\'
+let g:maplocalleader=";"
 
-" inoremap ( ()<++><ESC>5ha
-" inoremap [ []<++><ESC>5ha
-" inoremap { {}<++><ESC>5ha
-" inoremap ' ''<++><ESC>5ha
-" inoremap " ""<++><ESC>5ha
+" 高亮行尾空格
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches() " for performance
+" 函数通过替换命令删除行尾空格
+func! DeleteTrailingWS()
+ 	exec "normal mz"
+	%s/\s\+$//ge
+	exec "normal `z"
+endfunc
+" 保存时自动删除行尾空格
+autocmd BufWrite * :call DeleteTrailingWS()
+map <leader>w :call DeleteTrailingWS()<CR>
 
-" autocmd Filetype css,java inoremap [ <SPACE>{<CR><CR>}<CR><CR><++><ESC>3kA<SPACE><SPACE><SPACE><SPACE>
 inoremap <LEADER><Del> <ESC>lc5l
-vnoremap y "*y
+vnoremap y "+y
 
 inoremap ;f <Esc>/<++><CR>:nohlsearch<CR>c4l
 inoremap ;q <ESC>
-inoremap "= "===<CR>===<SPACE><CR>===<CR><ESC>0C<CR><++><ESC>3kA
 
 map <LEADER>fw /\(\<\w\+\)\_s*\1<CR>
 noremap <LEADER><CR> :nohlsearch<CR>
@@ -81,24 +91,3 @@ elseif &filetype == 'go'
     :term go run %
 endif
 endfunc
-
-"===
-"=== markdown-keys
-"===
-
-autocmd Filetype markdown inoremap ;1 #<Space><Enter><++><Esc>kA
-autocmd Filetype markdown inoremap ;2 ##<Space><Enter><++><Esc>kA
-autocmd Filetype markdown inoremap ;3 ###<Space><Enter><++><Esc>kA
-autocmd Filetype markdown inoremap ;4 ####<Space><Enter><++><Esc>kA
-autocmd Filetype markdown inoremap ;5 #####<Space><Enter><++><Esc>kA
-autocmd Filetype markdown inoremap ;6 ######<Space><Enter><++><Esc>kA
-autocmd Filetype markdown inoremap ;n ---<Enter><Enter>
-autocmd Filetype markdown inoremap ;m - [ ] <Enter><++><ESC>kA
-autocmd Filetype markdown inoremap ;b **** <++><Esc>F*hi
-autocmd Filetype markdown inoremap ;s ~~~~ <++><Esc>F~hi
-autocmd Filetype markdown inoremap ;i ** <++><Esc>F*i
-autocmd Filetype markdown inoremap ;d `` <++><Esc>F`i
-autocmd Filetype markdown inoremap ;c ```<Enter><++><Enter>```<Enter><Enter><++><Esc>4kA
-autocmd Filetype markdown inoremap ;h ====<Space><++><Esc>F=hi
-autocmd Filetype markdown inoremap ;p ![](<++>) <++><Esc>F[a
-autocmd Filetype markdown inoremap ;a [](<++>) <++><Esc>F[a
