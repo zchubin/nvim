@@ -18,14 +18,15 @@ endfunc
 autocmd BufWrite * :call DeleteTrailingWS()
 map <leader>w :call DeleteTrailingWS()<CR>
 
-inoremap <LEADER><Del> <ESC>lc5l
 vnoremap y "+y
 
 inoremap ;f <Esc>/<++><CR>:nohlsearch<CR>c4l
 inoremap ;q <ESC>
+inoremap <LEADER><Del> <ESC>lc5l
 
-map <LEADER>fw /\(\<\w\+\)\_s*\1<CR>
-noremap <LEADER><CR> :nohlsearch<CR>
+nnoremap <LEADER><CR> :nohlsearch<CR>
+nnoremap <LEADER>fd :e $MYVIMRC<CR>
+nnoremap <LEADER>fw /\(\<\w\+\)\_s*\1<CR>
 
 noremap tu :tabe<CR>
 " Move around tabs with tn and ti

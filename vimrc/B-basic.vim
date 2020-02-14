@@ -26,16 +26,20 @@ set formatoptions=tcrqn
 set autoindent
 
 " 设置缩进宽度
-set sw=4
+set sw=2
 
 " 设置 TAB 宽度
-set ts=4
-
-" 禁止展开 tab (noexpandtab)
-set noet
+set tw=0
 
 " 如果后面设置了 expandtab 那么展开 tab 为多少字符
 set softtabstop=4
+
+" TAB替换为空格：
+set expandtab
+%retab!
+
+" 禁止展开 tab (noexpandtab)
+" set noet
 
 augroup PythonTab
 	au!
