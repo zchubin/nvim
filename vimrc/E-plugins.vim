@@ -17,31 +17,30 @@ Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'machakann/vim-highlightedyank'
-
+" ------安装即用-----------------------------------
 " 给关键字添加下划线，方便关注
 Plug 'vim-scripts/vim-cursorword'
-
 " 自动匹配括号
 Plug 'jiangmiao/auto-pairs'
-" 突出显示括号方阵
-Plug 'ccampbell/rainbow'
 " 快速添加包围符号
 Plug 'tpope/vim-surround'
-
+" ------需要简单配置---------------------------------
 " 快速注释
 Plug 'preservim/nerdcommenter'
-
-" 拼写检查
-Plug 'dense-analysis/ale'
+" 突出显示括号方阵
+Plug 'ccampbell/rainbow'
+" 快速对齐对 markdown 表格尤为友好
+Plug 'godlygeek/tabular'
 
 Plug 'SirVer/ultisnips'
 " Optional
 Plug 'honza/vim-snippets'
 
+" 拼写检查
+Plug 'dense-analysis/ale'
 " 按键提示
 Plug 'liuchengxu/vim-which-key'
 " Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
-
 " NERDTree
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
@@ -55,6 +54,8 @@ Plug 'gko/vim-coloresque', { 'for': ['html', 'css', 'less', 'sass'] }
 
 " markdown
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() },  'for' :['markdown', 'vim-plug'] }
+
+" Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 
 call plug#end()
 
