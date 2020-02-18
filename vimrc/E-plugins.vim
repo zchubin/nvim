@@ -34,7 +34,7 @@ Plug 'godlygeek/tabular'
 
 Plug 'SirVer/ultisnips'
 " Optional
-Plug 'honza/vim-snippets'
+" Plug 'honza/vim-snippets'
 
 " 拼写检查
 Plug 'dense-analysis/ale'
@@ -115,8 +115,8 @@ let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 set background=dark " for the dark version
 " set background=light " for the light version
 
-colorscheme one
-" colorscheme gruvbox
+" colorscheme one
+colorscheme gruvbox
 " highlight HighlightedyankRegion cterm=reverse gui=reverse
 
 " 如果由于某种原因高光不可见，则可以重新定义HighlightedyankRegion高光组
@@ -125,10 +125,10 @@ colorscheme one
 " 支持斜体
 let g:one_allow_italics = 1
 
-call one#highlight('vimLineComment', '535c68', ' ', 'italic')
+" call one#highlight('vimLineComment', '535c68', ' ', 'italic')
 
-let g:airline_theme='one'
-" let g:airline_theme='gruvbox'
+" let g:airline_theme='one'
+let g:airline_theme='gruvbox'
 "---------------------------------------------------------------------
 " smart tab line 更智能的标签线
 let g:airline#extensions#tabline#enabled = 1
