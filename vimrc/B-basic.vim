@@ -22,11 +22,8 @@ set autoindent
 " 继承前一行缩进方式
 set formatoptions=tcrqn
 
-" 自动缩进
-set autoindent
-
 " 设置缩进宽度
-set sw=2
+set sw=4
 
 " 设置 TAB 宽度
 set tw=0
@@ -82,6 +79,9 @@ set cursorline
 
 " 高亮显示当前列
 " set cursorcolumn
+
+" 显示符号列
+set signcolumn=yes
 
 " 光标
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"

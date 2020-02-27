@@ -269,3 +269,13 @@ let g:snipMate.scope_aliases['ruby'] = 'ruby,rails'
 " let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " let g:UltiSnipsSnippetDirectories = [$HOME.'~/AppData/Local/nvim/Ultisnips/', 'UltiSnips']
 " silent! au BufEnter,BufRead,BufNewFile * silent! unmap <c-r>
+
+"===
+"=== gitgutter
+"===
+
+" nmap ]h <Plug>(GitGutterNextHunk)
+" nmap [h <Plug>(GitGutterPrevHunk)
+"
+" nmap ghs <Plug>(GitGutterStageHunk)
+" nmap ghu <Plug>(GitGutterUndoHunk)

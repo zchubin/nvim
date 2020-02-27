@@ -56,6 +56,8 @@ Plug 'gko/vim-coloresque', { 'for': ['html', 'css', 'less', 'sass'] }
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() },  'for' :['markdown', 'vim-plug'] }
 
 " Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+" git
+Plug 'airblade/vim-gitgutter'
 
 call plug#end()
 
