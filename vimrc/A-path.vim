@@ -4,10 +4,15 @@
 " let g:python_host_prog='/usr/bin/python2'
 set pyxversion=3
 " let g:python3_host_prog='D:/Python/Lib/site-package'
-let g:python3_host_prog='D:/Python/'
+let g:python3_host_prog='d:/python/lib/site-package'
 
 " Browser
 let g:mkdp_browser = 'firefox'
 
 " COC.vim
-let g:coc_global_extensions = ['coc-json','coc-css']
+let g:coc_global_extensions = [
+            \ 'coc-tsserver','coc-html','coc-css', 'coc-json',
+            \ 'coc-java','coc-python','coc-flutter',
+            \ 'coc-emmet','coc-snippets','coc-xml','coc-yaml',
+            \ 'coc-markdownlint','coc-highlight'
+            \ ]

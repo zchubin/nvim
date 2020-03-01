@@ -32,7 +32,7 @@ Plug 'ccampbell/rainbow'
 " 快速对齐对 markdown 表格尤为友好
 Plug 'godlygeek/tabular'
 
-Plug 'SirVer/ultisnips'
+" Plug 'SirVer/ultisnips'
 " Optional
 " Plug 'honza/vim-snippets'
 
@@ -57,10 +57,10 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() },  'for' 
 
 " coc补全框架
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Plug 'neoclide/coc.nvim', {'merged':0, 'rev': 'release'}
 
 " git
 Plug 'airblade/vim-gitgutter'
+
 call plug#end()
 
 "===
@@ -115,6 +115,9 @@ let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 "====
 "==== Vim-themes airline vim-highlightedyank
 "====
+
+" colors ron
+hi PmenuSel ctermbg=lightblue
 
 set background=dark " for the dark version
 " set background=light " for the light version
