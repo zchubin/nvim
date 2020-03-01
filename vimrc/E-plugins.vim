@@ -55,10 +55,12 @@ Plug 'gko/vim-coloresque', { 'for': ['html', 'css', 'less', 'sass'] }
 " markdown
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() },  'for' :['markdown', 'vim-plug'] }
 
-" Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+" coc补全框架
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'merged':0, 'rev': 'release'}
+
 " git
 Plug 'airblade/vim-gitgutter'
-
 call plug#end()
 
 "===

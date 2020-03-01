@@ -55,5 +55,5 @@ LocalScript vimrc/F-color.vim
 " 加载全局配置
 LocalScript vimrc/G-pluginsconfig.vim
 
-" 为插件配置颜色
-" LocalScript vimrc/H-color.vim
+" coc插件配置
+LocalScript vimrc/H1-Coc.vim
