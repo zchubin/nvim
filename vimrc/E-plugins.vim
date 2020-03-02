@@ -24,6 +24,8 @@ Plug 'vim-scripts/vim-cursorword'
 Plug 'jiangmiao/auto-pairs'
 " 快速添加包围符号
 Plug 'tpope/vim-surround'
+" 模糊查找工具
+Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 " ------需要简单配置---------------------------------
 " 快速注释
 Plug 'preservim/nerdcommenter'
@@ -78,7 +80,10 @@ let g:startify_skiplist = [
 
 let g:startify_bookmarks = [
             \ '~/Desktop/1.txt',
-            \ '~/Desktop/2.txt',
+            \ '~/Desktop/2.md',
+            \ '~/Desktop/3.html',
+            \ '~/Desktop/4.py',
+            \ '~/Desktop/5.java',
             \]
 
 let g:startify_custom_header = [

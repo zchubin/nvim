@@ -199,7 +199,7 @@ nnoremap <silent> s :<c-u>WhichKey 's'<CR>
 "===
 
 map tt :NERDTreeToggle<CR>
-
+let g:NERDTreeWinSize=25
 " 打开vim打开nerdtree
 "autocmd vimenter * NERDTree
 autocmd StdinReadPre * let s:std_in=1
@@ -253,6 +253,19 @@ let g:mkdp_highlight_css = ''
 let g:mkdp_port = ''
 let g:mkdp_page_title = '「${name}」'
 let vim_markdown_preview_hotkey='<C-m>'
+
+"===
+"=== LeaderF
+"===
+let g:Lf_HideHelp = 1
+let g:Lf_UseCache = 0
+let g:Lf_UseVersionControlTool = 0
+let g:Lf_IgnoreCurrentBufferName = 1
+
+let g:Lf_WindowPosition = 'popup'
+let g:Lf_PreviewInPopup = 1
+let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu Sans Mono for Powerline" }
+let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
 
 "===
 "=== snipMate

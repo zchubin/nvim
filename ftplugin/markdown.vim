@@ -15,7 +15,7 @@ inoremap ;m - [ ] <Enter><++><ESC>kA
 inoremap ;b **** <++><Esc>F*hi
 inoremap ;s ~~~~ <++><Esc>F~hi
 inoremap ;i ** <++><Esc>F*i
-inoremap ;d `` <++><Esc>F`i
+" inoremap ;d `` <++><Esc>F`i
 inoremap ;c ```<Enter><++><Enter>```<Enter><Enter><++><Esc>4kA
 inoremap ;h ====<Space><++><Esc>F=hi
 inoremap ;p ![](<++>) <++><Esc>F[a

@@ -19,6 +19,7 @@ autocmd BufWrite * :call DeleteTrailingWS()
 map <leader>w :call DeleteTrailingWS()<CR>
 
 vnoremap y "+y
+inoremap <C-s> <ESC>ma:w<CR>'a
 
 inoremap ;f <Esc>/<++><CR>:nohlsearch<CR>c4l
 inoremap ;q <ESC>
