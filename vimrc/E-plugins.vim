@@ -34,7 +34,7 @@ Plug 'ccampbell/rainbow'
 " 快速对齐对 markdown 表格尤为友好
 Plug 'godlygeek/tabular'
 
-" Plug 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips'
 " Optional
 " Plug 'honza/vim-snippets'
 
@@ -113,7 +113,7 @@ let g:webdevicons_enable_startify = 1
 " 设置标志占位2个字符，保证垂直对齐
 let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
 " 遇到未知文件使用以下图标表示
-let g:WebDevIconsUnicodeDecorateFileNodesDefaultSymbol = 'ƛ'
+let g:WebDevIconsUnicodeDecorateFileNodesDefaultSymbol = '?'
 " 启用文件夹/目录字形图标
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 
@@ -122,7 +122,7 @@ let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 "====
 
 " colors ron
-hi PmenuSel ctermbg=lightblue
+" hi PmenuSel ctermbg=lightblue
 
 set background=dark " for the dark version
 " set background=light " for the light version
@@ -155,6 +155,9 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 
 let g:airline_powerline_fonts = 1  " 支持 powerline 字体
+" 添加特殊字符
+set statusline+=%4*\ %F\ %*
+hi User4 cterm=bold ctermfg=169 ctermbg=239
 "---------------------------------------------------------------------
 " 高亮持续时间
 let g:highlightedyank_highlight_duration = 100

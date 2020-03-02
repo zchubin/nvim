@@ -34,14 +34,14 @@ else
   imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 end
 
-nnoremap <silent> if <Plug>(coc-diagnostic-info)
-nnoremap <silent> fb <Plug>(coc-diagnostic-prev)
-nnoremap <silent> fn <Plug>(coc-diagnostic-next)
-
-nnoremap <silent> fdi <Plug>(coc-definition)     " 定义位置
-nnoremap <silent> fdl <Plug>(coc-declaration)    " 声明位置
-nnoremap <silent> fil <Plug>(coc-implementation) " 实现位置
-nnoremap <silent> frf <Plug>(coc-references)     " 引用位置
+" nnoremap <silent> if <Plug>(coc-diagnostic-info)
+" nnoremap <silent> fb <Plug>(coc-diagnostic-prev)
+" nnoremap <silent> fn <Plug>(coc-diagnostic-next)
+"
+" nnoremap <silent> fdi <Plug>(coc-definition)     " 定义位置
+" nnoremap <silent> fdl <Plug>(coc-declaration)    " 声明位置
+" nnoremap <silent> fil <Plug>(coc-implementation) " 实现位置
+" nnoremap <silent> frf <Plug>(coc-references)     " 引用位置
 
 nnoremap <silent> <cr> <Plug>(coc-openlink)
 
@@ -54,7 +54,7 @@ function! s:show_documentation()
   endif
 endfunction
 
-autocmd CursorHold * silent call CocActionAsync('highlight')
+" autocmd CursorHold * silent call CocActionAsync('highlight')
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 let g:coc_filetype_map = {
