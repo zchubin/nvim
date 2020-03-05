@@ -53,7 +53,7 @@ let g:webdevicons_enable_startify = 1
 " 设置标志占位2个字符，保证垂直对齐
 let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
 " 遇到未知文件使用以下图标表示
-let g:WebDevIconsUnicodeDecorateFileNodesDefaultSymbol = '?'
+let g:WebDevIconsUnicodeDecorateFileNodesDefaultSymbol = '●'
 " 启用文件夹/目录字形图标
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 
@@ -61,31 +61,11 @@ let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 "==== Vim-themes airline vim-highlightedyank
 "====
 
-" colors ron
-" hi PmenuSel ctermbg=lightblue
-
-set background=dark " for the dark version
-" set background=light " for the light version
-
-colorscheme one
-" colorscheme gruvbox
-
-" HighlightedyankRegion
-highlight HighlightedyankRegion cterm=reverse gui=reverse
-" Coc:错误+错误标志+警告标志+信息标记符+提醒标记
-" highlight CocErrorHighlight ctermfg=Red  guifg=#ff0000
-" highlight CocErrorSign  ctermfg=Red guifg=#ff0000
-" highlight CocWarningSign  ctermfg=Brown guifg=#ff922b
-" highlight CocInfoSign  ctermfg=Yellow guifg=#fab005
-" highlight CocHintSign  ctermfg=Blue guifg=#15aabf
-"
 " 支持斜体
 let g:one_allow_italics = 1
 
-" call one#highlight('vimLineComment', '535c68', ' ', 'italic')
-
-let g:airline_theme='one'
-" let g:airline_theme='gruvbox'
+" let g:airline_theme='violet'
+let g:airline_theme='base16'
 "---------------------------------------------------------------------
 " smart tab line 更智能的标签线
 let g:airline#extensions#tabline#enabled = 1
@@ -202,25 +182,15 @@ endfunction
 "=== emmet
 "===
 
-" 在什么模式中启用脚本
-"let g:user_emmet_mode='n'    "only enable normal mode functions.
-"let g:user_emmet_mode='inv'  "enable all functions, which is equal to
-"let g:user_emmet_mode='a'    "enable all function in all mode.
-
 " 仅在html/css中启用脚本
 let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
-
 " 定义触发键
 let g:user_emmet_leader_key=';'
 
 "===
 "=== ale
 "===
-
-" 清除颜色
-highlight clear ALEErrorSign
-highlight clear ALEWarningSign
 
 " 使用 quickfix 代替 loclist
 let g:ale_set_loclist = 0
@@ -282,40 +252,6 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-"===
-"=== vim-which-key
-"===
-
-call which_key#register('<Space>', "g:which_key_map")
-nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
-
-let g:which_key_map =  {}
-let g:which_key_map = {
-	\ '键' : '用法',
-    \ 'w'  : '替换行尾空格',
-    \ 'r'  : '调用运行命令',
-    \ 'c'  : {
-      \ '键' : '注释插件',
-      \ 'a'  : '在可选注释之间切换',
-      \ 'A'  : '在当前行尾添加注释',
-      \ '$'  : '在当前光标后添加注释',
-      \ 'c'  : '注释当前行',
-      \ 's'  : '使用"sexy"进行注释',
-      \ 'u'  : '取消注释',
-      \ 'm'  : '进行块注释',
-      \ 'y'  : '注释并复制内容',
-      \ },
-    \ 'f' : {
-      \ '键' : '查找',
-      \ 'd'  : '编辑$MYVIMRC文件',
-      \ 'w'  : '查找两个相邻重复单词',
-      \ },
-    \ }
-
-" 自定义提示键位
-nnoremap <silent> ` :<c-u>WhichKey '`'<CR>
-nnoremap <silent> t :<c-u>WhichKey 't'<CR>
-nnoremap <silent> s :<c-u>WhichKey 's'<CR>
 
 "===
 "=== NERDTree
@@ -424,75 +360,68 @@ let g:UltiSnipsSnippetDirectories = [$HOME.'~/AppData/Local/nvim/Ultisnips/', 'U
 "=== coc.vim
 "===
 
-" " coc-json
-" call coc#add_extension('coc-json', 'coc-tsserver', 'coc-rls','coc-snippets')
-" " nodejs
-" let g:coc_node_path = 'D:/Development/nodejs/node'
-"
-" " 修正COC Bug
-" silent! au BufEnter,BufRead,BufNewFile * silent! unmap if
-" let g:coc_global_extensions = [
-"             \ 'coc-python'  , 'coc-vimlsp'      , 'coc-html'       ,
-"             \ 'coc-json'    , 'coc-css'         , 'coc-tsserver'   ,
-"             \ 'coc-yank'    , 'coc-lists'       , 'coc-gitignore'  ,
-"             \ 'coc-vimlsp'  , 'coc-tailwindcss' , 'coc-stylelint'  ,
-"             \ 'coc-tslint'  , 'coc-lists'       , 'coc-git'        ,
-"             \ 'coc-pyright' , 'coc-sourcekit'   , 'coc-translator' ,
-"             \ 'coc-explorer'
-"             \ ]
-"
-" " :verbose imap <tab> 查看当前<tab>映射
-" " 防止映射冲突
-" function! s:check_back_space() abort
-"     let col = col('.') - 1
-"     return !col || getline('.')[col - 1]  =~# '\s'
-" endfunction
-"
-" tnoremap <silent><expr> <TAB>
-"     \ pumvisible() ? "\<C-n>" :
-"     \ <SID>check_back_space() ? "\<TAB>" :
-"     \ coc#refresh()
-"
-" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-"
-" " 使用 <C-SPACE> 强制触发补全
-" inoremap <silent><expr> <c-space> coc#refresh()
-"
-" if has('patch8.1.1068')
-"     inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-" else
-"     imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-" end
-"
-" " nnoremap <silent> if <Plug>(coc-diagnostic-info)
-" " nnoremap <silent> fb <Plug>(coc-diagnostic-prev)
-" " nnoremap <silent> fn <Plug>(coc-diagnostic-next)
-" "
-" " nnoremap <silent> fdi <Plug>(coc-definition)     " 定义位置
-" " nnoremap <silent> fdl <Plug>(coc-declaration)    " 声明位置
-" " nnoremap <silent> fil <Plug>(coc-implementation) " 实现位置
-" " nnoremap <silent> frf <Plug>(coc-references)     " 引用位置
-"
-" nnoremap <silent> <cr> <Plug>(coc-openlink)
-"
-" inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-"                         \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-"
-" function! s:show_documentation()
-"   if (index(['vim','help'], &filetype) >= 0)
-"     execute 'h '.expand('<cword>')
-"   else
-"     call CocAction('doHover')
-"   endif
-" endfunction
-" nnoremap <silent> <Leader>k :call <SID>show_documentation()<CR>
-"
-" " autocmd CursorHold * silent call CocActionAsync('highlight')
-" set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-"
-" let g:coc_filetype_map = {
-"     \ 'html.swig'      : 'html',
-"     \ 'wxss'           : 'css',
-"     \ 'javascript.jsx' : 'javascriptreact',
-"     \ 'typescript.tsx' : 'typescriptreact'
-"     \ }
+" coc-json
+call coc#add_extension('coc-json', 'coc-tsserver', 'coc-rls','coc-snippets')
+" nodejs
+let g:coc_node_path = 'D:/Development/nodejs/node'
+
+" 修正COC Bug
+silent! au BufEnter,BufRead,BufNewFile * silent! unmap if
+let g:coc_global_extensions = [
+            \ 'coc-python'  , 'coc-vimlsp'      , 'coc-html'       ,
+            \ 'coc-json'    , 'coc-css'         , 'coc-tsserver'   ,
+            \ 'coc-yank'    , 'coc-lists'       , 'coc-gitignore'  ,
+            \ 'coc-vimlsp'  , 'coc-tailwindcss' , 'coc-stylelint'  ,
+            \ 'coc-tslint'  , 'coc-lists'       , 'coc-git'        ,
+            \ 'coc-pyright' , 'coc-sourcekit'   , 'coc-translator' ,
+            \ 'coc-explorer'
+            \ ]
+" 更改侧边栏的图标
+let g:vista_icon_indent = [ "", "├─▸"]
+" :verbose imap <tab> 查看当前<tab>映射
+" 防止映射冲突
+" 定制补全体验
+" 使用 <tab> 触发补全
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <TAB>
+              \ pumvisible() ? "\<C-n>" :
+              \ <SID>check_back_space() ? "\<TAB>" :
+              \ coc#refresh()
+
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+" 使用 <C-SPACE> 强制触发补全
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" 使用 <CR> 确认补全
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<CR>"
+" 使用 <CR> 确认补全，并触发 coc.nvim 的 formatOnType 功能:
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                        \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+nnoremap <silent> <cr> <Plug>(coc-openlink)
+
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                        \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+nnoremap <silent> <Leader>k :call <SID>show_documentation()<CR>
+
+" autocmd CursorHold * silent call CocActionAsync('highlight')
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+let g:coc_filetype_map = {
+    \ 'html.swig'      : 'html',
+    \ 'wxss'           : 'css',
+    \ 'javascript.jsx' : 'javascriptreact',
+    \ 'typescript.tsx' : 'typescriptreact'
+    \ }

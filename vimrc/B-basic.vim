@@ -84,7 +84,7 @@ set cursorline
 " set cursorcolumn
 
 " 显示符号列
-set signcolumn=yes
+" set signcolumn=yes
 
 " 光标
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
@@ -242,7 +242,7 @@ set display=lastline
 :let g:ft_ignnore_pat = '\.\(z\|'
 
 " 分屏时中间不显示分隔线便于阅读
-" set fillchars=vert:\ ,stl:\ ,stlnc:\
+set fillchars=vert:\ ,stl:\ ,stlnc:\
 
 "====================
 "=== 设置代码折叠 ===

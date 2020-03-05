@@ -1,0 +1,149 @@
+{
+    // 自动补全
+    "suggest.autoTrigger"                       : "none",
+    // 进入插入模式开启自动补全
+    "suggest.triggerAfterInsertEnter": true,
+    // 补全超时时间
+    "suggest.timeout"                           : 500,
+    // 补全开启时选中第一项
+    "suggest.noselect": false,
+    // 保留当前的 Completeopt
+    "suggest.keepCompleteopt": true,
+    // vim 弹出预览窗口
+    "suggest.enablePreview": true,
+    // 设置最少补全触发字符数
+    "suggest.minTriggerInputLength"             : 2,
+    // 支持提交字符特性
+    "suggest.acceptSuggestionOnCommitCharacter" : true,
+    // 改变代码片段的提示字符
+    "suggest.snippetIndicator"                  : "▸",
+    // 补全项类标签
+    "suggest.completionItemKindLabels"          : {
+            "class"         : "\uf0e8",
+            "color"         : "\ue22b",
+            "constant"      : "\uf8fe",
+            "default"       : "\uf29c",
+            "enum"          : "\uf435",
+            "enumMember"    : "\uf02b",
+            "event"         : "\ufacd",
+            "field"         : "\uf93d",
+            "file"          : "\uf723",
+            "folder"        : "\uf115",
+            "function"      : "\u0192",
+            "interface"     : "\uf417",
+            "keyword"       : "\uf1de",
+            "method"        : "\uf6a6",
+            "module"        : "\uf40d",
+            "operator"      : "\uf915",
+            "property"      : "\ue624",
+            "reference"     : "\ufa46",
+            "snippet"       : "\ue60b",
+            "struct"        : "\ufb44",
+            "text"          : "\ue612",
+            "typeParameter" : "\uf728",
+            "unit"          : "\uf475",
+            "value"         : "\uf89f",
+            "variable"      : "\ue71b"
+            },
+
+    "list.source.grep.defaultArgs"          : ["-regex"],
+    "list.source.symbols.defaultOptions"    : ["--interactive", "--number-select"],
+    // 错误信息
+    "diagnostic.signOffset"          : 9999999,
+    "diagnostic.refreshOnInsertMode" : true,
+    "diagnostic.refreshAfterSave"    : true,
+    "diagnostic.checkCurrentLine"    : true,
+    "diagnostic.virtualTextPrefix"   : " ❯❯❯ ",
+    "diagnostic.virtualText"         : true,
+
+    "codeLens.enable": true,
+
+    "git.enableGutters"                    : true,
+    "git.branchCharacter"                  : "\uf408",
+    "git.addGBlameToBufferVar"             : false,
+    "git.addGBlameToVirtualText"           : false,
+    "git.virtualTextPrefix"                : " ❯❯❯ ",
+
+    "tslint.autoFixOnSave"                 : true,
+
+    "python.autoComplete.addBrackets"      : true,
+    "python.jediEnabled"                   : false,
+    "python.formatting.provider"           : "yapf",
+
+    "html.format.enable"                   : true,
+
+    "json.format.enable"                   : true,
+
+    "coc.preferences.hoverTarget"           : "preview",
+    // 开启浮动突出显示高亮
+    "coc.preferences.enableFloatHighlight"  : true,
+    "coc.preferences.highlightTimeout": 5000,
+    "coc.preferences.snippetStatusText"     : "Ⓢ ",
+    "coc.preferences.extensionUpdateCheck"  : "weekly",
+    "coc.preferences.formatOnType": true,
+    "coc.preferences.formatOnSaveFiletypes" : [
+            "javascript",
+            "html",
+            "css",
+            "python"
+    ],
+
+    "signature.target": "echo",
+    "signature.enable": true,
+
+    "yank.enableCompletion" : false,
+
+    "languageserver": {
+            "lua": {
+                    "command"   : "lua-lsp",
+                    "filetypes" : ["lua"]
+            },
+            "golang": {
+                    "command"      : "gopls",
+                    "rootPatterns" : ["go.mod"],
+                    "filetypes"    : ["go"],
+                    "initializationOptions": {
+                            "gocodeCompletionEnabled" : true,
+                            "diagnosticsEnabled"      : true,
+                            "lintTool"                : "golint"
+                    }
+            },
+            "bash": {
+                    "command"          : "bash-language-server",
+                    "args"             : ["start"],
+                    "filetypes"        : ["sh"],
+                    "ignoredRootPaths" : []
+            },
+            "ccls": {
+                    "command"      : "ccls",
+                    "filetypes"    : ["c", "cpp", "cuda", "objc", "objcpp"],
+                    "rootPatterns" : [".ccls-root", "compile_commands.json"],
+                    "initializationOptions": {
+                             "cache": {
+                                     "directory": ".ccls-cache"
+                             }
+                     }
+            }
+    }
+}
+
+    // "todolist.autoUpload": true,
+
+
+    // "diagnostic.errorSign"           : "●",
+    // "diagnostic.warningSign"         : "●",
+    // "diagnostic.infoSign"            : "•",
+    // "diagnostic.hintSign"            : "•",
+    // "diagnostic.displayByAle"        : false,
+
+    // "git.addedSign.hlGroup"                : "GitGutterAdd",
+    // "git.changedSign.hlGroup"              : "GitGutterChange",
+    // "git.removedSign.hlGroup"              : "GitGutterDelete",
+    // "git.topRemovedSign.hlGroup"           : "GitGutterDelete",
+    // "git.changeRemovedSign.hlGroup"        : "GitGutterChangeDelete",
+    // "git.addedSign.text"                   : "▎",
+    // "git.changedSign.text"                 : "░",
+    // "git.removedSign.text"                 : "▏",
+    // "git.topRemovedSign.text"              : "▔",
+    // "git.changeRemovedSign.text"           : "▒",
+    // "git.enableGlobalStatus"               : false,

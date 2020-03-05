@@ -1,3 +1,8 @@
+if empty(glob('$HOME/AppData/Local/nvim/autoload/plug.vim'))
+    silent !curl -fLo $HOME/AppData/Local/nvim/autoload/plug.vim --create-dirs
+                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source $VIMRC
+endif
 "============================
 "=== 防止重复加载相同配置 ===
 "============================
@@ -18,14 +23,22 @@ set guifont=GoMono\ Nerd\ Font\ Mono:h18
 " set guifont=Fantasque\ Sans\ Mono:h18
 " set guifont=Meslo\ LG\ M:h18
 
-let g:mkdp_browser = 'firefox'
-
 " 设置中文提示
 language messages zh_CN.utf-8
 
 " 设置中文帮助
 set helplang=cn
 let &termencoding=&encoding
+
+" 256色彩支持
+set t_Co=256
+
+set background=dark    " for the dark version
+" set background=light " for the light version
+
+colorscheme gruvbox
+
+let g:mkdp_browser = 'firefox'
 
 " 取得本文件所在的目录
 let s:home = fnamemodify(resolve(expand('<sfile>:p')), ':h')
@@ -52,7 +65,6 @@ LocalScript vimrc/C-vimconfig.vim
 " 自定义按键
 LocalScript vimrc/D-keymaps.vim
 
-
 call plug#begin('~/AppData/Local/nvim/plugged')
 
 " 向各种 vim 插件提供文件类型标志符号 ( 图标 )
@@ -61,9 +73,6 @@ Plug 'ryanoasis/vim-devicons'
 " 为 (N)vim 更改开始屏幕
 Plug 'mhinz/vim-startify'
 
-" 主题
-Plug 'rakr/vim-one'
-Plug 'morhetz/gruvbox'
 " 状态栏
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -88,14 +97,14 @@ Plug 'godlygeek/tabular'
 
 Plug 'SirVer/ultisnips'
 " Optional
-" Plug 'honza/vim-snippets'
+Plug 'honza/vim-snippets'
 
 " 拼写检查
 Plug 'dense-analysis/ale'
 " 语法检查
-" Plug 'vim-syntastic/syntastic'
+Plug 'vim-syntastic/syntastic'
 " 按键提示
-Plug 'liuchengxu/vim-which-key'
+" Plug 'liuchengxu/vim-which-key'
 " Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 " NERDTree
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -109,18 +118,16 @@ Plug 'cakebaker/scss-syntax.vim', { 'for': ['scss', 'css'] }
 Plug 'gko/vim-coloresque', { 'for': ['html', 'css', 'less', 'sass'] }
 
 " markdown
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() },  'for' :['markdown', 'vim-plug'] }
-
-" Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() },  'for' :['markdown', 'vim-plug'] }
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 " Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install_sync() }, 'for' :['markdown', 'vim-plug'] }
 " coc补全框架
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " git
 Plug 'airblade/vim-gitgutter'
 
 call plug#end()
-
 " 加载插件配置
 LocalScript vimrc/E-plugins.vim
+" 加载插件配色
+LocalScript vimrc/F-color.vim
