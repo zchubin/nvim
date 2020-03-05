@@ -11,6 +11,18 @@ set guifont=GoMono\ Nerd\ Font\ Mono:h18
 " 禁用 vi 兼容模式
 set nocompatible
 
+<<<<<<< HEAD
+=======
+" 如果不设置隐藏,TextEdirt可能会失败
+set hidden
+" 留出多大空间来显示消息
+set cmdheight=1
+" 缩短响应时间,提高用户体验
+set updatetime=300
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
+
+>>>>>>> 	new file:   .gitignore
 " 设置 Backspace 键模式
 set bs=eol,start,indent
 set whichwrap+=<,>,h,l
@@ -172,7 +184,11 @@ set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\
 set laststatus=2
 
 " 单词 = 单词 + 连字符
+<<<<<<< HEAD
 set iskeyword+=_,$,@,%,#,-,.
+=======
+set iskeyword+=_,$,@,#,-,.
+>>>>>>> 	new file:   .gitignore
 
 " 显示匹配的括号
 set showmatch
@@ -213,13 +229,21 @@ else
 endif
 
 " TXT/Markdown/XML 等比较需要换行
+<<<<<<< HEAD
 autocmd FileType text,markdown,html,xml set wrap
+=======
+" autocmd FileType text,html,xml set wrap
+>>>>>>> 	new file:   .gitignore
 
 " 换行时，以单词为界
 set linebreak
 
 " 换行后保持缩进
+<<<<<<< HEAD
 set breakindent
+=======
+" set breakindent
+>>>>>>> 	new file:   .gitignore
 
 " 文件被其它编辑器修改后自动载入
 set autoread

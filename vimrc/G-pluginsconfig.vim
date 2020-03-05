@@ -44,6 +44,7 @@ let g:rainbow_active = 1
 
 " 配色方案
 let g:rainbow_conf = {
+<<<<<<< HEAD
 \   'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
 \   'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
 \   'operators': '_,_',
@@ -64,6 +65,28 @@ let g:rainbow_conf = {
 \       },
 \       'css': 0,
 \   }
+=======
+    \ 'guifgs'      : ['royalblue' , 'darkorange'  , 'seagreen'  , 'firebrick']    ,
+    \ 'ctermfgs'    : ['lightblue' , 'lightyellow' , 'lightcyan' , 'Lightmagenha'] ,
+    \ 'operators'   : '_,_',
+    \ 'parentheses' : ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
+    \ 'separately'  : {
+        \ '*': {},
+        \ 'tex': {
+            \ 'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/'],
+        \ },
+        \ 'lisp': {
+            \ 'guifgs': ['royalblue', 'darkorange', 'seagreen', 'firebrick', 'darkorchid'],
+        \ },
+        \ 'vim': {
+            \ 'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/', 'start=/{/ end=/}/ fold', 'start=/(/ end=/)/ containedin=vimFuncBody', 'start=/\[/ end=/\]/ containedin=vimFuncBody', 'start=/{/ end=/}/ fold containedin=vimFuncBody'],
+        \ },
+        \ 'html': {
+            \ 'parentheses': ['start=/\v\<((area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr)[ >])@!\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'|[^ '."'".'"><=`]*))?)*\>/ end=#</\z1># fold'],
+        \ },
+        \ 'css': 0,
+    \ }
+>>>>>>> 	new file:   .gitignore
 \}
 
 "===
@@ -73,8 +96,11 @@ let g:rainbow_conf = {
 " :Tab /=        等号对齐
 " :Tab /:        冒号对齐
 " :Tab /:\zs     冒号后的文字对齐
+<<<<<<< HEAD
 inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
 
+=======
+>>>>>>> 	new file:   .gitignore
 function! s:align()
   let p = '^\s*|\s.*\s|\s*$'
   if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
@@ -86,6 +112,10 @@ function! s:align()
   endif
 endfunction
 
+<<<<<<< HEAD
+=======
+inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
+>>>>>>> 	new file:   .gitignore
 "===
 "=== emmet
 "===
@@ -235,6 +265,7 @@ let g:mkdp_refresh_slow = 1
 let g:mkdp_command_for_global = 0
 let g:mkdp_open_to_the_world = 0
 let g:mkdp_open_ip = ''
+<<<<<<< HEAD
 let g:mkdp_browser = ''
 let g:mkdp_echo_preview_url = 0
 let g:mkdp_browserfunc = ''
@@ -247,6 +278,21 @@ let g:mkdp_preview_options = {
     \ 'sync_scroll_type': 'middle',
     \ 'hide_yaml_meta': 1,
     \ 'sequence_diagrams': {}
+=======
+let g:mkdp_browser = 'Firefox'
+let g:mkdp_echo_preview_url = 0
+let g:mkdp_browserfunc = ''
+let g:mkdp_preview_options = {
+    \ 'mkit'                : {},
+    \ 'katex'               : {},
+    \ 'uml'                 : {},
+    \ 'maid'                : {},
+    \ 'disable_sync_scroll' : 0,
+    \ 'sync_scroll_type'    : 'middle',
+    \ 'hide_yaml_meta'      : 1,
+    \ 'sequence_diagrams'   : {},
+    \ 'flowchart_diagrams'  : {}
+>>>>>>> 	new file:   .gitignore
     \ }
 let g:mkdp_markdown_css = ''
 let g:mkdp_highlight_css = ''
@@ -265,7 +311,11 @@ let g:Lf_IgnoreCurrentBufferName = 1
 
 let g:Lf_WindowPosition = 'popup'
 let g:Lf_PreviewInPopup = 1
+<<<<<<< HEAD
 let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu Sans Mono for Powerline" }
+=======
+let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "Envy Code R VS" }
+>>>>>>> 	new file:   .gitignore
 let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
 
 let g:Lf_ShortcutF = "<leader>ff"

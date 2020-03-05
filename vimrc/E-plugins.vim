@@ -16,6 +16,10 @@ Plug 'morhetz/gruvbox'
 " 状态栏
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+<<<<<<< HEAD
+=======
+" 显示复制
+>>>>>>> 	new file:   .gitignore
 Plug 'machakann/vim-highlightedyank'
 " ------安装即用-----------------------------------
 " 给关键字添加下划线，方便关注
@@ -42,7 +46,10 @@ Plug 'SirVer/ultisnips'
 Plug 'dense-analysis/ale'
 " 按键提示
 Plug 'liuchengxu/vim-which-key'
+<<<<<<< HEAD
 " Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
+=======
+>>>>>>> 	new file:   .gitignore
 " NERDTree
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
@@ -55,8 +62,14 @@ Plug 'cakebaker/scss-syntax.vim', { 'for': ['scss', 'css'] }
 Plug 'gko/vim-coloresque', { 'for': ['html', 'css', 'less', 'sass'] }
 
 " markdown
+<<<<<<< HEAD
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() },  'for' :['markdown', 'vim-plug'] }
 
+=======
+" Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() },  'for' :['markdown', 'vim-plug'] }
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
+" Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install_sync() }, 'for' :['markdown', 'vim-plug'] }
+>>>>>>> 	new file:   .gitignore
 " coc补全框架
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
@@ -127,20 +140,39 @@ let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 set background=dark " for the dark version
 " set background=light " for the light version
 
+<<<<<<< HEAD
 " colorscheme one
 colorscheme gruvbox
 " highlight HighlightedyankRegion cterm=reverse gui=reverse
 
 " 如果由于某种原因高光不可见，则可以重新定义HighlightedyankRegion高光组
 " 请注意，该行应位于vimrc中的：colorscheme命令执行之后。
+=======
+colorscheme one
+" colorscheme gruvbox
+
+" HighlightedyankRegion
+highlight HighlightedyankRegion cterm=reverse gui=reverse
+" Coc:错误+错误标志+警告标志+信息标记符+提醒标记
+highlight CocErrorHighlight ctermfg=Red  guifg=#ff0000
+highlight CocErrorSign  ctermfg=Red guifg=#ff0000
+highlight CocWarningSign  ctermfg=Brown guifg=#ff922b
+highlight CocInfoSign  ctermfg=Yellow guifg=#fab005
+highlight CocHintSign  ctermfg=Blue guifg=#15aabf
+>>>>>>> 	new file:   .gitignore
 
 " 支持斜体
 let g:one_allow_italics = 1
 
 " call one#highlight('vimLineComment', '535c68', ' ', 'italic')
 
+<<<<<<< HEAD
 " let g:airline_theme='one'
 let g:airline_theme='gruvbox'
+=======
+let g:airline_theme='one'
+" let g:airline_theme='gruvbox'
+>>>>>>> 	new file:   .gitignore
 "---------------------------------------------------------------------
 " smart tab line 更智能的标签线
 let g:airline#extensions#tabline#enabled = 1
