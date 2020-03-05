@@ -184,11 +184,7 @@ set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\
 set laststatus=2
 
 " 单词 = 单词 + 连字符
-<<<<<<< HEAD
 set iskeyword+=_,$,@,%,#,-,.
-=======
-set iskeyword+=_,$,@,#,-,.
->>>>>>> 	new file:   .gitignore
 
 " 显示匹配的括号
 set showmatch
@@ -229,21 +225,13 @@ else
 endif
 
 " TXT/Markdown/XML 等比较需要换行
-<<<<<<< HEAD
-autocmd FileType text,markdown,html,xml set wrap
-=======
 " autocmd FileType text,html,xml set wrap
->>>>>>> 	new file:   .gitignore
 
 " 换行时，以单词为界
 set linebreak
 
 " 换行后保持缩进
-<<<<<<< HEAD
 set breakindent
-=======
-" set breakindent
->>>>>>> 	new file:   .gitignore
 
 " 文件被其它编辑器修改后自动载入
 set autoread
