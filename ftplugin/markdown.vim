@@ -12,15 +12,9 @@ inoremap ;5 #####<Space><Enter><++><Esc>kA
 inoremap ;6 ######<Space><Enter><++><Esc>kA
 inoremap ;n ---<Enter><Enter>
 inoremap ;m - [ ] <Enter><++><ESC>kA
-<<<<<<< HEAD
-inoremap ;b **** <++><Esc>F*hi
-inoremap ;s ~~~~ <++><Esc>F~hi
-inoremap ;i ** <++><Esc>F*i
-=======
-inoremap ;b <Space>**** <Space><++><Esc>F*hi
-inoremap ;s <Space>~~~~<Space><++><Esc>F~hi
-inoremap ;i <Space>** <Space><++><Esc>F*i
->>>>>>> 	new file:   .gitignore
+inoremap ;b ****<++><Esc>F*hi
+inoremap ;s ~~~~<++><Esc>F~hi
+inoremap ;i **<++><Esc>F*i
 " inoremap ;d `` <++><Esc>F`i
 inoremap ;c ```<Enter><++><Enter>```<Enter><Enter><++><Esc>4kA
 inoremap ;h ====<Space><++><Esc>F=hi

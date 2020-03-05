@@ -2,17 +2,9 @@
 "=== 基础设置 ===
 "================
 
-" 设置字体
-" set guifont=Envy\ Code\ R\ VS:h18
-set guifont=GoMono\ Nerd\ Font\ Mono:h18
-" set guifont=Fantasque\ Sans\ Mono:h18
-" set guifont=Meslo\ LG\ M:h18
-
 " 禁用 vi 兼容模式
 set nocompatible
 
-<<<<<<< HEAD
-=======
 " 如果不设置隐藏,TextEdirt可能会失败
 set hidden
 " 留出多大空间来显示消息
@@ -22,7 +14,6 @@ set updatetime=300
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
 
->>>>>>> 	new file:   .gitignore
 " 设置 Backspace 键模式
 set bs=eol,start,indent
 set whichwrap+=<,>,h,l

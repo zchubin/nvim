@@ -9,6 +9,7 @@ let g:startify_skiplist = [
        \ '\.vimgolf',
        \ '^/tmp',
        \ '/project/.*/documentation',
+       \ escape(fnamemodify($HOME, ':p'), '\') .'mysecret.txt',
        \ ]
 
 let g:startify_bookmarks = [
@@ -24,12 +25,18 @@ let g:startify_custom_header = [
             \ '|  b:在不同窗口打开          t:在tab中打开   |',
             \ '|  s:水平切分窗口            v:垂直切分窗口  |',
             \ '+--------------------------------------------+',
-            \]
+            \ '       o',
+            \ '        o   ^__^',
+            \ '         o  (oo)\_______',
+            \ '            (__)\       )\/\',
+            \ '                ||----w |',
+            \ '                ||     ||',
+            \ ]
 
 let g:startify_custom_footer = [
-            \ '+------------------------------+',
-            \ '|  -zchubin-work-menu-         |',
-            \ '+------------------------------+',
+            \ '+--------------------------------------------+',
+            \ '|      -zchubin-work-menu-                   |',
+            \ '+--------------------------------------------+',
             \]
 
 "===
@@ -263,7 +270,18 @@ let g:ale_fixers = {'python': ['remove_trailing_lines', 'trim_whitespace', 'auto
 
 " java 报错不乱码
 let g:ale_java_javac_options = '-encoding UTF-8  -J-Duser.language=en'
+"===
+"=== vim-syntastic
+"===
 
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 "===
 "=== vim-which-key
 "===
@@ -406,75 +424,75 @@ let g:UltiSnipsSnippetDirectories = [$HOME.'~/AppData/Local/nvim/Ultisnips/', 'U
 "=== coc.vim
 "===
 
-" coc-json
-call coc#add_extension('coc-json', 'coc-tsserver', 'coc-rls','coc-snippets')
-" nodejs
-let g:coc_node_path = 'D:/Development/nodejs/node'
-
-" 修正COC Bug
-silent! au BufEnter,BufRead,BufNewFile * silent! unmap if
-let g:coc_global_extensions = [
-            \ 'coc-python'  , 'coc-vimlsp'      , 'coc-html'       ,
-            \ 'coc-json'    , 'coc-css'         , 'coc-tsserver'   ,
-            \ 'coc-yank'    , 'coc-lists'       , 'coc-gitignore'  ,
-            \ 'coc-vimlsp'  , 'coc-tailwindcss' , 'coc-stylelint'  ,
-            \ 'coc-tslint'  , 'coc-lists'       , 'coc-git'        ,
-            \ 'coc-pyright' , 'coc-sourcekit'   , 'coc-translator' ,
-            \ 'coc-explorer'
-            \ ]
-
-" :verbose imap <tab> 查看当前<tab>映射
-" 防止映射冲突
-function! s:check_back_space() abort
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-tnoremap <silent><expr> <TAB>
-    \ pumvisible() ? "\<C-n>" :
-    \ <SID>check_back_space() ? "\<TAB>" :
-    \ coc#refresh()
-
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-" 使用 <C-SPACE> 强制触发补全
-inoremap <silent><expr> <c-space> coc#refresh()
-
-if has('patch8.1.1068')
-    inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-else
-    imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-end
-
-" nnoremap <silent> if <Plug>(coc-diagnostic-info)
-" nnoremap <silent> fb <Plug>(coc-diagnostic-prev)
-" nnoremap <silent> fn <Plug>(coc-diagnostic-next)
+" " coc-json
+" call coc#add_extension('coc-json', 'coc-tsserver', 'coc-rls','coc-snippets')
+" " nodejs
+" let g:coc_node_path = 'D:/Development/nodejs/node'
 "
-" nnoremap <silent> fdi <Plug>(coc-definition)     " 定义位置
-" nnoremap <silent> fdl <Plug>(coc-declaration)    " 声明位置
-" nnoremap <silent> fil <Plug>(coc-implementation) " 实现位置
-" nnoremap <silent> frf <Plug>(coc-references)     " 引用位置
-
-nnoremap <silent> <cr> <Plug>(coc-openlink)
-
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-                        \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-nnoremap <silent> <Leader>k :call <SID>show_documentation()<CR>
-
-" autocmd CursorHold * silent call CocActionAsync('highlight')
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-
-let g:coc_filetype_map = {
-    \ 'html.swig'      : 'html',
-    \ 'wxss'           : 'css',
-    \ 'javascript.jsx' : 'javascriptreact',
-    \ 'typescript.tsx' : 'typescriptreact'
-    \ }
+" " 修正COC Bug
+" silent! au BufEnter,BufRead,BufNewFile * silent! unmap if
+" let g:coc_global_extensions = [
+"             \ 'coc-python'  , 'coc-vimlsp'      , 'coc-html'       ,
+"             \ 'coc-json'    , 'coc-css'         , 'coc-tsserver'   ,
+"             \ 'coc-yank'    , 'coc-lists'       , 'coc-gitignore'  ,
+"             \ 'coc-vimlsp'  , 'coc-tailwindcss' , 'coc-stylelint'  ,
+"             \ 'coc-tslint'  , 'coc-lists'       , 'coc-git'        ,
+"             \ 'coc-pyright' , 'coc-sourcekit'   , 'coc-translator' ,
+"             \ 'coc-explorer'
+"             \ ]
+"
+" " :verbose imap <tab> 查看当前<tab>映射
+" " 防止映射冲突
+" function! s:check_back_space() abort
+"     let col = col('.') - 1
+"     return !col || getline('.')[col - 1]  =~# '\s'
+" endfunction
+"
+" tnoremap <silent><expr> <TAB>
+"     \ pumvisible() ? "\<C-n>" :
+"     \ <SID>check_back_space() ? "\<TAB>" :
+"     \ coc#refresh()
+"
+" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+"
+" " 使用 <C-SPACE> 强制触发补全
+" inoremap <silent><expr> <c-space> coc#refresh()
+"
+" if has('patch8.1.1068')
+"     inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+" else
+"     imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" end
+"
+" " nnoremap <silent> if <Plug>(coc-diagnostic-info)
+" " nnoremap <silent> fb <Plug>(coc-diagnostic-prev)
+" " nnoremap <silent> fn <Plug>(coc-diagnostic-next)
+" "
+" " nnoremap <silent> fdi <Plug>(coc-definition)     " 定义位置
+" " nnoremap <silent> fdl <Plug>(coc-declaration)    " 声明位置
+" " nnoremap <silent> fil <Plug>(coc-implementation) " 实现位置
+" " nnoremap <silent> frf <Plug>(coc-references)     " 引用位置
+"
+" nnoremap <silent> <cr> <Plug>(coc-openlink)
+"
+" inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+"                         \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+"
+" function! s:show_documentation()
+"   if (index(['vim','help'], &filetype) >= 0)
+"     execute 'h '.expand('<cword>')
+"   else
+"     call CocAction('doHover')
+"   endif
+" endfunction
+" nnoremap <silent> <Leader>k :call <SID>show_documentation()<CR>
+"
+" " autocmd CursorHold * silent call CocActionAsync('highlight')
+" set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+"
+" let g:coc_filetype_map = {
+"     \ 'html.swig'      : 'html',
+"     \ 'wxss'           : 'css',
+"     \ 'javascript.jsx' : 'javascriptreact',
+"     \ 'typescript.tsx' : 'typescriptreact'
+"     \ }

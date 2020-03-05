@@ -12,6 +12,14 @@ endif
 "=== 运行环境 ===
 "================
 
+" 设置字体
+" set guifont=Envy\ Code\ R\ VS:h18
+set guifont=GoMono\ Nerd\ Font\ Mono:h18
+" set guifont=Fantasque\ Sans\ Mono:h18
+" set guifont=Meslo\ LG\ M:h18
+
+let g:mkdp_browser = 'firefox'
+
 " 设置中文提示
 language messages zh_CN.utf-8
 
@@ -21,10 +29,8 @@ let &termencoding=&encoding
 
 " 取得本文件所在的目录
 let s:home = fnamemodify(resolve(expand('<sfile>:p')), ':h')
-
 " 定义一个命令用来加载文件
 command! -nargs=1 LocalScript exec 'so '.s:home.'/'.'<args>'
-
 " 将本目录加入 runtimepath
 exec 'set rtp+='.s:home
 
@@ -35,7 +41,7 @@ exec 'set rtp+='.s:home
 "============
 
 " 加载环境配置
-LocalScript vimrc/A-path.vim
+" LocalScript vimrc/A-path.vim
 
 " 加载基础配置
 LocalScript vimrc/B-basic.vim
@@ -86,6 +92,8 @@ Plug 'SirVer/ultisnips'
 
 " 拼写检查
 Plug 'dense-analysis/ale'
+" 语法检查
+" Plug 'vim-syntastic/syntastic'
 " 按键提示
 Plug 'liuchengxu/vim-which-key'
 " Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
