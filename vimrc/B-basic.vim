@@ -47,7 +47,6 @@ augroup PythonTab
 	au FileType python setlocal shiftwidth=4 tabstop=4 noexpandtab
 augroup END
 
-"使用 C/C++ 缩进
 " 打开 C/C++ 语言缩进优化
 set cindent
 

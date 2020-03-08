@@ -2,15 +2,15 @@
     // 自动补全
     "suggest.autoTrigger"                       : "none",
     // 进入插入模式开启自动补全
-    "suggest.triggerAfterInsertEnter": true,
+    "suggest.triggerAfterInsertEnter"           : true,
     // 补全超时时间
     "suggest.timeout"                           : 500,
     // 补全开启时选中第一项
-    "suggest.noselect": false,
+    "suggest.noselect"                          : false,
     // 保留当前的 Completeopt
-    "suggest.keepCompleteopt": true,
+    "suggest.keepCompleteopt"                   : true,
     // vim 弹出预览窗口
-    "suggest.enablePreview": true,
+    "suggest.enablePreview"                     : true,
     // 设置最少补全触发字符数
     "suggest.minTriggerInputLength"             : 2,
     // 支持提交字符特性
@@ -77,10 +77,10 @@
     "coc.preferences.hoverTarget"           : "preview",
     // 开启浮动突出显示高亮
     "coc.preferences.enableFloatHighlight"  : true,
-    "coc.preferences.highlightTimeout": 5000,
+    "coc.preferences.highlightTimeout"      : 5000,
     "coc.preferences.snippetStatusText"     : "Ⓢ ",
     "coc.preferences.extensionUpdateCheck"  : "weekly",
-    "coc.preferences.formatOnType": true,
+    "coc.preferences.formatOnType"          : true,
     "coc.preferences.formatOnSaveFiletypes" : [
             "javascript",
             "html",

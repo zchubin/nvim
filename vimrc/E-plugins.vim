@@ -58,15 +58,12 @@ let g:WebDevIconsUnicodeDecorateFileNodesDefaultSymbol = '●'
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 
 "====
-"==== Vim-themes airline vim-highlightedyank
+"==== airline vim-highlightedyank
 "====
-
-" 支持斜体
-let g:one_allow_italics = 1
 
 " let g:airline_theme='violet'
 let g:airline_theme='base16'
-"---------------------------------------------------------------------
+
 " smart tab line 更智能的标签线
 let g:airline#extensions#tabline#enabled = 1
 
@@ -258,14 +255,16 @@ let g:syntastic_check_on_wq = 0
 "===
 
 map tt :NERDTreeToggle<CR>
-let g:NERDTreeWinSize=25
+
+let g:NERDTreeWinSizeMax= 20
+
 " 打开vim打开nerdtree
 "autocmd vimenter * NERDTree
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
 
 " 更改默认箭头
-let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowExpandable  = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 
 " 如果唯一打开的窗口时NERDTree,如何关闭vim
@@ -345,16 +344,6 @@ let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsSnippetDirectories = [$HOME.'~/AppData/Local/nvim/Ultisnips/', 'UltiSnips']
 " silent! au BufEnter,BufRead,BufNewFile * silent! unmap <c-r>
-
-"===
-"=== gitgutter
-"===
-
-" nmap ]h <Plug>(GitGutterNextHunk)
-" nmap [h <Plug>(GitGutterPrevHunk)
-"
-" nmap ghs <Plug>(GitGutterStageHunk)
-" nmap ghu <Plug>(GitGutterUndoHunk)
 
 "===
 "=== coc.vim
