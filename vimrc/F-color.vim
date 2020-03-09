@@ -53,7 +53,7 @@ hi default link CocHintHighlight      CocUnderline
 hi default link CocHintFloat          CocHintSign
 
 " 浮动窗口配色
-highlight Pmenu ctermbg=237 ctermfg=white
-highlight PmenuSel ctermbg=220 ctermfg=black
-highlight PmenuSbar ctermbg=233
-highlight PmenuThumb ctermbg=7
+" highlight Pmenu ctermbg=237 ctermfg=white
+" highlight PmenuSel ctermbg=220 ctermfg=black
+" highlight PmenuSbar ctermbg=233
+" highlight PmenuThumb ctermbg=7

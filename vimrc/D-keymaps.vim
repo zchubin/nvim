@@ -2,7 +2,7 @@ let g:mapleader="\<Space>"    " 默认<leader>是'\'
 let g:maplocalleader=";"
 
 " 高亮行尾空格
-highlight ExtraWhitespace ctermbg=red guibg=red
+highlight ExtraWhitespace ctermbg=DarkRed guibg=DarkRed
 match ExtraWhitespace /\s\+$/
 autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
