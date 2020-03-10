@@ -353,6 +353,7 @@ let g:UltiSnipsSnippetDirectories = [$HOME.'~/AppData/Local/nvim/Ultisnips/', 'U
 call coc#add_extension('coc-json', 'coc-tsserver', 'coc-rls','coc-snippets')
 " nodejs
 let g:coc_node_path = 'D:/Development/nodejs/node'
+" let g:coc_node_path = '/usr/bin/node'
 
 " 修正COC Bug
 silent! au BufEnter,BufRead,BufNewFile * silent! unmap if
