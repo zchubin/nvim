@@ -19,9 +19,7 @@ endif
 
 " 设置字体
 " set guifont=Envy\ Code\ R\ VS:h18
-set guifont=GoMono\ Nerd\ Font\ Mono:h18
-" set guifont=Fantasque\ Sans\ Mono:h18
-" set guifont=Meslo\ LG\ M:h18
+set guifont=GoMono\ Nerd\ Font\ Mono:h16
 
 " 设置中文提示
 language messages zh_CN.utf-8
@@ -78,6 +76,8 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 " 显示复制
 Plug 'machakann/vim-highlightedyank'
+" coc补全框架
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " ------安装即用-----------------------------------
 " 给关键字添加下划线，方便关注
 Plug 'vim-scripts/vim-cursorword'
@@ -122,8 +122,10 @@ Plug 'gko/vim-coloresque', { 'for': ['html', 'css', 'less', 'sass'] }
 " markdown
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 " Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install_sync() }, 'for' :['markdown', 'vim-plug'] }
-" coc补全框架
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" python
+Plug 'tmhedberg/SimpylFold', { 'for' :['python', 'vim-plug'] }
+Plug 'Vimjas/vim-python-pep8-indent', { 'for' :['python', 'vim-plug'] }
 
 " git
 Plug 'airblade/vim-gitgutter'

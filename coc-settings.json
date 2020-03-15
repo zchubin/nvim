@@ -1,84 +1,20 @@
 {
-    // 自动补全
     "suggest.autoTrigger"                       : "none",
-    // 进入插入模式开启自动补全
-    "suggest.triggerAfterInsertEnter"           : true,
-    // 补全超时时间
+    "suggest.triggerAfterInsertEnter"           : false,
     "suggest.timeout"                           : 500,
-    // 补全开启时选中第一项
-    "suggest.noselect"                          : false,
-    // 保留当前的 Completeopt
+    "suggest.noselect"                          : true,
     "suggest.keepCompleteopt"                   : true,
-    // vim 弹出预览窗口
     "suggest.enablePreview"                     : true,
-    // 设置最少补全触发字符数
     "suggest.minTriggerInputLength"             : 2,
-    // 支持提交字符特性
     "suggest.acceptSuggestionOnCommitCharacter" : true,
-    // 改变代码片段的提示字符
-    "suggest.snippetIndicator"                  : "輪",
-
-    "git.addedSign.hlGroup"         : "GitGutterAdd",
-    "git.changedSign.hlGroup"       : "GitGutterChange",
-    "git.removedSign.hlGroup"       : "GitGutterDelete",
-    "git.topRemovedSign.hlGroup"    : "GitGutterDelete",
-    "git.changeRemovedSign.hlGroup" : "GitGutterChangeDelete",
-    "git.addedSign.text"            : "螺",
-    "git.changedSign.text"          : "蘿",
-    "git.removedSign.text"          : "羅",
-    "git.topRemovedSign.text"       : "ﬂ ",
-    "git.changeRemovedSign.text"    : "ﬃ ",
-    "git.enableGlobalStatus"        : false,
-
-    "list.source.grep.defaultArgs"          : ["-regex"],
-    "list.source.symbols.defaultOptions"    : ["--interactive", "--number-select"],
-
-    // 错误信息
-    "diagnostic.signOffset"          : 9999999,
-    "diagnostic.refreshAfterSave"    : true,
-    "diagnostic.checkCurrentLine"    : true,
-    "diagnostic.refreshOnInsertMode" : false,
-    "diagnostic.errorSign"           : "",
-    "diagnostic.warningSign"         : "",
-    "diagnostic.hintSign"            : "",
-    "diagnostic.infoSign"            : "",
-    "diagnostic.displayByAle"        : false,
-    "diagnostic.virtualTextPrefix"   : " ❯❯ ",
-    "diagnostic.virtualText"         : true,
-
-    "codeLens.enable": true,
-
-    "git.enableGutters"                    : true,
-    "git.branchCharacter"                  : "\uf408",
-    "git.addGBlameToBufferVar"             : false,
-    "git.addGBlameToVirtualText"           : false,
-    "git.virtualTextPrefix"                : " ❯❯ ",
-
-    "tslint.autoFixOnSave" : true,
-
-    "python.autoComplete.addBrackets" : true,
-    "python.jediEnabled"              : false,
-    "python.formatting.provider"      : "yapf",
-
-    "html.format.enable" : true,
-
-    "json.format.enable" : true,
-
-    "coc.preferences.hoverTarget"           : "preview",
-    // 开启浮动突出显示高亮
-    "coc.preferences.enableFloatHighlight"  : true,
-    "coc.preferences.highlightTimeout"      : 5000,
-    "coc.preferences.snippetStatusText"     : " ",
-    "coc.preferences.extensionUpdateCheck"  : "weekly",
-    "coc.preferences.formatOnType"          : true,
-    "coc.preferences.formatOnSaveFiletypes" : [
-            "javascript",
-            "html",
-            "css",
-            "python"
-    ],
-    // 补全项类标签
-    "suggest.completionItemKindLabels"      : {
+    "suggest.snippetIndicator"                  : "▶",
+    "suggest.detailMaxLength"                   : 50,
+    "suggest.enablePreselect"                   : false,
+    "suggest.floatEnable"                       : true,
+    "suggest.detailField"                       : "preview",
+    "suggest.triggerCompletionWait"             : 100,
+    "suggest.echodocSupport"                    : true,
+    "suggest.completionItemKindLabels" : {
             "class"         : "\uf0e8",
             "color"         : "\ue22b",
             "constant"      : "\uf8fe",
@@ -104,21 +40,89 @@
             "unit"          : "\uf475",
             "value"         : "\uf89f",
             "variable"      : "\ue71b"
-            },
+    },
 
+    "diagnostic.signOffset"          : 1,
+    "diagnostic.refreshOnInsertMode" : false,
+    "diagnostic.refreshAfterSave"    : true,
+    "diagnostic.checkCurrentLine"    : true,
+    "diagnostic.errorSign"           : "",//"×",
+    "diagnostic.warningSign"         : "",//"»",
+    "diagnostic.hintSign"            : "",//"ღ",
+    "diagnostic.infoSign"            : "",//"ஐ",
+    "diagnostic.displayByAle"        : false,
+    "diagnostic.virtualTextPrefix"   : "❯❯ ",
+    "diagnostic.virtualText"         : true,
+
+    "list.source.grep.defaultArgs"       : ["-regex"],
+    "list.source.symbols.defaultOptions" : ["--interactive", "--number-select"],
+    "list.previewHighlightGroup"         : "Statement",
+    "list.nextKeymap"                    : "<C-n>",
+    "list.previousKeymap"                : "<C-p>",
+
+    "coc.preferences.hoverTarget"           : "preview",
+    "coc.preferences.enableFloatHighlight"  : true,
+    "coc.preferences.highlightTimeout"      : 5000,
+    "coc.preferences.snippetStatusText"     : "",//"Ⓢ "
+    "coc.preferences.extensionUpdateCheck"  : "weekly",
+    "coc.preferences.formatOnType"          : true,
+    "coc.preferences.formatOnSaveFiletypes" : [
+            "python",
+            "html",
+            "css",
+            "markdown",
+            "Markdown",
+            "javascript",
+            "javascriptreact",
+            "typescript",
+            "typescriptreact"
+    ],
+
+    "git.enableGutters"             : true,
+    "git.branchCharacter"           : "\uf408",
+    "git.addGBlameToBufferVar"      : false,
+    "git.addGBlameToVirtualText"    : false,
+    "git.addedSign.hlGroup"         : "GitGutterAdd",
+    "git.changedSign.hlGroup"       : "GitGutterChange",
+    "git.removedSign.hlGroup"       : "GitGutterDelete",
+    "git.topRemovedSign.hlGroup"    : "GitGutterDelete",
+    "git.changeRemovedSign.hlGroup" : "GitGutterChangeDelete",
+    "git.addedSign.text"            : "螺",// "▎",
+    "git.changedSign.text"          : "蘿",// "░",
+    "git.removedSign.text"          : "羅",// "▏",
+    "git.topRemovedSign.text"       : "ﬂ ",// "▔",
+    "git.changeRemovedSign.text"    : "ﬃ ",// "▒",
+    "git.signOffset"                : 2,
+    "git.enableGlobalStatus"        : false,
+    "git.virtualTextPrefix"         : "❯❯ ",
+
+    // "python.autoComplete.addBrackets" : true,
+    // "python.jediEnabled"              : false,
+    // "python.formatting.provider"      : "yapf",
+    // "python.formatting.yapfArgs"      : [
+    //     "--style",
+    //     "{SPACES_AROUND_POWER_OPERATOR: True, SPACES_BEFORE_COMMENT: 1}"
+    // ],
 
     "signature.target": "echo",
     "signature.enable": true,
 
-    "yank.enableCompletion" : false,
+    "codeLens.enable": true,
 
-    // "emmet.includeLanguages": {"vue-html": "html", "javascript": "javascriptreact"},
+    "tslint.autoFixOnSave" : true,
+
+    "html.format.enable" : true,
+
+    "json.format.enable" : true,
+
+    "yank.enableCompletion" : false,
 
     "languageserver": {
             "lua": {
                     "command"   : "lua-lsp",
                     "filetypes" : ["lua"]
             },
+
             "golang": {
                     "command"      : "gopls",
                     "rootPatterns" : ["go.mod"],
@@ -129,12 +133,19 @@
                             "lintTool"                : "golint"
                     }
             },
+
             "bash": {
                     "command"          : "bash-language-server",
                     "args"             : ["start"],
                     "filetypes"        : ["sh"],
                     "ignoredRootPaths" : []
             },
+            "groovy": {
+                    "command": "java",
+                    // "args": ["-jar", "/usr/local/bin/groovy-language-server-all.jar"],
+                    "filetypes": ["groovy"]
+            },
+
             "ccls": {
                     "command"      : "ccls",
                     "filetypes"    : ["c", "cpp", "cuda", "objc", "objcpp"],
@@ -145,9 +156,6 @@
                              }
                      }
             }
+
     }
 }
-
-    // "todolist.autoUpload": true,
-
-    // "diagnostic.errorSign"           : "●",

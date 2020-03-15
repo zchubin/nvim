@@ -1,6 +1,7 @@
 # init.vim
 This is Neovim configuration on **windows10** for a new recruit.
-
+![shortscreen](./shortscreen/2020-03-15_16-48-51.png)
+![shortscreen](./shortscreen/2020-03-15_16-56-42.png)
 ## Installation
 
 Note: init.vim requires Neovim(0.5.0+) with Python3. See
