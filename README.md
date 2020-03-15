@@ -7,7 +7,7 @@ Note: init.vim requires Neovim(0.5.0+) with Python3. See
 [requires](##requires)
 requires if you aren't sure whethre you have this.
 
-You can use `git clone https://github.com/zchubin/nvim-Z.git`
+You can use `git clone https://github.com/zchubin/nvim.git`
 to get it.
 
 ## Requirements
@@ -17,8 +17,9 @@ below.
 
 You can enable Python3 interface with pip:
 
-```pip
-pip3 install --user pynvim
+```shell
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pynvim
+
 ```
 
 If you want to read the pynvim/python3 interface install
@@ -81,49 +82,3 @@ noremap `<down> :res -5<CR>
 noremap `<left> :vertical resize-5<CR>
 noremap `<right> :vertical resize+5<CR>
 ```
-
-### Plug
-```vim
-call plug#begin('~/AppData/Local/nvim/plugged')
-
-" 主题
-Plug 'rakr/vim-one'
-" 状态栏
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-
-" 按键提示
-Plug 'liuchengxu/vim-which-key'
-
-" 侧边栏，文件目录
-Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
-
-" 给关键字添加下划线，方便关注
-Plug 'vim-scripts/vim-cursorword'
-
-" 语法 (高亮) 缩进 语言包
-" Plug 'sheerun/vim-polyglot'
-
-" Html,css
-Plug 'mattn/emmet-vim', { 'for': ['html', 'css'] }
-Plug 'othree/html5.vim', { 'for': 'html' }
-Plug 'cakebaker/scss-syntax.vim', { 'for': ['scss', 'css'] }
-
-" 突出显示括号方阵
-Plug 'ccampbell/rainbow'
-
-" css3颜色显示
-Plug 'gko/vim-coloresque', { 'for': ['html', 'css', 'less', 'sass'] }
-
-" 快速注释
-Plug 'preservim/nerdcommenter'
-" 拼写检查
-Plug 'dense-analysis/ale'
-
-" markdown
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() },  'for' :['markdown', 'vim-plug'] }
-
-" 补全
-Plug 'Shougo/neocomplete.vim'
-
-call plug#end()

@@ -53,7 +53,7 @@ let g:webdevicons_enable_startify = 1
 " 设置标志占位2个字符，保证垂直对齐
 let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
 " 遇到未知文件使用以下图标表示
-let g:WebDevIconsUnicodeDecorateFileNodesDefaultSymbol = '●'
+let g:WebDevIconsUnicodeDecorateFileNodesDefaultSymbol = '‽'
 " 启用文件夹/目录字形图标
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 
@@ -256,7 +256,8 @@ let g:syntastic_check_on_wq = 0
 
 map tt :NERDTreeToggle<CR>
 
-let g:NERDTreeWinSizeMax= 20
+let NERDTreeShowHidden=1
+let NERDTreeWinSize=25
 
 " 打开vim打开nerdtree
 "autocmd vimenter * NERDTree
@@ -279,10 +280,35 @@ let g:NERDTreeIndicatorMapCustom = {
     \ "Deleted"   : "✖",
     \ "Dirty"     : "✗",
     \ "Clean"     : "✔︎",
-    \ 'Ignored'   : '☒',
+    \ 'Ignored'   : "☒",
     \ "Unknown"   : "?"
     \ }
+" 隐藏标识符括号
+augroup nerdtreeconcealbrackets
+      autocmd!
+      autocmd FileType nerdtree syntax match hideBracketsInNerdTree "\]" contained conceal containedin=ALL
+      autocmd FileType nerdtree syntax match hideBracketsInNerdTree "\[" contained conceal containedin=ALL
+      autocmd FileType nerdtree setlocal conceallevel=3
+      autocmd FileType nerdtree setlocal concealcursor=nvic
+augroup END
 
+let g:NERDTreeFileExtensionHighlightFullName = 1
+let g:NERDTreeExactMatchHighlightFullName = 1
+let g:NERDTreePatternMatchHighlightFullName = 1
+let g:NERDTreeHighlightFolders = 1
+let g:NERDTreeHighlightFoldersFullName = 1
+
+let g:NERDTreeSyntaxDisableDefaultExtensions = 1
+let g:NERDTreeDisableExactMatchHighlight = 1
+let g:NERDTreeDisablePatternMatchHighlight = 1
+let g:NERDTreeSyntaxEnabledExtensions = [
+    \ 'html', 'css', 'scss', 'js',
+    \ 'java', 'php', 'rb',
+    \ 'json', 'vim',
+    \ 'c', 'h', 'lock', 'md', 'pug', 'vue',
+    \ 'png', 'jpg', 'svg', 'icon'
+    \ ]
+let g:NERDTreeHighlightCursorline = 0
 "===
 "=== markdown_preview
 "===

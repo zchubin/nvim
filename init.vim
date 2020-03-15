@@ -109,6 +109,7 @@ Plug 'vim-syntastic/syntastic'
 " NERDTree
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 " minimap
 " Plug 'severin-lemaignan/vim-minimap'
 " Html,css

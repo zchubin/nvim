@@ -16,9 +16,69 @@
     // 支持提交字符特性
     "suggest.acceptSuggestionOnCommitCharacter" : true,
     // 改变代码片段的提示字符
-    "suggest.snippetIndicator"                  : "▸",
+    "suggest.snippetIndicator"                  : "輪",
+
+    "git.addedSign.hlGroup"         : "GitGutterAdd",
+    "git.changedSign.hlGroup"       : "GitGutterChange",
+    "git.removedSign.hlGroup"       : "GitGutterDelete",
+    "git.topRemovedSign.hlGroup"    : "GitGutterDelete",
+    "git.changeRemovedSign.hlGroup" : "GitGutterChangeDelete",
+    "git.addedSign.text"            : "螺",
+    "git.changedSign.text"          : "蘿",
+    "git.removedSign.text"          : "羅",
+    "git.topRemovedSign.text"       : "ﬂ ",
+    "git.changeRemovedSign.text"    : "ﬃ ",
+    "git.enableGlobalStatus"        : false,
+
+    "list.source.grep.defaultArgs"          : ["-regex"],
+    "list.source.symbols.defaultOptions"    : ["--interactive", "--number-select"],
+
+    // 错误信息
+    "diagnostic.signOffset"          : 9999999,
+    "diagnostic.refreshAfterSave"    : true,
+    "diagnostic.checkCurrentLine"    : true,
+    "diagnostic.refreshOnInsertMode" : false,
+    "diagnostic.errorSign"           : "",
+    "diagnostic.warningSign"         : "",
+    "diagnostic.hintSign"            : "",
+    "diagnostic.infoSign"            : "",
+    "diagnostic.displayByAle"        : false,
+    "diagnostic.virtualTextPrefix"   : " ❯❯ ",
+    "diagnostic.virtualText"         : true,
+
+    "codeLens.enable": true,
+
+    "git.enableGutters"                    : true,
+    "git.branchCharacter"                  : "\uf408",
+    "git.addGBlameToBufferVar"             : false,
+    "git.addGBlameToVirtualText"           : false,
+    "git.virtualTextPrefix"                : " ❯❯ ",
+
+    "tslint.autoFixOnSave" : true,
+
+    "python.autoComplete.addBrackets" : true,
+    "python.jediEnabled"              : false,
+    "python.formatting.provider"      : "yapf",
+
+    "html.format.enable" : true,
+
+    "json.format.enable" : true,
+
+    "coc.preferences.hoverTarget"           : "preview",
+    // 开启浮动突出显示高亮
+    "coc.preferences.enableFloatHighlight"  : true,
+    "coc.preferences.highlightTimeout"      : 5000,
+    "coc.preferences.snippetStatusText"     : " ",
+    "coc.preferences.extensionUpdateCheck"  : "weekly",
+    "coc.preferences.formatOnType"          : true,
+    "coc.preferences.formatOnSaveFiletypes" : [
+            "javascript",
+            "html",
+            "css",
+            "python"
+    ],
     // 补全项类标签
-    "suggest.completionItemKindLabels"          : {
+    "suggest.completionItemKindLabels"      : {
             "class"         : "\uf0e8",
             "color"         : "\ue22b",
             "constant"      : "\uf8fe",
@@ -46,52 +106,13 @@
             "variable"      : "\ue71b"
             },
 
-    "list.source.grep.defaultArgs"          : ["-regex"],
-    "list.source.symbols.defaultOptions"    : ["--interactive", "--number-select"],
-    // 错误信息
-    "diagnostic.signOffset"          : 9999999,
-    "diagnostic.refreshOnInsertMode" : true,
-    "diagnostic.refreshAfterSave"    : true,
-    "diagnostic.checkCurrentLine"    : true,
-    "diagnostic.virtualTextPrefix"   : " ❯❯❯ ",
-    "diagnostic.virtualText"         : true,
-
-    "codeLens.enable": true,
-
-    "git.enableGutters"                    : true,
-    "git.branchCharacter"                  : "\uf408",
-    "git.addGBlameToBufferVar"             : false,
-    "git.addGBlameToVirtualText"           : false,
-    "git.virtualTextPrefix"                : " ❯❯❯ ",
-
-    "tslint.autoFixOnSave"                 : true,
-
-    "python.autoComplete.addBrackets"      : true,
-    "python.jediEnabled"                   : false,
-    "python.formatting.provider"           : "yapf",
-
-    "html.format.enable"                   : true,
-
-    "json.format.enable"                   : true,
-
-    "coc.preferences.hoverTarget"           : "preview",
-    // 开启浮动突出显示高亮
-    "coc.preferences.enableFloatHighlight"  : true,
-    "coc.preferences.highlightTimeout"      : 5000,
-    "coc.preferences.snippetStatusText"     : "Ⓢ ",
-    "coc.preferences.extensionUpdateCheck"  : "weekly",
-    "coc.preferences.formatOnType"          : true,
-    "coc.preferences.formatOnSaveFiletypes" : [
-            "javascript",
-            "html",
-            "css",
-            "python"
-    ],
 
     "signature.target": "echo",
     "signature.enable": true,
 
     "yank.enableCompletion" : false,
+
+    // "emmet.includeLanguages": {"vue-html": "html", "javascript": "javascriptreact"},
 
     "languageserver": {
             "lua": {
@@ -129,21 +150,4 @@
 
     // "todolist.autoUpload": true,
 
-
     // "diagnostic.errorSign"           : "●",
-    // "diagnostic.warningSign"         : "●",
-    // "diagnostic.infoSign"            : "•",
-    // "diagnostic.hintSign"            : "•",
-    // "diagnostic.displayByAle"        : false,
-
-    // "git.addedSign.hlGroup"                : "GitGutterAdd",
-    // "git.changedSign.hlGroup"              : "GitGutterChange",
-    // "git.removedSign.hlGroup"              : "GitGutterDelete",
-    // "git.topRemovedSign.hlGroup"           : "GitGutterDelete",
-    // "git.changeRemovedSign.hlGroup"        : "GitGutterChangeDelete",
-    // "git.addedSign.text"                   : "▎",
-    // "git.changedSign.text"                 : "░",
-    // "git.removedSign.text"                 : "▏",
-    // "git.topRemovedSign.text"              : "▔",
-    // "git.changeRemovedSign.text"           : "▒",
-    // "git.enableGlobalStatus"               : false,

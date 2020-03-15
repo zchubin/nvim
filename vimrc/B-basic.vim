@@ -195,7 +195,7 @@ set lazyredraw
 set errorformat+=[%f:%l]\ ->\ %m,[%f:%l]:%m
 
 " 用▸示缩进,▫显示空格,>显示扩充,<显示回车
-set listchars=tab:▸\ ,trail:▫,extends:>,precedes:<
+set listchars=tab:▸\ ,trail:▫,extends:»,precedes:
 
 " 设置 tags：当前文件所在目录往上向根目录搜索直到碰到 .tags 文件
 " 或者 Vim 当前目录包含 .tags 文件
