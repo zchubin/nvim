@@ -3,6 +3,8 @@ if empty(glob('$HOME/AppData/Local/nvim/autoload/plug.vim'))
                 \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     autocmd VimEnter * PlugInstall --sync | source $VIMRC
 endif
+
+set updatetime=300
 "============================
 "=== 防止重复加载相同配置 ===
 "============================
@@ -19,7 +21,7 @@ endif
 
 " 设置字体
 " set guifont=Envy\ Code\ R\ VS:h18
-set guifont=GoMono\ Nerd\ Font\ Mono:h16
+set guifont=GoMono\ Nerd\ Font\ Mono:h18
 
 " 设置中文提示
 language messages zh_CN.utf-8

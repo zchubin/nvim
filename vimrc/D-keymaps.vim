@@ -79,7 +79,7 @@ elseif &filetype == 'sh'
 elseif &filetype == 'python'
     set splitbelow
     :sp
-    :term python3 %
+    :term python %
 elseif &filetype == 'html'
     silent! exec "!".g:mkdp_browser." % &"
 elseif &filetype == 'markdown'
@@ -94,54 +94,3 @@ elseif &filetype == 'go'
 endif
 endfunc
 
-"================================
-
-"普通模式下，sp前往上一个错误或警告，sn前往下一个错误或警告
-nmap sp <Plug>(ale_previous_wrap)
-nmap sn <Plug>(ale_next_wrap)
-
-"<Leader>s 触发/关闭语法检查
-nmap <Leader>s :ALEToggle<CR>
-
-"<Leader>d 查看错误或警告的详细信息
-nmap <Leader>d :ALEDetail<CR>
-
-"=======================================
-
-" :verbose imap <tab> 查看当前<tab>映射
-" 防止映射冲突
-" 定制补全体验
-" 使用 <tab> 触发补全
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
-endfunction
-
-inoremap <silent><expr> <TAB>
-              \ pumvisible() ? "\<C-n>" :
-              \ <SID>check_back_space() ? "\<TAB>" :
-              \ coc#refresh()
-
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-" 使用 <C-SPACE> 强制触发补全
-inoremap <silent><expr> <c-space> coc#refresh()
-
-" 使用 <CR> 确认补全
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<CR>"
-" 使用 <CR> 确认补全，并触发 coc.nvim 的 formatOnType 功能:
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-                        \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-nnoremap <silent> <cr> <Plug>(coc-openlink)
-
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-                        \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-nnoremap <silent> <Leader>k :call <SID>show_documentation()<CR>

@@ -42,7 +42,12 @@ let g:startify_custom_footer = [
 "===
 "=== devicon
 "===
-let g:WebDevIconsOS = 'Darwin'
+if has('mac') || has('macunix')
+  let g:WebDevIconsOS = 'Darwint'
+else
+  let g:WebDevIconsOS = 'linux'
+endif
+
 " loading the plugin
 let g:webdevicons_enable = 1
 " 为 NERDTree,airline,startify 提供支持
@@ -53,9 +58,77 @@ let g:webdevicons_enable_startify = 1
 " 设置标志占位2个字符，保证垂直对齐
 let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
 " 遇到未知文件使用以下图标表示
-let g:WebDevIconsUnicodeDecorateFileNodesDefaultSymbol = '‽'
+let g:WebDevIconsUnicodeDecorateFileNodesDefaultSymbol = '' "‽
 " 启用文件夹/目录字形图标
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+
+let g:WebDevIconsNerdTreeBeforeGlyphPadding = ' '
+let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
+
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {
+    \ 'js'       : '',
+    \ 'tsx'      : '',
+    \ 'cssn'     : '',
+    \ 'css'      : '',
+    \ 'scss'     : 'ﳪ',
+    \ 'htm'      : '',
+    \ 'html'     : '',
+    \ 'md'       : '',
+    \ 'sql'      : '',
+    \ 'db'       : '',
+    \ 'gradle'   : '',
+    \ 'conf'     : '',
+    \ 'ini'      : '',
+    \ 'yml'      : '',
+    \ 'class'    : '',
+    \ 'less'     : '',
+    \ 'json'     : '',
+    \ 'rb'       : '',
+    \ 'php'      : 'ﳄ',
+    \ 'py'       : '',
+    \ 'pyc'      : '',
+    \ 'pyo'      : '',
+    \ 'pyd'      : '',
+    \ 'coffee'   : '',
+    \ 'mustache' : '',
+    \ 'hbs'      : '',
+    \ 'jpg'      : '',
+    \ 'jpeg'     : '',
+    \ 'bmp'      : '',
+    \ 'png'      : '',
+    \ 'gif'      : '',
+    \ 'ai'       : '',
+    \ 'pdf'      : '',
+    \ 'twig'     : '',
+    \ 'c#'       : '',
+    \ 'cs'       : '',
+    \ 'cpp'      : '',
+    \ 'c++'      : '',
+    \ 'cxx'      : '',
+    \ 'cc'       : '',
+    \ 'cp'       : '',
+    \ 'c'        : '',
+    \ 'hs'       : '',
+    \ 'lhs'      : '',
+    \ 'lua'      : '',
+    \ 'java'     : '',
+    \ 'sh'       : '',
+    \ 'diff'     : '',
+    \ 'clj'      : '',
+    \ 'scala'    : '',
+    \ 'go'       : 'ﳑ',
+    \ 'dart'     : '',
+    \ 'xul'      : '',
+    \ 'npm'      : '',
+    \ 'nodejs'   : '',
+    \ 'ttf'      : 'ﯔ',
+    \ 'eot'      : 'ﯔ',
+    \ 'fon'      : 'ﯔ',
+    \ 'pfm'      : 'ﯔ',
+    \ 'vue'      : '﵂',
+    \ 'sln'      : '',
+    \ 'suo'      : ''
+\ }
 
 "====
 "==== airline vim-highlightedyank
@@ -71,9 +144,6 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 
-" 路径格式化程序，
-" 这会影响文件路径在单独的选项卡中的显示方式以及右上角的当前缓冲区指示符，
-" 为此，使用以下命令设置格式器字段：
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 
 let g:airline_powerline_fonts = 1  " 支持 powerline 字体
@@ -200,7 +270,7 @@ let g:ale_lint_on_enter = 0
 let g:ale_lint_on_text_changed = 'never'
 
 " 保持标志槽打开
-" let g:ale_sign_column_always = 1
+let g:ale_sign_column_always = 1
 " let g:ale_sign_error = '✗'
 " let g:ale_sign_warning = '⚡'
 
@@ -217,9 +287,8 @@ let g:ale_statusline_format = ['✗ %d', '⚡ %d', '✔ OK']
 
 "使用clang对c和c++进行语法检查，对python使用pylint进行语法检查
 let g:ale_linters = {
-\   'c++': ['clang'],
-\   'c': ['clang'],
-\   'python': ['pylint'],
+\   'c++'    : ['clang'],
+\   'c'      : ['clang']
 \}
 
 let g:ale_linters = {'python': ['flake8'], 'reStructuredText': ['rstcheck']}
@@ -227,6 +296,19 @@ let g:ale_fixers = {'python': ['remove_trailing_lines', 'trim_whitespace', 'auto
 
 " java 报错不乱码
 let g:ale_java_javac_options = '-encoding UTF-8  -J-Duser.language=en'
+
+"================================
+
+"普通模式下，sp前往上一个错误或警告，sn前往下一个错误或警告
+nmap sp <Plug>(ale_previous_wrap)
+nmap sn <Plug>(ale_next_wrap)
+
+"<Leader>s 触发/关闭语法检查
+nmap <Leader>s :ALEToggle<CR>
+
+"<Leader>d 查看错误或警告的详细信息
+nmap <Leader>d :ALEDetail<CR>
+
 "===
 "=== vim-syntastic
 "===
@@ -334,6 +416,7 @@ function! g:Open_firefox_in_new_window(url)
 endfunction
 
 let g:mkdp_browserfunc='g:Open_firefox_in_new_window'
+
 "===
 "=== python
 "===
@@ -360,28 +443,142 @@ let g:Lf_ShortcutF = "<leader>ff"
 "=== snipMate
 "===
 
-let g:snipMate = get(g:, 'snipMate', {}) " Allow for vimrc re-sourcing
-let g:snipMate.scope_aliases = {}
-let g:snipMate.scope_aliases['ruby'] = 'ruby,rails'
+if v:version < 704 || has('win32')
+	function! s:Glob(path, expr)
+		let res = []
+		for p in split(a:path, ',')
+			let h = split(fnamemodify(a:expr, ':h'), '/')[0]
+			if isdirectory(p . '/' . h)
+				call extend(res, split(glob(p . '/' . a:expr), "\n"))
+			endif
+		endfor
+		return filter(res, 'filereadable(v:val)')
+	endfunction
+else
+	function! s:Glob(path, expr)
+		return split(globpath(a:path, a:expr), "\n")
+	endfunction
+endif
 
-let g:tex_flavor = "latex"
-" inoremap <c-n> <nop>
-let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-let g:UltiSnipsSnippetDirectories = [$HOME.'~/AppData/Local/nvim/Ultisnips/', 'UltiSnips']
-" silent! au BufEnter,BufRead,BufNewFile * silent! unmap <c-r>
+if exists('loaded_snips') || &cp || version < 700
+	finish
+endif
+let loaded_snips = 1
+
+" Save and reset 'cpo'
+let s:save_cpo = &cpo
+set cpo&vim
+
+au BufRead,BufNewFile *.snippet,*.snippets setlocal filetype=snippets
+au FileType snippets if expand('<afile>:e') =~# 'snippet$'
+				\ | setlocal syntax=snippet
+			\ | else
+				\ | setlocal syntax=snippets
+			\ | endif
+
+inoremap <silent> <Plug>snipMateNextOrTrigger  <C-R>=snipMate#TriggerSnippet()<CR>
+snoremap <silent> <Plug>snipMateNextOrTrigger  <Esc>a<C-R>=snipMate#TriggerSnippet()<CR>
+inoremap <silent> <Plug>snipMateTrigger        <C-R>=snipMate#TriggerSnippet(1)<CR>
+inoremap <silent> <Plug>snipMateBack           <C-R>=snipMate#BackwardsSnippet()<CR>
+snoremap <silent> <Plug>snipMateBack           <Esc>a<C-R>=snipMate#BackwardsSnippet()<CR>
+inoremap <silent> <Plug>snipMateShow           <C-R>=snipMate#ShowAvailableSnips()<CR>
+xnoremap <silent> <Plug>snipMateVisual         :<C-U>call <SID>grab_visual()<CR>gv"_c
+
+" 配置变量
+if !exists('g:snips_author')
+	let g:snips_author = 'Me'
+endif
+if !exists('g:snipMate')
+	let g:snipMate = {}
+endif
+
+" SnipMate inserts this string when no snippet expansion can be done
+let g:snipMate['no_match_completion_feedkeys_chars'] =
+			\ get(g:snipMate, 'no_match_completion_feedkeys_chars', "\t")
+
+" 添加默认作用域别名，而不覆盖用户设置
+let g:snipMate.scope_aliases = get(g:snipMate, 'scope_aliases', {})
+if exists('g:snipMate_no_default_aliases')
+	echom 'The g:snipMate_no_default_aliases option has been renamed.'
+				\ 'See :h snipMate-options.'
+endif
+if (!exists('g:snipMate_no_default_aliases') || !g:snipMate_no_default_aliases)
+			\ && (!exists('g:snipMate.no_default_aliases')
+				\ || !g:snipMate.no_default_aliases)
+	let g:snipMate.scope_aliases.objc =
+				\ get(g:snipMate.scope_aliases, 'objc', 'c')
+	let g:snipMate.scope_aliases.cpp =
+				\ get(g:snipMate.scope_aliases, 'cpp', 'c')
+	let g:snipMate.scope_aliases.cu =
+				\ get(g:snipMate.scope_aliases, 'cu', 'c')
+	let g:snipMate.scope_aliases.xhtml =
+				\ get(g:snipMate.scope_aliases, 'xhtml', 'html')
+	let g:snipMate.scope_aliases.html =
+				\ get(g:snipMate.scope_aliases, 'html', 'javascript')
+	let g:snipMate.scope_aliases.php =
+				\ get(g:snipMate.scope_aliases, 'php', 'php,html,javascript')
+	let g:snipMate.scope_aliases.ur =
+				\ get(g:snipMate.scope_aliases, 'ur', 'html,javascript')
+	let g:snipMate.scope_aliases.mxml =
+				\ get(g:snipMate.scope_aliases, 'mxml', 'actionscript')
+	let g:snipMate.scope_aliases.eruby =
+				\ get(g:snipMate.scope_aliases, 'eruby', 'eruby-rails,html')
+	let g:snipMate.scope_aliases.scss =
+				\ get(g:snipMate.scope_aliases, 'scss', 'css')
+	let g:snipMate.scope_aliases.less =
+				\ get(g:snipMate.scope_aliases, 'less', 'css')
+endif
+
+" Modified from Luc Hermitte's function on StackOverflow
+" <http://stackoverflow.com/a/1534347>
+function! s:grab_visual() abort
+	let a_save = @a
+	try
+		normal! gv"ay
+		let b:snipmate_visual = @a
+	finally
+		let @a = a_save
+	endtry
+endfunction
+
+" TODO: 允许指定任意 snippet 文件
+function! s:load_scopes(bang, ...) abort
+	let gb = a:bang ? g: : b:
+	let gb.snipMate = get(gb, 'snipMate', {})
+	let gb.snipMate.scope_aliases = get(gb.snipMate, 'scope_aliases', {})
+	let gb.snipMate.scope_aliases['_'] = join(split(get(gb.snipMate.scope_aliases, '_', ''), ',') + a:000, ',')
+endfunction
+
+command! -bang -bar -nargs=+ SnipMateLoadScope
+			\ call s:load_scopes(<bang>0, <f-args>)
+
+" Edit snippet files
+command! SnipMateOpenSnippetFiles call snipMate#OpenSnippetFiles()
+
+" restore(恢复/修复) 'cpo'
+let &cpo = s:save_cpo
 
 "===
 "=== coc.vim
 "===
 
-" coc-json
 call coc#add_extension('coc-json', 'coc-tsserver', 'coc-rls','coc-snippets')
-" nodejs
-let g:coc_node_path = 'D:/Development/nodejs/node'
-" let g:coc_node_path = '/usr/bin/node'
 
+let g:coc_node_path = 'D:/Development/nodejs/node'
+
+let g:indent_guides_enable_on_vim_startup = 1
+let g:lightline = {
+      \ 'colorscheme': 'iceberg',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'cocstatus': 'coc#status',
+      \   'currentfunction': 'CocCurrentFunction'
+      \ },
+      \ }
+let g:sneak#label = 1
 " 修正COC Bug
 silent! au BufEnter,BufRead,BufNewFile * silent! unmap if
 let g:coc_global_extensions = [
@@ -403,3 +600,43 @@ let g:coc_filetype_map = {
     \ 'javascript.jsx' : 'javascriptreact',
     \ 'typescript.tsx' : 'typescriptreact'
     \ }
+
+"=======================================
+
+" :verbose imap <tab> 查看当前<tab>映射
+" 防止映射冲突
+" 定制补全体验
+" 使用 <tab> 触发补全
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <TAB>
+              \ pumvisible() ? "\<C-n>" :
+              \ <SID>check_back_space() ? "\<TAB>" :
+              \ coc#refresh()
+
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+" 使用 <C-SPACE> 强制触发补全
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" 使用 <CR> 确认补全
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<CR>"
+" 使用 <CR> 确认补全，并触发 coc.nvim 的 formatOnType 功能:
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                        \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+nnoremap <silent> <cr> <Plug>(coc-openlink)
+
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                        \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+nnoremap <silent> <Leader>k :call <SID>show_documentation()<CR>

@@ -42,6 +42,7 @@ let g:NERDTreeExtensionHighlightColor['pug']=s:lightGreen
 let g:NERDTreeExtensionHighlightColor['vue']=s:green
 
 let g:NERDTreeExtensionHighlightColor['png']=s:lightblue
+let g:NERDTreeExtensionHighlightColor['PNG']=s:lightblue
 let g:NERDTreeExtensionHighlightColor['jpg']=s:lightblue
 let g:NERDTreeExtensionHighlightColor['svg']=s:orange
 let g:NERDTreeExtensionHighlightColor['icon']=s:salmon
