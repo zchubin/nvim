@@ -4,7 +4,6 @@ if empty(glob('$HOME/AppData/Local/nvim/autoload/plug.vim'))
     autocmd VimEnter * PlugInstall --sync | source $VIMRC
 endif
 
-set updatetime=300
 "============================
 "=== 防止重复加载相同配置 ===
 "============================
@@ -22,6 +21,8 @@ endif
 " 设置字体
 " set guifont=Envy\ Code\ R\ VS:h18
 set guifont=GoMono\ Nerd\ Font\ Mono:h18
+
+set guifont=DroidSansMono\ Nerd\ Font:h11
 
 " 设置中文提示
 language messages zh_CN.utf-8
@@ -54,7 +55,7 @@ exec 'set rtp+='.s:home
 "============
 
 " 加载环境配置
-" LocalScript vimrc/A-path.vim
+LocalScript vimrc/A-path.vim
 
 " 加载基础配置
 LocalScript vimrc/B-basic.vim
@@ -76,7 +77,7 @@ Plug 'mhinz/vim-startify'
 " 状态栏
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-" 显示复制
+" 显示复制范围
 Plug 'machakann/vim-highlightedyank'
 " coc补全框架
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -89,6 +90,8 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 " 模糊查找工具
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+" 缩进线
+ Plug 'Yggdroot/indentLine'
 " ------需要简单配置---------------------------------
 " 快速注释
 Plug 'preservim/nerdcommenter'
@@ -103,27 +106,27 @@ Plug 'honza/vim-snippets'
 
 " 拼写检查
 Plug 'dense-analysis/ale'
-" 语法检查
-Plug 'vim-syntastic/syntastic'
-" 按键提示
-" Plug 'liuchengxu/vim-which-key'
-" Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 " NERDTree
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-" minimap
-" Plug 'severin-lemaignan/vim-minimap'
 " Html,css
 Plug 'mattn/emmet-vim', { 'for': ['html', 'css'] }
 Plug 'othree/html5.vim', { 'for': 'html' }
 Plug 'cakebaker/scss-syntax.vim', { 'for': ['scss', 'css'] }
 " css3颜色显示
-Plug 'gko/vim-coloresque', { 'for': ['html', 'css', 'less', 'sass'] }
+"Plug 'gko/vim-coloresque', { 'for': ['html', 'css', 'less', 'sass'] }
 
 " markdown
+Plug 'iamcco/mathjax-support-for-mkdp'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 " Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install_sync() }, 'for' :['markdown', 'vim-plug'] }
+" 语法高亮+阅读优化
+" Plug 'tamlok/vim-markdown'
+" 代码块高亮
+ Plug 'joker1007/vim-markdown-quote-syntax'
+" mark down目录
+" Plug 'majutsushi/tagbar'
 
 " python
 Plug 'tmhedberg/SimpylFold', { 'for' :['python', 'vim-plug'] }
@@ -134,6 +137,6 @@ Plug 'airblade/vim-gitgutter'
 
 call plug#end()
 " 加载插件配置
-LocalScript vimrc/E-plugins.vim
+ LocalScript vimrc/E-plugins.vim
 " 加载插件配色
 LocalScript vimrc/F-color.vim

@@ -23,7 +23,7 @@ set smarttab
 set autoindent
 
 " 继承前一行缩进方式
-set formatoptions=tcrqn
+" set formatoptions=tcrqn
 
 " 设置缩进宽度
 set sw=2
@@ -66,14 +66,14 @@ set ttimeoutlen=50
 set ruler
 
 " 禁止显示菜单和工具条
-set guioptions-=m
-set guioptions-=T
+" set guioptions-=m
+" set guioptions-=T
 
 " 启用正则表达式
 set magic
 
 " 设置行号
-set nu
+" set nu
 " set relativenumber
 
 " 高亮显示当前行
@@ -165,12 +165,12 @@ endif
 "=== 其他设置 ===
 "================
 
-" 设置状态行显示常用信息
-set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ %-14.(%l,%c%V%)\ %P
-
-" 0 ，不显式状态行
-" 1 ，仅当窗口多于一个时，显示状态行
-" 2 ，总是显式状态行
+" " 设置状态行显示常用信息
+" set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ %-14.(%l,%c%V%)\ %P
+"
+" " 0 ，不显式状态行
+" " 1 ，仅当窗口多于一个时，显示状态行
+" " 2 ，总是显式状态行
 set laststatus=2
 
 " 单词 = 单词 + 连字符
@@ -194,9 +194,6 @@ set lazyredraw
 " 错误格式
 set errorformat+=[%f:%l]\ ->\ %m,[%f:%l]:%m
 
-" 用▸示缩进,▫显示空格,>显示扩充,<显示回车
-set listchars=tab:▸\ ,trail:▫,extends:»,precedes:
-
 " 设置 tags：当前文件所在目录往上向根目录搜索直到碰到 .tags 文件
 " 或者 Vim 当前目录包含 .tags 文件
 set tags=./.tags;,.tags
@@ -213,6 +210,9 @@ if has("win32")
 else
 	set fileformats=unix,mac,dos
 endif
+
+" 用▸示缩进,▫显示空格,>显示扩充,<显示回车
+set listchars=tab:▸\ ,trail:▫,extends:»,precedes:
 
 " TXT/Markdown/XML 等比较需要换行
 " autocmd FileType text,html,xml set wrap
@@ -241,7 +241,7 @@ set display=lastline
 :let g:ft_ignnore_pat = '\.\(z\|'
 
 " 分屏时中间不显示分隔线便于阅读
-set fillchars=vert:\ ,stl:\ ,stlnc:\
+" set fillchars=vert:\ ,stl:\ ,stlnc:\
 
 "====================
 "=== 设置代码折叠 ===

@@ -21,10 +21,10 @@ let g:startify_bookmarks = [
             \ ]
 
 let g:startify_custom_header = [
-            \ '+--------------------------------------------+',
-            \ '|  b:在不同窗口打开          t:在tab中打开   |',
-            \ '|  s:水平切分窗口            v:垂直切分窗口  |',
-            \ '+--------------------------------------------+',
+            \ ' +--------------------------------------------+',
+            \ ' |  b:在不同窗口打开          t:在tab中打开   |',
+            \ ' |  s:水平切分窗口            v:垂直切分窗口  |',
+            \ ' +--------------------------------------------+',
             \ '       o',
             \ '        o   ^__^',
             \ '         o  (oo)\_______',
@@ -34,9 +34,9 @@ let g:startify_custom_header = [
             \ ]
 
 let g:startify_custom_footer = [
-            \ '+--------------------------------------------+',
-            \ '|      -zchubin-work-menu-                   |',
-            \ '+--------------------------------------------+',
+            \ ' +--------------------------------------------+',
+            \ ' |      -zchubin-work-menu-                   |',
+            \ ' +--------------------------------------------+',
             \ ]
 
 "===
@@ -131,7 +131,7 @@ let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {
 \ }
 
 "====
-"==== airline vim-highlightedyank
+"==== airline vim-highlightedyank indenLine
 "====
 
 " let g:airline_theme='violet'
@@ -154,18 +154,32 @@ hi User4 cterm=bold ctermfg=169 ctermbg=239
 " 高亮持续时间
 let g:highlightedyank_highlight_duration = 100
 
+"---------------------------------------------------------------------
+ if &background  ==# 'dark'
+	let g:indentLine_color_term = get(g:, 'indentLine_color_term', 239)
+	let g:indentLine_color_gui  = get(g:, 'indentLine_color_gui', '#504945')
+    else
+	let g:indentLine_color_gui  = get(g:, 'indentLine_color_gui', '#d5c4a1')
+    endif
+    let g:indentLine_char            = '┆'
+    let g:indentLine_concealcursor   = 'niv'      " default 'inc'
+    "let g:indentLine_concealcursor  = 'inc'      " default 'inc'
+    let g:indentLine_conceallevel    = 1
+    let g:indentLine_fileTypeExclude = ['help', 'startify', 'vimfiler', 'haskell', 'erlang']
+    let g:indentLine_setColors       = 0
+    "autocmd FileType *.hs :IndentLinesDisable
 "===
 "=== NERD Commenter
 "===
 
-"""""""""""""""""""""""""""""""""""""""
-" <LEADER>ca  在可选的注释方式之间切换  "
+""""""""""""""""""""""""""""""""""""""""
+" <LEADER>ca  在可选的注释方式之间切换 "
 " <LEADER>cc  注释当前行               "
 " <LEADER>cs  添加 "性感"注释          "
-" <LEADER>cA  在当前行尾添加注释        "
+" <LEADER>cA  在当前行尾添加注释       "
 " <LEADER>cu  取消注释                 "
 " <LEADER>cm  添加块注释               "
-"""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""
 
 " 默认注释定界符后添加空格
 let g:NERDSpaceDelims = 1
@@ -310,19 +324,6 @@ nmap <Leader>s :ALEToggle<CR>
 nmap <Leader>d :ALEDetail<CR>
 
 "===
-"=== vim-syntastic
-"===
-
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-"===
 "=== NERDTree
 "===
 
@@ -355,14 +356,6 @@ let g:NERDTreeIndicatorMapCustom = {
     \ 'Ignored'   : "☒",
     \ "Unknown"   : "?"
     \ }
-" 隐藏标识符括号
-augroup nerdtreeconcealbrackets
-      autocmd!
-      autocmd FileType nerdtree syntax match hideBracketsInNerdTree "\]" contained conceal containedin=ALL
-      autocmd FileType nerdtree syntax match hideBracketsInNerdTree "\[" contained conceal containedin=ALL
-      autocmd FileType nerdtree setlocal conceallevel=3
-      autocmd FileType nerdtree setlocal concealcursor=nvic
-augroup END
 
 let g:NERDTreeFileExtensionHighlightFullName = 1
 let g:NERDTreeExactMatchHighlightFullName = 1
@@ -381,8 +374,9 @@ let g:NERDTreeSyntaxEnabledExtensions = [
     \ 'png', 'jpg', 'svg', 'icon'
     \ ]
 let g:NERDTreeHighlightCursorline = 0
+
 "===
-"=== markdown_preview
+"=== markdown_preview vim-markdown-quote-syntax
 "===
 
 let g:mkdp_auto_start = 0
@@ -411,11 +405,107 @@ let g:mkdp_port = ''
 let g:mkdp_page_title = '「${name}」'
 let vim_markdown_preview_hotkey='<C-m>'
 
+" =============================================
 function! g:Open_firefox_in_new_window(url)
     silent exe 'silent !open -na "Firefox" --args --new-window ' . a:url
 endfunction
 
 let g:mkdp_browserfunc='g:Open_firefox_in_new_window'
+
+if !exists('g:markdown_quote_syntax_defaults')
+  let g:markdown_quote_syntax_defaults = {
+	\ "vim" : {
+	\   "start" : "vim",
+	\},
+	\ "diff" : {
+	\   "start" : "diff",
+	\},
+	\ "c" : {
+	\   "start" : "c",
+	\},
+	\ "cpp" : {
+	\   "start" : "cpp",
+	\},
+	\ "java" : {
+	\   "start" : "java",
+	\},
+	\ "ruby" : {
+	\   "start" : "\\%(ruby\\|rb\\)",
+	\},
+	\ "haskell" : {
+	\   "start" : "\\%(haskell\\|hs\\)",
+	\},
+	\ "python" : {
+	\   "start" : "\\%(python\\|py\\)",
+	\},
+	\ "perl" : {
+	\   "start" : "\\%(perl\\|pl\\)",
+	\},
+	\ "javascript" : {
+	\   "start" : "\\%(javascript\\|js\\)",
+	\},
+	\ "html" : {
+	\   "start" : "html",
+	\},
+	\ "sh" : {
+	\   "start" : "sh",
+	\},
+	\ "sql" : {
+	\   "start" : "sql",
+	\},
+	\ "ocaml" : {
+	\   "start" : "ocaml",
+	\},
+	\ "erlang" : {
+	\   "start" : "erlang",
+	\},
+  \}
+endif
+
+if !exists('g:markdown_quote_syntax_filetypes')
+  let g:markdown_quote_syntax_filetypes = {}
+endif
+
+if !exists('g:markdown_quote_syntax_codeblocks_default')
+  " Triple backtick, Triple wave, Liquid highlight,
+  " Octopress codeblock (w/ and w/o lang:)
+  "
+  " Each codeblock is defined as:
+  "  'codeblock[0].filetype.codeblock[1]<code lines>codeblock[2]'
+  let g:markdown_quote_syntax_codeblocks_default = [
+    \["^\\s*\\(>\\s*\\)\\?```", "\\(\\s*:.*\\)\\?$",
+      \"^\\s*\\(>\\s*\\)\\?```\\ze\\s*$"],
+    \["^\\s*\\~\\{3,}\.*\\.", ".*$","^\\s*\\~\\{3,}\\ze\\s*$"],
+    \["^\\s*{% *highlight \\+", "\\( .*%\\|%\\)}", "^\\s*{% *endhighlight\\( .*%\\|%\\)}"],
+    \["^\\s*{% *codeblock \\( *\\|.* \\)lang:", "\\( .*%\\|%\\)}", "^\\s*{% *endcodeblock\\( .*%\\|%\\)}"],
+    \["^\\s*{% *codeblock \\(.*lang:.*\\)\\@!.*\\.", "\\( *%\\| .*%\\)}", "^\\s*{% *endcodeblock\\( .*%\\|%\\)}"],
+  \]
+endif
+
+if !exists('g:markdown_quote_syntax_codeblocks')
+  let g:markdown_quote_syntax_codeblocks = []
+endif
+
+if !exists('g:markdown_quote_syntax_on_filetypes_default')
+  let g:markdown_quote_syntax_on_filetypes_default = ['markdown', 'mkd']
+endif
+
+if !exists('g:markdown_quote_syntax_on_filetypes')
+  let g:markdown_quote_syntax_on_filetypes = []
+endif
+
+augroup markdown_quote_syntax
+  autocmd!
+  let on_filetypes = deepcopy(g:markdown_quote_syntax_on_filetypes_default)
+  let on_filetypes = extend(on_filetypes, g:markdown_quote_syntax_on_filetypes)
+  for ft in on_filetypes
+    execute "autocmd Syntax" ft "call markdown_quote_syntax#enable_quote_syntax()"
+  endfor
+augroup END
+
+let g:loaded_markdown_quote_syntax = 1
+
+" =============================================
 
 "===
 "=== python
@@ -438,6 +528,8 @@ let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "Envy Cod
 let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
 
 let g:Lf_ShortcutF = "<leader>ff"
+nmap <Leader>fm :LeaderfMru<cr>
+nmap <Leader>F :LeaderfFunction<cr>
 
 "===
 "=== snipMate
