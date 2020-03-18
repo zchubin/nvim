@@ -25,11 +25,11 @@ set autoindent
 " 继承前一行缩进方式
 " set formatoptions=tcrqn
 
-" 设置缩进宽度
-set sw=2
-
 " 设置 TAB 宽度
-set tw=4
+set ts=4
+
+" 设置缩进宽度
+set sw=4
 
 " 如果后面设置了 expandtab 那么展开 tab 为多少字符
 set softtabstop=4
@@ -73,7 +73,7 @@ set ruler
 set magic
 
 " 设置行号
-" set nu
+set nu
 " set relativenumber
 
 " 高亮显示当前行

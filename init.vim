@@ -1,3 +1,7 @@
+"====================
+"=== 自动配置插件 ===
+"====================
+
 if empty(glob('$HOME/AppData/Local/nvim/autoload/plug.vim'))
     silent !curl -fLo $HOME/AppData/Local/nvim/autoload/plug.vim --create-dirs
                 \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -21,8 +25,7 @@ endif
 " 设置字体
 " set guifont=Envy\ Code\ R\ VS:h18
 set guifont=GoMono\ Nerd\ Font\ Mono:h18
-
-set guifont=DroidSansMono\ Nerd\ Font:h11
+" set guifont=DroidSansMono\ Nerd\ Font:h11
 
 " 设置中文提示
 language messages zh_CN.utf-8
@@ -39,8 +42,6 @@ set background=dark    " for the dark version
 
 colorscheme gruvbox
 
-let g:mkdp_browser = 'firefox'
-
 " 取得本文件所在的目录
 let s:home = fnamemodify(resolve(expand('<sfile>:p')), ':h')
 " 定义一个命令用来加载文件
@@ -48,7 +49,7 @@ command! -nargs=1 LocalScript exec 'so '.s:home.'/'.'<args>'
 " 将本目录加入 runtimepath
 exec 'set rtp+='.s:home
 
-" autocmd BufWritePost $MYVIMRC source $MYVIMRC " 让配置变更立即生效
+autocmd BufWritePost $MYVIMRC source $MYVIMRC " 让配置变更立即生效
 
 "============
 "=== 模块 ===
@@ -77,26 +78,28 @@ Plug 'mhinz/vim-startify'
 " 状态栏
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-" 显示复制范围
-Plug 'machakann/vim-highlightedyank'
+
 " coc补全框架
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" ------安装即用-----------------------------------
+
+" 显示复制范围
+Plug 'machakann/vim-highlightedyank'
+let g:highlightedyank_highlight_duration = 100
+
 " 给关键字添加下划线，方便关注
 Plug 'vim-scripts/vim-cursorword'
 " 自动匹配括号
 Plug 'jiangmiao/auto-pairs'
+" 突出显示括号方阵
+Plug 'ccampbell/rainbow'
 " 快速添加包围符号
 Plug 'tpope/vim-surround'
 " 模糊查找工具
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 " 缩进线
- Plug 'Yggdroot/indentLine'
-" ------需要简单配置---------------------------------
+Plug 'Yggdroot/indentLine'
 " 快速注释
 Plug 'preservim/nerdcommenter'
-" 突出显示括号方阵
-Plug 'ccampbell/rainbow'
 " 快速对齐对 markdown 表格尤为友好
 Plug 'godlygeek/tabular'
 
@@ -115,16 +118,15 @@ Plug 'mattn/emmet-vim', { 'for': ['html', 'css'] }
 Plug 'othree/html5.vim', { 'for': 'html' }
 Plug 'cakebaker/scss-syntax.vim', { 'for': ['scss', 'css'] }
 " css3颜色显示
-"Plug 'gko/vim-coloresque', { 'for': ['html', 'css', 'less', 'sass'] }
+Plug 'gko/vim-coloresque', { 'for': ['html', 'css', 'less', 'sass'] }
 
 " markdown
+Plug 'joker1007/vim-markdown-quote-syntax'
 Plug 'iamcco/mathjax-support-for-mkdp'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 " Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install_sync() }, 'for' :['markdown', 'vim-plug'] }
 " 语法高亮+阅读优化
 " Plug 'tamlok/vim-markdown'
-" 代码块高亮
- Plug 'joker1007/vim-markdown-quote-syntax'
 " mark down目录
 " Plug 'majutsushi/tagbar'
 
@@ -132,11 +134,25 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 Plug 'tmhedberg/SimpylFold', { 'for' :['python', 'vim-plug'] }
 Plug 'Vimjas/vim-python-pep8-indent', { 'for' :['python', 'vim-plug'] }
 
+let g:SimpylFold_docstring_preview = 1
+
 " git
 Plug 'airblade/vim-gitgutter'
 
 call plug#end()
-" 加载插件配置
- LocalScript vimrc/E-plugins.vim
-" 加载插件配色
-LocalScript vimrc/F-color.vim
+
+LocalScript vimrc/Plugs/devicons.vim
+LocalScript vimrc/Plugs/startify.vim
+LocalScript vimrc/Plugs/airline.vim
+LocalScript vimrc/Plugs/coc.vim
+LocalScript vimrc/Plugs/rainbow.vim
+LocalScript vimrc/Plugs/leaderF.vim
+LocalScript vimrc/Plugs/indentLine.vim
+LocalScript vimrc/Plugs/nerdCommenter.vim
+LocalScript vimrc/Plugs/tabular.vim
+LocalScript vimrc/Plugs/snipMate.vim
+LocalScript vimrc/Plugs/ale.vim
+LocalScript vimrc/Plugs/nerdTree.vim
+LocalScript vimrc/Plugs/emmet.vim
+LocalScript vimrc/Plugs/markdown.vim
+

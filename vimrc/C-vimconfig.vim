@@ -1,17 +1,15 @@
-"=========================================
-"=== 有 tmux 和没有的功能键超时（毫秒）===
-"=========================================
+"=========================
+"=== 功能键超时（毫秒）===
+"=========================
 
-if $TMUX != ''
-	set ttimeoutlen=30
-elseif &ttimeoutlen > 80 || &ttimeoutlen <= 0
+if &ttimeoutlen > 80 || &ttimeoutlen <= 0
 	set ttimeoutlen=80
 endif
 
-"======================================================================
-"=== 终端下允许 ALT，详见：http://www.skywind.me/blog/archives/2021 ===
-"=== 记得设置 ttimeout （见 init-basic.vim） 和 ttimeoutlen （上面）===
-"======================================================================
+"=========================
+"=== 终端下允许 ALT    ===
+"=== 记得设置 ttimeout ===
+"=========================
 
 if has('nvim') == 0 && has('gui_running') == 0
 	function! s:metacode(key)
@@ -63,36 +61,9 @@ call s:key_escape('<S-F10>', '[21;2~')
 call s:key_escape('<S-F11>', '[23;2~')
 call s:key_escape('<S-F12>', '[24;2~')
 
-"============================================================
-"=== 防止tmux下vim的背景色显示异常			  ===
-"=== Refer: http://sunaku.github.io/vim-256color-bce.html ===
-"============================================================
-
-if &term =~ '256color' && $TMUX != ''
-	" disable Background Color Erase (BCE) so that color schemes
-	" render properly when inside 256-color tmux and GNU screen.
-	" see also http://snk.tuxfamily.org/log/vim-256color-bce.html
-	set t_ut=
-endif
-
 "================
 "=== 配置微调 ===
 "================
-
-" 修正 ScureCRT/XShell 以及某些终端乱码问题，主要原因是不支持一些
-" 终端控制命令，比如 cursor shaping 这类更改光标形状的 xterm 终端命令
-" 会令一些支持 xterm 不完全的终端解析错误，显示为错误的字符，比如 q 字符
-" 如果你确认你的终端支持，不会在一些不兼容的终端上运行该配置，可以注释
-if has('nvim')
-	set guicursor=
-elseif (!has('gui_running')) && has('terminal') && has('patch-8.0.1200')
-	let g:termcap_guicursor = &guicursor
-	let g:termcap_t_RS = &t_RS
-	let g:termcap_t_SH = &t_SH
-	set guicursor=
-	set t_RS=
-	set t_SH=
-endif
 
 " 打开文件时恢复上一次光标所在位置
 autocmd BufReadPost *

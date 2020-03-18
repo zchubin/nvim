@@ -55,6 +55,13 @@ noremap `<down> :res -5<CR>
 noremap `<left> :vertical resize+5<CR>
 noremap `<right> :vertical resize-5<CR>
 
+noremap `<tab> :set signcolumn=no<CR>
+noremap `<CR> :set signcolumn=yes<CR>
+noremap `0 :set relativenumber<CR>
+noremap `1 :set number<CR>
+noremap `<ESC> :set nonumber<CR>:set norelativenumber<CR>:set signcolumn=no<CR>
+
+
 " 编译调用的插件
 map <Leader>r :call CompileRunGcc()<CR>
 func! CompileRunGcc()
