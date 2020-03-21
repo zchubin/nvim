@@ -5,6 +5,7 @@
 " 禁用 vi 兼容模式
 set nocompatible
 
+"  coc
 " 如果不设置隐藏,TextEdirt可能会失败
 set hidden
 " 留出多大空间来显示消息
@@ -166,8 +167,8 @@ endif
 "================
 
 " " 设置状态行显示常用信息
-" set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ %-14.(%l,%c%V%)\ %P
-"
+set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ %-14.(%l,%c%V%)\ %P
+
 " " 0 ，不显式状态行
 " " 1 ，仅当窗口多于一个时，显示状态行
 " " 2 ，总是显式状态行

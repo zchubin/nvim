@@ -55,49 +55,49 @@ noremap `<down> :res -5<CR>
 noremap `<left> :vertical resize+5<CR>
 noremap `<right> :vertical resize-5<CR>
 
+noremap `<ESC> :set nonumber<CR>:set norelativenumber<CR>:set signcolumn=no<CR>
 noremap `<tab> :set signcolumn=no<CR>
 noremap `<CR> :set signcolumn=yes<CR>
 noremap `0 :set relativenumber<CR>
-noremap `1 :set number<CR>
-noremap `<ESC> :set nonumber<CR>:set norelativenumber<CR>:set signcolumn=no<CR>
+noremap `1 :set nonumber!<CR>:set foldcolumn=0<CR>
 
 
 " 编译调用的插件
 map <Leader>r :call CompileRunGcc()<CR>
-func! CompileRunGcc()
-    exec "w"
-    if &filetype == 'c'
-        exec "!g++ % -o %<"
-        exec "!time ./%<"
-    elseif &filetype == 'cpp'
-        set splitbelow
-        exec "!g++ -std=c++11 % -Wall -o %<"
-        :sp
-        :res -15
-        :term ./%<
-    elseif &filetype == 'cs'
-        exec "!mcs %"
-        exec "!time mono %<.exe"
-    elseif &filetype == 'java'
-        exec "!javac -encoding utf-8 %"
-        exec "!java %"
-    elseif &filetype == 'sh'
-        :!time bash %
-    elseif &filetype == 'python'
-        set splitbelow
-        :sp
-        :term python %
-    elseif &filetype == 'html'
-        silent! exec "!".g:mkdp_browser." % &"
-    elseif &filetype == 'markdown'
-        exec "MarkdownPreview"
-    elseif &filetype == 'tex'
-        silent! exec "VimtexStop"
-        silent! exec "VimtexCompile"
-    elseif &filetype == 'go'
-        set splitbelow
-        :sp
-        :term go run %
-    endif
-endfunc
 
+noremap r :call CompileRunGcc()<CR>
+func! CompileRunGcc()
+	exec "w"
+	if &filetype == 'c'
+		exec "!g++ % -o %<"
+		exec "!time ./%<"
+	elseif &filetype == 'cpp'
+		set splitbelow
+		exec "!g++ -std=c++11 % -Wall -o %<"
+		:sp
+		:res -15
+		:term ./%<
+	elseif &filetype == 'java'
+        exec "!javac -encoding utf-8 %"
+		exec "!time java %<"
+	elseif &filetype == 'sh'
+		:!time bash %
+	elseif &filetype == 'python'
+		set splitbelow
+		:sp
+		:term python3 %
+	elseif &filetype == 'html'
+		silent! exec "!".g:mkdp_browser." % &"
+	elseif &filetype == 'markdown'
+		exec "MarkdownPreview"
+    " elseif &filetype == 'vimwiki'
+    "     exec "MarkdownPreview"
+	elseif &filetype == 'tex'
+		silent! exec "VimtexStop"
+		silent! exec "VimtexCompile"
+	elseif &filetype == 'go'
+		set splitbelow
+		:sp
+		:term go run %
+	endif
+endfunc

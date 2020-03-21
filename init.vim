@@ -23,7 +23,6 @@ endif
 "================
 
 " 设置字体
-" set guifont=Envy\ Code\ R\ VS:h18
 set guifont=GoMono\ Nerd\ Font\ Mono:h18
 " set guifont=DroidSansMono\ Nerd\ Font:h11
 
@@ -49,7 +48,7 @@ command! -nargs=1 LocalScript exec 'so '.s:home.'/'.'<args>'
 " 将本目录加入 runtimepath
 exec 'set rtp+='.s:home
 
-autocmd BufWritePost $MYVIMRC source $MYVIMRC " 让配置变更立即生效
+" autocmd BufWritePost $MYVIMRC source $MYVIMRC " 让配置变更立即生效
 
 "============
 "=== 模块 ===
@@ -102,7 +101,10 @@ Plug 'Yggdroot/indentLine'
 Plug 'preservim/nerdcommenter'
 " 快速对齐对 markdown 表格尤为友好
 Plug 'godlygeek/tabular'
-
+Plug 'SirVer/ultisnips'
+" 多项选择修改
+Plug 'terryma/vim-multiple-cursors'
+" 代码片段
 Plug 'SirVer/ultisnips'
 " Optional
 Plug 'honza/vim-snippets'
@@ -114,22 +116,15 @@ Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 " Html,css
-Plug 'mattn/emmet-vim', { 'for': ['html', 'css'] }
+Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'markdown'] }
 Plug 'othree/html5.vim', { 'for': 'html' }
 Plug 'cakebaker/scss-syntax.vim', { 'for': ['scss', 'css'] }
 " css3颜色显示
 Plug 'gko/vim-coloresque', { 'for': ['html', 'css', 'less', 'sass'] }
 
 " markdown
-Plug 'joker1007/vim-markdown-quote-syntax'
-Plug 'iamcco/mathjax-support-for-mkdp'
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
-" Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install_sync() }, 'for' :['markdown', 'vim-plug'] }
-" 语法高亮+阅读优化
-" Plug 'tamlok/vim-markdown'
-" mark down目录
-" Plug 'majutsushi/tagbar'
-
+" Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  } " If you have nodejs and yarn
 " python
 Plug 'tmhedberg/SimpylFold', { 'for' :['python', 'vim-plug'] }
 Plug 'Vimjas/vim-python-pep8-indent', { 'for' :['python', 'vim-plug'] }
@@ -155,4 +150,3 @@ LocalScript vimrc/Plugs/ale.vim
 LocalScript vimrc/Plugs/nerdTree.vim
 LocalScript vimrc/Plugs/emmet.vim
 LocalScript vimrc/Plugs/markdown.vim
-
