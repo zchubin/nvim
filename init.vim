@@ -24,7 +24,8 @@ endif
 
 " 设置字体
 set guifont=GoMono\ Nerd\ Font\ Mono:h18
-" set guifont=DroidSansMono\ Nerd\ Font:h11
+" DroidSansMono\ Nerd\ Font:h18
+" set gfw=仿宋:h18:cGB2312
 
 " 设置中文提示
 language messages zh_CN.utf-8
@@ -97,20 +98,25 @@ Plug 'tpope/vim-surround'
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 " 缩进线
 Plug 'Yggdroot/indentLine'
+" Plug 'nathanaelkane/vim-indent-guides'
 " 快速注释
 Plug 'preservim/nerdcommenter'
 " 快速对齐对 markdown 表格尤为友好
 Plug 'godlygeek/tabular'
-Plug 'SirVer/ultisnips'
 " 多项选择修改
 Plug 'terryma/vim-multiple-cursors'
-" 代码片段
-Plug 'SirVer/ultisnips'
-" Optional
-Plug 'honza/vim-snippets'
-
 " 拼写检查
 Plug 'dense-analysis/ale'
+" 文件标签
+" Plug 'majutsushi/tagbar'
+
+" 代码片段
+" Plug 'SirVer/ultisnips'
+" Optional
+" Plug 'honza/vim-snippets'
+
+" Plug 'skywind3000/vim-quickui'
+
 " NERDTree
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
@@ -125,6 +131,9 @@ Plug 'gko/vim-coloresque', { 'for': ['html', 'css', 'less', 'sass'] }
 " markdown
 " Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  } " If you have nodejs and yarn
+Plug 'hotoo/pangu.vim'
+autocmd BufWritePre *.markdown,*.md,*.text,*.txt,*.wiki,*.cnx call PanGuSpacing()
+
 " python
 Plug 'tmhedberg/SimpylFold', { 'for' :['python', 'vim-plug'] }
 Plug 'Vimjas/vim-python-pep8-indent', { 'for' :['python', 'vim-plug'] }
@@ -143,9 +152,10 @@ LocalScript vimrc/Plugs/coc.vim
 LocalScript vimrc/Plugs/rainbow.vim
 LocalScript vimrc/Plugs/leaderF.vim
 LocalScript vimrc/Plugs/indentLine.vim
+" LocalScript vimrc/Plugs/vimIndentGuides.vim
 LocalScript vimrc/Plugs/nerdCommenter.vim
 LocalScript vimrc/Plugs/tabular.vim
-LocalScript vimrc/Plugs/snipMate.vim
+" LocalScript vimrc/Plugs/snipMate.vim
 LocalScript vimrc/Plugs/ale.vim
 LocalScript vimrc/Plugs/nerdTree.vim
 LocalScript vimrc/Plugs/emmet.vim

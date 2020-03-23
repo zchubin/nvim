@@ -24,24 +24,6 @@ let g:coc_global_extensions = [
             \ 'coc-explorer'
             \ ]
 
-let g:indent_guides_enable_on_vim_startup = 1
-
-let g:lightline = {
-      \ 'colorscheme': 'iceberg',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'component_function': {
-      \   'cocstatus': 'coc#status',
-      \   'currentfunction': 'CocCurrentFunction'
-      \ },
-      \ }
-
-let g:sneak#label = 1
-
-" autocmd CursorHold * silent call CocActionAsync('highlight')
-
 let g:coc_filetype_map = {
     \ 'html.swig'      : 'html',
     \ 'wxss'           : 'css',
@@ -62,6 +44,9 @@ endfunction
 
 inoremap <silent><expr> <TAB>
               \ pumvisible() ? "\<C-n>" :
+              \ <SID>check_back_space() ? "\<TAB>" :
+              \ pumvisible() ? coc#_select_confirm() :
+              \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
               \ <SID>check_back_space() ? "\<TAB>" :
               \ coc#refresh()
 
@@ -87,6 +72,11 @@ function! s:show_documentation()
 endfunction
 nnoremap <silent> <Leader>k :call <SID>show_documentation()<CR>
 
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
 let g:coc_snippet_next = '<tab>'
 " 触发代码展开
 imap <C-l> <Plug>(coc-snippets-expand)
@@ -96,3 +86,10 @@ inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<Tab>"
 let g:coc_snippet_next = '<c-j>'
 inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 let g:coc_snippet_prev = '<c-k>'
+
+" call CocRequest('tslint', 'textDocument/tslint/allFixes',
+    " \  {'textDocument': {'uri': 'file:///tmp'}})
+
+nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
+
+

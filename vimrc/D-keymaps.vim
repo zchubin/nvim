@@ -63,9 +63,7 @@ noremap `1 :set nonumber!<CR>:set foldcolumn=0<CR>
 
 
 " 编译调用的插件
-map <Leader>r :call CompileRunGcc()<CR>
-
-noremap r :call CompileRunGcc()<CR>
+noremap <Leader>r :call CompileRunGcc()<CR>
 func! CompileRunGcc()
 	exec "w"
 	if &filetype == 'c'
@@ -85,7 +83,7 @@ func! CompileRunGcc()
 	elseif &filetype == 'python'
 		set splitbelow
 		:sp
-		:term python3 %
+		:term python %
 	elseif &filetype == 'html'
 		silent! exec "!".g:mkdp_browser." % &"
 	elseif &filetype == 'markdown'
