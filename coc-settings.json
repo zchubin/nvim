@@ -65,17 +65,18 @@
     "coc.preferences.snippetStatusText"     : "",//"Ⓢ "
     "coc.preferences.extensionUpdateCheck"  : "weekly",
     "coc.preferences.formatOnType"          : true,
-    "coc.preferences.formatOnSaveFiletypes" : [
-            "python",
-            "html",
-            "css",
-            "markdown",
-            "Markdown",
-            "javascript",
-            "javascriptreact",
-            "typescript",
-            "typescriptreact"
-    ],
+
+    // "coc.prees.formatOnSaveFiletypes" : [
+    //         "python",
+    //         "html",
+    //         "css",
+    //         "markdown",
+    //         "Markdown",
+    //         "javascript",
+    //         "javascriptreact",
+    //         "typescript",
+    //         "typescriptreact"
+    // ],
 
     "git.enableGutters"             : true,
     "git.branchCharacter"           : "\uf408",

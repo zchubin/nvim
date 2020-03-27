@@ -213,6 +213,7 @@ else
 endif
 
 " 用▸示缩进,▫显示空格,>显示扩充,<显示回车
+set list
 set listchars=tab:▸\ ,trail:▫,extends:»,precedes:
 
 " TXT/Markdown/XML 等比较需要换行

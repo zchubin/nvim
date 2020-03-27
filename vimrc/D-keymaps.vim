@@ -20,6 +20,7 @@ map <leader>w :call DeleteTrailingWS()<CR>
 
 vnoremap y "+y
 inoremap <C-s> <ESC>ma:w<CR>'a
+noremap <C-s> <ESC>ma:w<CR>'a
 
 inoremap ;f <Esc>/<++><CR>:nohlsearch<CR>c4l
 inoremap ;q <ESC>
@@ -61,6 +62,8 @@ noremap `<CR> :set signcolumn=yes<CR>
 noremap `0 :set relativenumber<CR>
 noremap `1 :set nonumber!<CR>:set foldcolumn=0<CR>
 
+inoremap <LEADER>\\ 、
+inoremap <LEADER>.. 。
 
 " 编译调用的插件
 noremap <Leader>r :call CompileRunGcc()<CR>

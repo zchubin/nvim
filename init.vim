@@ -2,11 +2,11 @@
 "=== 自动配置插件 ===
 "====================
 
-if empty(glob('$HOME/AppData/Local/nvim/autoload/plug.vim'))
-    silent !curl -fLo $HOME/AppData/Local/nvim/autoload/plug.vim --create-dirs
-                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    autocmd VimEnter * PlugInstall --sync | source $VIMRC
-endif
+" if empty(glob('$HOME/AppData/Local/nvim/autoload/plug.vim'))
+"     silent !curl -fLo $HOME/AppData/Local/nvim/autoload/plug.vim --create-dirs
+"                 \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"     autocmd VimEnter * PlugInstall --sync | source $VIMRC
+" endif
 
 "============================
 "=== 防止重复加载相同配置 ===
@@ -79,6 +79,11 @@ Plug 'mhinz/vim-startify'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+" 代码片段
+" Plug 'SirVer/ultisnips'
+" Optional
+Plug 'honza/vim-snippets'
+
 " coc补全框架
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
@@ -110,11 +115,6 @@ Plug 'dense-analysis/ale'
 " 文件标签
 " Plug 'majutsushi/tagbar'
 
-" 代码片段
-" Plug 'SirVer/ultisnips'
-" Optional
-" Plug 'honza/vim-snippets'
-
 " Plug 'skywind3000/vim-quickui'
 
 " NERDTree
@@ -132,7 +132,7 @@ Plug 'gko/vim-coloresque', { 'for': ['html', 'css', 'less', 'sass'] }
 " Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  } " If you have nodejs and yarn
 Plug 'hotoo/pangu.vim'
-autocmd BufWritePre *.markdown,*.md,*.text,*.txt,*.wiki,*.cnx call PanGuSpacing()
+" autocmd BufWritePre *.markdown,*.md,*.text,*.txt,*.wiki,*.cnx call PanGuSpacing()
 
 " python
 Plug 'tmhedberg/SimpylFold', { 'for' :['python', 'vim-plug'] }

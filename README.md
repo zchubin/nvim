@@ -2,9 +2,6 @@
 
 [Documentation](https://neovim.io/doc)
 
-[![Packages](https://repology.org/badge/tiny-repos/neovim.svg)](https://repology.org/metapackage/neovim)
-[![nvim](https://snapcraft.io//nvim/badge.svg)](https://snapcraft.io/nvim)
-
 * This is a Neovim configuration for ~~newbies~~ mainly on **Windows10**.
     - 这是一个新手主要在 windows10 上的 Neovim 配置。
 * I have limited expressive power,but your understanding is outstanding
