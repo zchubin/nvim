@@ -89,8 +89,11 @@ augroup InitFileTypesGroup
 	" C/C++ 文件使用 // 作为注释
 	au FileType c,cpp setlocal commentstring=//\ %s
 
+    " 为 json 文件添加正确的注释高亮
+    au FileType json syntax match Comment +\/\/.\+$+
+
 	" markdown 允许自动换行
-	au FileType markdown setlocal wrap
+	" au FileType markdown setlocal wrap
 
 	" lisp 进行微调
 	au FileType lisp setlocal ts=8 sts=2 sw=2 et

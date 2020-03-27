@@ -2,11 +2,11 @@
 "=== 自动配置插件 ===
 "====================
 
-" if empty(glob('$HOME/AppData/Local/nvim/autoload/plug.vim'))
-"     silent !curl -fLo $HOME/AppData/Local/nvim/autoload/plug.vim --create-dirs
-"                 \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-"     autocmd VimEnter * PlugInstall --sync | source $VIMRC
-" endif
+if empty(glob('$HOME/AppData/Local/nvim/autoload/plug.vim'))
+    silent !curl -fLo $HOME/AppData/Local/nvim/autoload/plug.vim --create-dirs
+                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source $VIMRC
+endif
 
 "============================
 "=== 防止重复加载相同配置 ===
@@ -79,9 +79,8 @@ Plug 'mhinz/vim-startify'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-" 代码片段
-" Plug 'SirVer/ultisnips'
-" Optional
+" Snipets
+Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
 " coc补全框架
@@ -112,21 +111,23 @@ Plug 'godlygeek/tabular'
 Plug 'terryma/vim-multiple-cursors'
 " 拼写检查
 Plug 'dense-analysis/ale'
-" 文件标签
-" Plug 'majutsushi/tagbar'
-
-" Plug 'skywind3000/vim-quickui'
 
 " NERDTree
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-" Html,css
-Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'markdown'] }
+
+" html, css, javascript, php, json, etc.
+Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'markdown', 'javascript', 'json'] }
 Plug 'othree/html5.vim', { 'for': 'html' }
 Plug 'cakebaker/scss-syntax.vim', { 'for': ['scss', 'css'] }
-" css3颜色显示
 Plug 'gko/vim-coloresque', { 'for': ['html', 'css', 'less', 'sass'] }
+" plug 'elzr/vim-json'
+" plug 'spf13/piv', { 'for' :['php', 'vim-plug'] }
+" plug 'pangloss/vim-javascript', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
+" plug 'yuezk/vim-js', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
+" plug 'maxmellon/vim-jsx-pretty', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
+" plug 'jelera/vim-javascript-syntax', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
 
 " markdown
 " Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
@@ -155,7 +156,7 @@ LocalScript vimrc/Plugs/indentLine.vim
 " LocalScript vimrc/Plugs/vimIndentGuides.vim
 LocalScript vimrc/Plugs/nerdCommenter.vim
 LocalScript vimrc/Plugs/tabular.vim
-" LocalScript vimrc/Plugs/snipMate.vim
+LocalScript vimrc/Plugs/snipMate.vim
 LocalScript vimrc/Plugs/ale.vim
 LocalScript vimrc/Plugs/nerdTree.vim
 LocalScript vimrc/Plugs/emmet.vim

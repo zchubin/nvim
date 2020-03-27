@@ -9,8 +9,7 @@ let g:python3_host_skip_check=1
 let g:python3_host_prog= 'D:/Development/Python/Python38/python'
 
 "  ruby
-let g:ruby_host_prog = 'D:/Development/Ruby26-xg4/bin/neovim-ruby-host'
-" let g:ruby_host_prog = 'D:/Development/Ruby26-x64/lib/ruby/gems/2.6.0/gems/neovim-0.8.1'
+let g:ruby_host_prog = 'D:/Development/Ruby26-xg4/bin'
 
 " nodejs
 let g:node_host_prog='D:/Development/nodejs/node_global/node_modules/neovim'

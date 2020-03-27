@@ -27,11 +27,11 @@ let g:startify_custom_header = [
             \ ]
 
 let g:startify_bookmarks = [
-            \ '~/Desktop/1.txt',
-            \ '~/Desktop/2.md',
-            \ '~/Desktop/3.html',
-            \ '~/Desktop/4.py',
-            \ '~/Desktop/5.java',
+            \ '~/Desktop/text.txt',
+            \ '~/Desktop/README.md',
+            \ '~/Desktop/index.html',
+            \ '~/Desktop/main.py',
+            \ '~/Desktop/hello.java',
             \ ]
 
 let g:startify_custom_footer = [

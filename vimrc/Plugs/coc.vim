@@ -2,6 +2,15 @@
 "=== coc.vim
 "===
 
+function! SetupCommandAbbrs(from, to)
+  exec 'cnoreabbrev <expr> '.a:from
+        \ .' ((getcmdtype() ==# ":" && getcmdline() ==# "'.a:from.'")'
+        \ .'? ("'.a:to.'") : ("'.a:from.'"))'
+endfunction
+
+" Use C to open coc config
+call SetupCommandAbbrs('C', 'CocConfig')
+
 " 添加状态栏支持
 " set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
@@ -40,6 +49,7 @@ let g:coc_filetype_map = {
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~ '\s'
+  return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
 inoremap <silent><expr> <TAB>
@@ -72,11 +82,6 @@ function! s:show_documentation()
 endfunction
 nnoremap <silent> <Leader>k :call <SID>show_documentation()<CR>
 
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
 let g:coc_snippet_next = '<tab>'
 " 触发代码展开
 imap <C-l> <Plug>(coc-snippets-expand)
@@ -91,5 +96,4 @@ let g:coc_snippet_prev = '<c-k>'
     " \  {'textDocument': {'uri': 'file:///tmp'}})
 
 nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
-
 
