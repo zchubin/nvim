@@ -56,8 +56,8 @@
     "list.source.grep.defaultArgs"       : ["-regex"],
     "list.source.symbols.defaultOptions" : ["--interactive", "--number-select"],
     "list.previewHighlightGroup"         : "Statement",
-    "list.nextKeymap"                    : "<C-n>",
-    "list.previousKeymap"                : "<C-p>",
+    "list.nextKeymap"                    : "<C-j>",
+    "list.previousKeymap"                : "<C-k>",
 
     "coc.preferences.hoverTarget"           : "preview",
     "coc.preferences.enableFloatHighlight"  : true,
@@ -66,16 +66,20 @@
     "coc.preferences.extensionUpdateCheck"  : "weekly",
     "coc.preferences.formatOnType"          : true,
 
+    // "prettier.statusItemText": "ⓟ ",
+    // "prettier.stylelintIntegration": true,
+    // "prettier.onlyUseLocalVersion": true,
+
     // "coc.prees.formatOnSaveFiletypes" : [
-    //         "python",
-    //         "html",
-    //         "css",
-    //         "markdown",
-    //         "Markdown",
-    //         "javascript",
-    //         "javascriptreact",
-    //         "typescript",
-    //         "typescriptreact"
+    //     "python",
+    //     "html",
+    //     "css",
+    //     "markdown",
+    //     "Markdown",
+    //     "javascript",
+    //     "javascriptreact",
+    //     "typescript",
+    //     "typescriptreact"
     // ],
 
     "git.enableGutters"             : true,
@@ -104,6 +108,18 @@
     //     "{SPACES_AROUND_POWER_OPERATOR: True, SPACES_BEFORE_COMMENT: 1}"
     // ],
 
+    // "eslint.filetypes": [
+    //     "javascript",
+    //     "javascript.jsx",
+    //     "javascriptreact",
+    //     "typescript",
+    //     "typescript.tsx",
+    //     "typescriptreact"
+    // ],
+    // "eslint.autoFix": true,
+    // "eslint.autoFixOnSave": true,
+    // "eslint.packageManager": "yarn",
+
     "signature.target": "echo",
     "signature.enable": true,
 
@@ -115,47 +131,32 @@
 
     "json.format.enable" : true,
 
-    "yank.enableCompletion" : false,
+    "javascript.format.enabled": true,
+    "javascript.showUnused": true,
+
+    // "yank.enableCompletion" : false,
 
     "languageserver": {
-            "lua": {
-                    "command"   : "lua-lsp",
-                    "filetypes" : ["lua"]
-            },
-
-            "golang": {
-                    "command"      : "gopls",
-                    "rootPatterns" : ["go.mod"],
-                    "filetypes"    : ["go"],
-                    "initializationOptions": {
-                            "gocodeCompletionEnabled" : true,
-                            "diagnosticsEnabled"      : true,
-                            "lintTool"                : "golint"
-                    }
-            },
-
-            "bash": {
-                    "command"          : "bash-language-server",
-                    "args"             : ["start"],
-                    "filetypes"        : ["sh"],
-                    "ignoredRootPaths" : []
-            },
-            "groovy": {
-                    "command": "java",
-                    // "args": ["-jar", "/usr/local/bin/groovy-language-server-all.jar"],
-                    "filetypes": ["groovy"]
-            },
-
-            "ccls": {
-                    "command"      : "ccls",
-                    "filetypes"    : ["c", "cpp", "cuda", "objc", "objcpp"],
-                    "rootPatterns" : [".ccls-root", "compile_commands.json"],
-                    "initializationOptions": {
-                             "cache": {
-                                     "directory": ".ccls-cache"
-                             }
-                     }
-            }
+        "golang": {
+            "command": "gopls",
+            "rootPatterns": ["go.mod"],
+            "filetypes": ["go"]
+        },
+        "metals": {
+            "command": "metals-vim",
+            "rootPatterns": ["build.sbt"],
+            "filetypes": ["scala", "sbt"]
+        },
+        "ccls": {
+            "command"      : "ccls",
+            "filetypes"    : ["c", "cpp", "cuda", "objc", "objcpp"],
+            "rootPatterns" : [".ccls-root", "compile_commands.json"],
+            "initializationOptions": {
+                "cache": {
+                    "directory": ".ccls-cache"
+                 }
+             }
+        }
 
     }
 }

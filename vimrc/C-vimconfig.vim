@@ -84,34 +84,53 @@ endif
 augroup InitFileTypesGroup
 
 	" 清除同组的历史 autocommand
-	au!
+	autocmd!
 
 	" C/C++ 文件使用 // 作为注释
-	au FileType c,cpp setlocal commentstring=//\ %s
-
+	autocmd FileType c,cpp setlocal commentstring=//\ %s
     " 为 json 文件添加正确的注释高亮
-    au FileType json syntax match Comment +\/\/.\+$+
+    autocmd FileType json syntax match Comment +\/\/.\+$+
 
 	" markdown 允许自动换行
 	" au FileType markdown setlocal wrap
 
 	" lisp 进行微调
-	au FileType lisp setlocal ts=8 sts=2 sw=2 et
+	autocmd FileType lisp setlocal ts=8 sts=2 sw=2 et
 
 	" scala 微调
-	au FileType scala setlocal sts=4 sw=4 noet
+	autocmd FileType scala setlocal sts=4 sw=4 noet
 
 	" haskell 进行微调
-	au FileType haskell setlocal et
+	autocmd FileType haskell setlocal et
 
 	" quickfix 隐藏行号
-	au FileType qf setlocal nonumber
+	autocmd FileType qf setlocal nonumber
 
 	" 强制对某些扩展名的 filetype 进行纠正
-	au BufNewFile,BufRead *.as setlocal filetype=actionscript
-	au BufNewFile,BufRead *.pro setlocal filetype=prolog
-	au BufNewFile,BufRead *.es setlocal filetype=erlang
-	au BufNewFile,BufRead *.asc setlocal filetype=asciidoc
-	au BufNewFile,BufRead *.vl setlocal filetype=verilog
+	autocmd BufNewFile,BufRead *.as setlocal filetype=actionscript
+	autocmd BufNewFile,BufRead *.pro setlocal filetype=prolog
+	autocmd BufNewFile,BufRead *.es setlocal filetype=erlang
+	autocmd BufNewFile,BufRead *.asc setlocal filetype=asciidoc
+	autocmd BufNewFile,BufRead *.vl setlocal filetype=verilog
+
+    autocmd BufNewFile,BufRead */playbooks/*.{yml,yaml} setfiletype yaml.ansible
+	autocmd BufNewFile,BufRead */inventory/*            setfiletype ansible_hosts
+
+	autocmd BufNewFile,BufRead *.hcl                setfiletype terraform
+	autocmd BufNewFile,BufRead yarn.lock            setfiletype yaml
+	autocmd BufNewFile,BufRead */.kube/config       setfiletype yaml
+	autocmd BufNewFile,BufRead *.postman_collection setfiletype json
+	autocmd BufNewFile,BufRead .tern-{project,port} setfiletype json
+	autocmd BufNewFile,BufRead *.js.map             setfiletype json
+	autocmd BufNewFile,BufRead .jsbeautifyrc        setfiletype json
+	autocmd BufNewFile,BufRead .eslintrc            setfiletype json
+	autocmd BufNewFile,BufRead .jscsrc              setfiletype json
+	autocmd BufNewFile,BufRead .babelrc             setfiletype json
+	autocmd BufNewFile,BufRead .watchmanconfig      setfiletype json
+	autocmd BufNewFile,BufRead .buckconfig          setfiletype toml
+	autocmd BufNewFile,BufRead .flowconfig          setfiletype ini
+	autocmd BufNewFile,BufRead Jenkinsfile*         setfiletype groovy
+	autocmd BufNewFile,BufRead Tmuxfile,tmux/config setfiletype tmux
+	autocmd BufNewFile,BufRead Brewfile             setfiletype ruby
 
 augroup END

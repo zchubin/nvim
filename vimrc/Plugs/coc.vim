@@ -16,13 +16,9 @@ call SetupCommandAbbrs('C', 'CocConfig')
 
 let g:coc_node_path = 'D:/Development/nodejs/node'
 
-call coc#add_extension('coc-json', 'coc-tsserver', 'coc-rls', 'coc-go',
-                     \ 'coc-html', 'coc-css', 'coc-yaml', 'coc-python',
-                     \ 'coc-snippets', 'coc-emoji', 'coc-syntax',
-                     \ 'coc-explorer'  )
-
 " 修正COC Bug
 silent! au BufEnter,BufRead,BufNewFile * silent! unmap if
+
 let g:coc_global_extensions = [
             \ 'coc-python'  , 'coc-vimlsp'      , 'coc-html'       ,
             \ 'coc-json'    , 'coc-css'         , 'coc-tsserver'   ,
@@ -61,6 +57,8 @@ inoremap <silent><expr> <TAB>
               \ coc#refresh()
 
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " 使用 <C-SPACE> 强制触发补全
 inoremap <silent><expr> <c-space> coc#refresh()
