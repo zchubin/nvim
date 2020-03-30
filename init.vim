@@ -23,7 +23,7 @@ endif
 "================
 
 " 设置字体
-set guifont=GoMono\ Nerd\ Font\ Mono:h18
+set guifont=GoMono\ Nerd\ Font\ Mono:h16
 " DroidSansMono\ Nerd\ Font:h18
 " set gfw=仿宋:h18:cGB2312
 
@@ -41,6 +41,7 @@ set background=dark    " for the dark version
 " set background=light " for the light version
 
 colorscheme gruvbox
+" colorscheme hybrid_reverse
 
 " 取得本文件所在的目录
 let s:home = fnamemodify(resolve(expand('<sfile>:p')), ':h')
@@ -161,3 +162,5 @@ LocalScript vimrc/Plugs/ale.vim
 LocalScript vimrc/Plugs/nerdTree.vim
 LocalScript vimrc/Plugs/emmet.vim
 LocalScript vimrc/Plugs/markdown.vim
+LocalScript vimrc/Plugs/gitgutter.vim
+

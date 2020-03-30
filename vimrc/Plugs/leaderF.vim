@@ -12,8 +12,8 @@ let g:Lf_PreviewInPopup = 1
 let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "Envy Code R VS" }
 let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
 
-let g:Lf_ShortcutF = "<leader>ff"
-nmap <Leader>fm :LeaderfMru<cr>
+let g:Lf_ShortcutF = ";ff"
+nnoremap <Leader>ff :LeaderfMru<cr>
 nmap <Leader>F :LeaderfFunction<cr>
 
 let g:Lf_WildIgnore = {

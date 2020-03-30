@@ -15,9 +15,15 @@ nnoremap <C-s> <ESC>ma:w<CR>'a
 xnoremap <C-s> :<C-u>write<CR>
 cnoremap <C-s> <C-u>write<CR>
 
+nnoremap < <<
+nnoremap > >>
+
 inoremap ;f <Esc>/<++><CR>:nohlsearch<CR>c4l
 inoremap ;q <ESC>
-inoremap <LEADER><Del> <ESC>lc5l
+inoremap <LEADER><Del> <ESC>c4l
+inoremap <LEADER>o <ESC>o<CR><CR><ESC>kI
+inoremap <LEADER>O <ESC>O<CR><CR><ESC>kI
+nnoremap <lEADER>q :q<CR>
 
 nnoremap <LEADER><CR> :nohlsearch<CR>
 nnoremap <LEADER>fd :e $MYVIMRC<CR>
@@ -38,13 +44,19 @@ noremap sv <C-w>t<C-w>H
 noremap srh <C-w>b<C-w>K
 noremap srv <C-w>b<C-w>H
 
+noremap ;w <C-w>w
+noremap <LEADER>k <C-w>k
+noremap <LEADER>j <C-w>j
+noremap <LEADER>h <C-w>h
+noremap <LEADER>l <C-w>l
+
 noremap `<up> :res +5<CR>
 noremap `<down> :res -5<CR>
 noremap `<left> :vertical resize+5<CR>
 noremap `<right> :vertical resize-5<CR>
 
 noremap `<ESC> :set nonumber<CR>:set norelativenumber<CR>:set signcolumn=no<CR>
-noremap `<tab> :set signcolumn=no<CR>
+noremap `<Tab> :set signcolumn=no<CR>
 noremap `<CR> :set signcolumn=yes<CR>
 noremap `0 :set relativenumber<CR>
 noremap `1 :set nonumber!<CR>:set foldcolumn=0<CR>
@@ -74,9 +86,9 @@ endfunc
 " 保存时自动删除行尾空格
 autocmd BufWrite * :call DeleteTrailingWS()
 
-map <leader>w :call DeleteTrailingWS()<CR>
+map <LEADER>w :call DeleteTrailingWS()<CR>
 nmap <silent> `9 :<C-u>call <SID>toggle_background()<CR>
-noremap <Leader>r :call CompileRunGcc()<CR>
+noremap <lEADER>r :call CompileRunGcc()<CR>
 
 " 编译调用的插件
 func! CompileRunGcc()

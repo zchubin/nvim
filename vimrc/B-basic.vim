@@ -24,7 +24,7 @@ set smarttab
 set autoindent
 
 " 继承前一行缩进方式
-" set formatoptions=tcrqn
+set formatoptions-=tc
 
 " 设置 TAB 宽度
 set ts=4
@@ -67,8 +67,8 @@ set ttimeoutlen=50
 set ruler
 
 " 禁止显示菜单和工具条
-" set guioptions-=m
-" set guioptions-=T
+set guioptions-=m
+set guioptions-=T
 
 " 启用正则表达式
 set magic
@@ -108,9 +108,18 @@ if has('persistent_undo')
     set undofile
     set undodir=$VIM/undo
 endif
+
+" silent !mkdir -p ~/nvim/tmp/backup
+" silent !mkdir -p ~/nvim/tmp/undo
+" silent !mkdir -p ~/nvim/tmp/sessions
+" set backupdir=~/nvim/tmp/backup,.
+" set directory=~/nvim/tmp/backup,.
+
 set history=1000
 set nobackup
 set noswapfile
+set viewoptions=cursor,folds,slash,unix
+set indentexpr=
 
 "=================
 "==== 搜索设置 ===
@@ -212,9 +221,9 @@ else
 	set fileformats=unix,mac,dos
 endif
 
-" 用▸示缩进,▫显示空格,>显示扩充,<显示回车
+" 用▸示缩进,▫显示空格,显示扩充‹»
 set list
-set listchars=tab:▸\ ,trail:▫,extends:»,precedes:
+set listchars=tab:▸\ ,trail:▫,extends:»,precedes:‹
 
 " TXT/Markdown/XML 等比较需要换行
 " autocmd FileType text,html,xml set wrap

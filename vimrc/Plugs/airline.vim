@@ -36,8 +36,8 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 " let g:airline_section_c = airline#section#create([''])
 " let g:airline_section_gutter = airline#section#create(['modified', '%='])
 
-let g:airline_section_x = airline#section#create_right([''])
-let g:airline_section_y = airline#section#create_right(['%c'])
+" let g:airline_section_x = airline#section#create_right([''])
+" let g:airline_section_y = airline#section#create_right(['%c'])
 " let g:airline_section_z = airline#section#create(['branch'])
-let g:airline_section_z = '%{strftime("%m/%d/%y - %H:%M")}'
+" let g:airline_section_z = '%{strftime("%m/%d/%y - %H:%M")}'
 

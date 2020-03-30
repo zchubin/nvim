@@ -23,6 +23,7 @@ let g:indentLine_fileTypeExclude = get(g:, 'indentLine_fileTypeExclude', [
       \ 'man',
       \ 'startify',
       \ 'vimfiler',
+      \ 'json',
       \ 'markdown'
       \ ])
 let g:indentLine_fileType = get(g:, 'indentLine_fileType', [
@@ -32,7 +33,6 @@ let g:indentLine_fileType = get(g:, 'indentLine_fileType', [
       \ 'c',
       \ 'cpp',
       \ 'python',
-      \ 'json',
       \ 'javascript',
       \ 'javascript.jsx',
       \ 'typescript',
