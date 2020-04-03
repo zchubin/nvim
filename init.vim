@@ -80,6 +80,8 @@ Plug 'mhinz/vim-startify'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+" Plug 'itchyny/lightline.vim'
+
 " Snipets
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
@@ -88,8 +90,8 @@ Plug 'honza/vim-snippets'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " 显示复制范围
-Plug 'machakann/vim-highlightedyank'
-let g:highlightedyank_highlight_duration = 100
+" Plug 'machakann/vim-highlightedyank'
+" let g:highlightedyank_highlight_duration = 100
 
 " 给关键字添加下划线，方便关注
 Plug 'vim-scripts/vim-cursorword'
@@ -150,6 +152,9 @@ call plug#end()
 LocalScript vimrc/Plugs/devicons.vim
 LocalScript vimrc/Plugs/startify.vim
 LocalScript vimrc/Plugs/airline.vim
+" LocalScript vimrc/Plugs/lightline.vim
+LocalScript vimrc/Plugs/airline.vim
+LocalScript vimrc/Plugs/airline.vim
 LocalScript vimrc/Plugs/coc.vim
 LocalScript vimrc/Plugs/rainbow.vim
 LocalScript vimrc/Plugs/leaderF.vim
@@ -163,4 +168,3 @@ LocalScript vimrc/Plugs/nerdTree.vim
 LocalScript vimrc/Plugs/emmet.vim
 LocalScript vimrc/Plugs/markdown.vim
 LocalScript vimrc/Plugs/gitgutter.vim
-

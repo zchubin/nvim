@@ -2,6 +2,7 @@
 "=== airle
 "===
 
+" let g:airline_theme='hybrid'
 " let g:airline_theme='violet'
 let g:airline_theme='base16'
 
@@ -22,13 +23,13 @@ let airline#extensions#coc#warning_symbol = '⚡'
 let airline#extensions#coc#stl_format_err = '%E{[%e(#%fe)]}'
 let airline#extensions#coc#stl_format_warn = '%W{[%w(#%fw)]}'
 
-let g:airline#extensions#ale#enabled = 1
+" let g:airline#extensions#ale#enabled = 1
 "在vim自带的状态栏中整合ale
-let g:ale_statusline_format = ['✗ %d', '⚡ %d', '✔ OK']
+" let g:ale_statusline_format = ['✗ %d', '⚡ %d', '✔ OK']
 "显示Linter名称,出错或警告等相关信息
-let g:ale_echo_msg_error_str = '✗ '
-let g:ale_echo_msg_warning_str = '⚡'
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+" let g:ale_echo_msg_error_str = '✗ '
+" let g:ale_echo_msg_warning_str = '⚡'
+" let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
 " let g:airline_right_sep = ''
 " let g:airline_right_alt_sep = ' '
@@ -40,4 +41,11 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 " let g:airline_section_y = airline#section#create_right(['%c'])
 " let g:airline_section_z = airline#section#create(['branch'])
 " let g:airline_section_z = '%{strftime("%m/%d/%y - %H:%M")}'
-
+" 字符对应Unicode码
+" '' #xe00  '⮀' #x2b80
+" '' #xe02  '⮂' #x2b82
+" '' #xe01  '⮁' #x2b81
+" '' #xe03  '⮃' #x2b83
+" '' #xe00  '⭠' #x2b60
+" '' #xe02  '⭤' #x2b64
+" '' #xe01  '⭡' #x2b61

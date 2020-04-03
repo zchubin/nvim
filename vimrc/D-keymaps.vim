@@ -15,8 +15,8 @@ nnoremap <C-s> <ESC>ma:w<CR>'a
 xnoremap <C-s> :<C-u>write<CR>
 cnoremap <C-s> <C-u>write<CR>
 
-nnoremap < <<
-nnoremap > >>
+" nnoremap < <<
+" nnoremap > >>
 
 inoremap ;f <Esc>/<++><CR>:nohlsearch<CR>c4l
 inoremap ;q <ESC>
@@ -44,11 +44,7 @@ noremap sv <C-w>t<C-w>H
 noremap srh <C-w>b<C-w>K
 noremap srv <C-w>b<C-w>H
 
-noremap ;w <C-w>w
-noremap <LEADER>k <C-w>k
-noremap <LEADER>j <C-w>j
-noremap <LEADER>h <C-w>h
-noremap <LEADER>l <C-w>l
+noremap <C-w> <C-w>w
 
 noremap `<up> :res +5<CR>
 noremap `<down> :res -5<CR>
@@ -64,7 +60,7 @@ noremap `1 :set nonumber!<CR>:set foldcolumn=0<CR>
 " 在不切换输入法时输入中文符号
 inoremap <LEADER>\\ 、
 inoremap <LEADER>.. 。
-inoremap <LEADER>-- ——
+" inoremap <LEADER>-- ——
 
 " Yank buffer's relative/absolute path to clipboard
 " nnoremap `y :let @+=expand("%:~:.")<CR>:echo 'Yanked relative path'<CR>
@@ -88,7 +84,7 @@ autocmd BufWrite * :call DeleteTrailingWS()
 
 map <LEADER>w :call DeleteTrailingWS()<CR>
 nmap <silent> `9 :<C-u>call <SID>toggle_background()<CR>
-noremap <lEADER>r :call CompileRunGcc()<CR>
+noremap <lEADER>rr :call CompileRunGcc()<CR>
 
 " 编译调用的插件
 func! CompileRunGcc()

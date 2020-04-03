@@ -5,16 +5,6 @@
 " 禁用 vi 兼容模式
 set nocompatible
 
-"  coc
-" 如果不设置隐藏,TextEdirt可能会失败
-set hidden
-" 留出多大空间来显示消息
-set cmdheight=1
-" 缩短响应时间,提高用户体验
-set updatetime=300
-" Don't pass messages to |ins-completion-menu|.
-set shortmess+=c
-
 " 设置 Backspace 键模式
 set bs=eol,start,indent
 set whichwrap+=<,>,h,l
@@ -61,7 +51,7 @@ set nowrap
 set ttimeout
 
 " 功能键超时检测 50 毫秒
-set ttimeoutlen=50
+" set ttimeoutlen=50
 
 " 显示光标位置
 set ruler
@@ -175,12 +165,18 @@ endif
 "=== 其他设置 ===
 "================
 
-" " 设置状态行显示常用信息
-set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ %-14.(%l,%c%V%)\ %P
+" 设置状态行显示常用信息
+scriptencoding utf-8
+" set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ %-14.(%l,%c%V%)\ %P
+set statusline=%1*\%<%.50F\               " 显示文件名和文件路径
+set statusline+=%=%2*\%y%m%r%h%w\ %*      " 显示文件类型及文件状态
+set statusline+=%3*\%{&ff}\[%{&fenc}]\ %* " 显示文件编码类型
+set statusline+=%4*\ row:%l/%L,col:%c\ %* " 显示光标所在行和列
+set statusline+=%5*\%3p%%\%*              " 显示光标前文本所占总文本的比例
 
-" " 0 ，不显式状态行
-" " 1 ，仅当窗口多于一个时，显示状态行
-" " 2 ，总是显式状态行
+" 0 ，不显式状态行
+" 1 ，仅当窗口多于一个时，显示状态行
+" 2 ，总是显式状态行
 set laststatus=2
 
 " 单词 = 单词 + 连字符
@@ -224,7 +220,6 @@ endif
 " 用▸示缩进,▫显示空格,显示扩充‹»
 set list
 set listchars=tab:▸\ ,trail:▫,extends:»,precedes:‹
-
 " TXT/Markdown/XML 等比较需要换行
 " autocmd FileType text,html,xml set wrap
 

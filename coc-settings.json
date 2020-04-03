@@ -1,13 +1,13 @@
 {
     "suggest.autoTrigger"                       : "none", // 关闭自动补全
-    "suggest.triggerAfterInsertEnter"           : false, // 进入插入模块即触发自动补全
-    "suggest.timeout"                           : 500, // 调整补全超时时间
-    "suggest.noselect"                          : false, // 补全开启时选中第一项
-    "suggest.keepCompleteopt"                   : true, // 保留使用当前的 completeopt
-    "suggest.enablePreview"                     : true, // 让 vim 弹出预览窗口
-    "suggest.minTriggerInputLength"             : 2, // 设置最少补全触发字符数
-    "suggest.snippetIndicator"                  : "▶", // 改变代码片段的提示字符
-    "suggest.detailMaxLength"                   : 50, // 补全提示最大宽度
+    "suggest.triggerAfterInsertEnter"           : false,  // 进入插入模块即触发自动补全
+    "suggest.timeout"                           : 500,    // 调整补全超时时间
+    "suggest.noselect"                          : false,  // 补全开启时选中第一项
+    "suggest.keepCompleteopt"                   : true,   // 保留使用当前的 completeopt
+    "suggest.enablePreview"                     : true,   // 让 vim 弹出预览窗口
+    "suggest.minTriggerInputLength"             : 2,      // 设置最少补全触发字符数
+    "suggest.snippetIndicator"                  : "▶",    // 改变代码片段的提示字符
+    "suggest.detailMaxLength"                   : 50,     // 补全提示最大宽度
     "suggest.enablePreselect"                   : false,
     "suggest.floatEnable"                       : true,
     "suggest.detailField"                       : "preview",
@@ -41,17 +41,17 @@
             "variable"      : "\ue71b"
     },
 
-    "diagnostic.signOffset"          : 1, // 错误信息标志
-    "diagnostic.refreshOnInsertMode" : false, // 不要再插入模式检测错误信息
-    "diagnostic.refreshAfterSave"    : true, // 保存检测并刷新错误信息
-    "diagnostic.checkCurrentLine"    : true, // 检测当前行的错误
-    "diagnostic.errorSign"           : "",//"×",
-    "diagnostic.warningSign"         : "",//"»",
-    "diagnostic.hintSign"            : "",//"ღ",
-    "diagnostic.infoSign"            : "",//"ஐ",
-    "diagnostic.displayByAle"        : false, // 不显示 Ale 的标志
+    "diagnostic.signOffset"          : 1,      // 错误信息标志
+    "diagnostic.refreshOnInsertMode" : false,  // 不要再插入模式检测错误信息
+    "diagnostic.refreshAfterSave"    : true,   // 保存检测并刷新错误信息
+    "diagnostic.checkCurrentLine"    : true,   // 检测当前行的错误
+    "diagnostic.errorSign"           : "",    // "×",
+    "diagnostic.warningSign"         : "",    // "»",
+    "diagnostic.hintSign"            : "",    // "ღ",
+    "diagnostic.infoSign"            : "",    // "ஐ",
+    "diagnostic.displayByAle"        : false,  // 不显示 Ale 的标志
     "diagnostic.virtualTextPrefix"   : "❯❯ ", // 错误信息标志符号提示字符
-    "diagnostic.virtualText"         : true, // 错误信息
+    "diagnostic.virtualText"         : true,   // 错误信息
 
     "list.source.grep.defaultArgs"       : ["-regex"], // 配置 grep 源默认使用正则匹配,默认参数仅在命令行调用参数为空时生效
     "list.source.symbols.defaultOptions" : ["--interactive", "--number-select"], // 让 symbols 列表启用 interactive 模式,同时支持数字键选中
@@ -66,24 +66,35 @@
     "coc.preferences.extensionUpdateCheck"  : "weekly",
     "coc.preferences.formatOnType"          : true,
 
+    // coc-yank
+    "yank.limit" : 100, // 最多保存多少条复制记录
+    // coc-python
+    // "python.pythonPath"               : "D:\\Development\\Python\\Python38\\python.exe",
+    // "python.linting.pylintPath"       : "",
+    // "python.formatting.yapfPath"      : "",
+    "python.formatting.provider"      : "yapf", // 使用"yapf"对python代码格式化,结合插件vim-python-pep8-indent(pep8)
+    "python.formatting.yapfArgs"      : [
+        "--style",
+        "pep8",
+        "{SPACES_AROUND_POWER_OPERATOR: True, SPACES_BEFORE_COMMENT: 1}"
+    ], // 传入参数,每个参数在数组中都是单独的项目{格式化自动插入空格,注释符空格后空格数}
+    "python.jediEnabled"              : false,  // To use Microsoft Python Language Server
+    "python.autoComplete.addBrackets" : true,   // 自动添加功能括号，不适用于MPLS
+    "python.linting.pylintArgs": [
+        "--generate-members",
+        "--enable=F,E,W"
+    ],
+    "python.linting.flake8Args": [
+        "--max-line-length=120",
+        "--ignore=E402,F841,F401,E302,E305,W503,W293"
+        ],
     // "prettier.statusItemText": "ⓟ ",
     // "prettier.stylelintIntegration": true,
     // "prettier.onlyUseLocalVersion": true,
 
-    // "coc.prees.formatOnSaveFiletypes" : [
-    //     "python",
-    //     "html",
-    //     "css",
-    //     "markdown",
-    //     "Markdown",
-    //     "javascript",
-    //     "javascriptreact",
-    //     "typescript",
-    //     "typescriptreact"
-    // ],
-
     // coc-git
-    "git.enableGlobalStatus"        : false,
+    "git.signOffset"                : 9, // 符号偏移量,值越大可以防止被其它符号覆盖
+    "git.enableGlobalStatus"        : false, // 启用全局 coc_git_status
     "git.virtualTextPrefix"         : "❯❯ ",
     "git.branchCharacter"           : "",
     "git.enableGutters"             : true,
@@ -99,15 +110,8 @@
     "git.removedSign.text"          : "羅",// "▏",
     "git.topRemovedSign.text"       : "ﬂ ",// "▔",
     "git.changeRemovedSign.text"    : "ﬃ ",// "▒",
-    "git.signOffset"                : 20,
+    // "git.semanticCommit.filetypes":  ["gitcommit", "gina-commit"]
 
-    // "python.autoComplete.addBrackets" : true,
-    // "python.jediEnabled"              : false,
-    // "python.formatting.provider"      : "yapf",
-    // "python.formatting.yapfArgs"      : [
-    //     "--style",
-    //     "{SPACES_AROUND_POWER_OPERATOR: True, SPACES_BEFORE_COMMENT: 1}"
-    // ],
 
     // "eslint.filetypes": [
     //     "javascript",
@@ -134,8 +138,6 @@
 
     "javascript.format.enabled": true,
     "javascript.showUnused": true,
-
-    // "yank.enableCompletion" : false,
 
     "languageserver": {
         "golang": {
