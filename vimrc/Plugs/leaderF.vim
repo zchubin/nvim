@@ -14,7 +14,7 @@ let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
 
 let g:Lf_ShortcutF = ";ff"
 nnoremap <Leader>ff :LeaderfMru<cr>
-nmap <Leader>F :LeaderfFunction<cr>
+" nmap <Leader>F :LeaderfFunction<cr>
 
 let g:Lf_WildIgnore = {
     \ 'dir': ['.svn','.git','.hg', 'log'],

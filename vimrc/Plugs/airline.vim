@@ -2,9 +2,7 @@
 "=== airle
 "===
 
-" let g:airline_theme='hybrid'
-" let g:airline_theme='violet'
-let g:airline_theme='base16'
+let g:airline_theme='base16' " 'hybrid' 'violet'
 
 " smart tab line 更智能的标签线
 let g:airline#extensions#tabline#enabled = 1

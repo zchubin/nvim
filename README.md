@@ -84,11 +84,14 @@ cmd /c gem list -ra ^^neovim$ # 查看是否安装成功
 | `<LEADER>fw`    | `/\(\<\w\+\)\_s*\1`            |
 | `<LEADER>fd`    | `:e $MYVIMRC<CR>`              |
 | `<LEADER>w`     | `:call DeleteTrailingWS()<CR>` |
+| `<lEADER>q`     | `:q<CR>`                       |
+| `<lEADER>Q`     | `:q!<CR>`                      |
+| `<lEADER>rr`    | `:call CompileRunGcc()<CR>`    |
 
 **imap**
 
 | key    | mapkeys                           |
-| :---:  |  :---                              |
+| :---:  | :---                              |
 | ;f     | `<ESC>/<++><CR>:nohlsearh<CR>c4l` |
 | ;q     | `<ESC>`                           |
 | \<C-s> | `<ESC>ma:w<CR>'a`                 |
@@ -138,6 +141,29 @@ cmd /c gem list -ra ^^neovim$ # 查看是否安装成功
 | \`\<CR>    | `:set signcolumn=yes<CR>`                                          |
 | \`0        | `:set relativenumber<CR>`                                          |
 | \`1        | `:set nonumber!<CR>:set foldcolumn=0<CR>`                          |
+| \`9        | `:<C-u>call <SID>toggle_background()<CR>`                          |
+| <C-s>      | `<ESC>ma:w<CR>'a`                                                  |
+
+**Command**<++>
+* Allow typos
+    - 允许输入错误
+
+| input command | out command |
+| :---:         | :---:       |
+| qw            | wq          |
+| Wq            | wq          |
+| WQ            | wq          |
+| Qa            | qa          |
+| Bd            | bd          |
+| bD            | bd          |
+
+**在不切换输入法时输入一些与英文差异较大的中文符号**
+
+| key          | mapkeys |
+| :---:        | :---:   |
+| `<LEADER>\\` | `、`    |
+| `<LEADER>..` | `。`    |
+| `<LEADER>--` | `——`    |
 
 ### 3. Plugin 插件
 

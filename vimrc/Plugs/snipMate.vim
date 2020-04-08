@@ -3,7 +3,6 @@
 "===
 
 let g:tex_flavor = "latex"
-let g:UltiSnipsSnippetDirectories = [$HOME.'~/AppData/Local/nvim/Ultisnips/', 'UltiSnips']
 
 if v:version < 704 || has('win32')
 	function! s:Glob(path, expr)

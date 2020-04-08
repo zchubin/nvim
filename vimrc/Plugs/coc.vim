@@ -18,28 +18,30 @@ set shortmess+=c
 set updatetime=300
 " set signcolumn=yes
 
-let g:coc_node_path = 'D:/Development/nodejs/node'
-
 " 修正COC Bug
 silent! au BufEnter,BufRead,BufNewFile * silent! unmap if
 
 "  Coc-Plugs
 let g:coc_global_extensions = [
-    \ 'coc-python'  , 'coc-vimlsp'      , 'coc-html'       ,
-    \ 'coc-json'    , 'coc-css'         , 'coc-tsserver'   ,
-    \ 'coc-yank'    , 'coc-lists'       , 'coc-gitignore'  ,
-    \ 'coc-vimlsp'  , 'coc-tailwindcss' , 'coc-stylelint'  ,
-    \ 'coc-tslint'  , 'coc-lists'       , 'coc-git'        ,
-    \ 'coc-pyright' , 'coc-sourcekit'   , 'coc-translator' ,
-    \ 'coc-explorer'
-    \ ]
+            \ 'coc-json'       ,
+            \ 'coc-html'       , 'coc-css'         ,
+            \ 'coc-python'     , 'coc-pyright'     ,
+            \ 'coc-yank'       ,
+            \ 'coc-translator' ,
+            \ 'coc-git'        , 'coc-gitignore'   ,
+            \ 'coc-tsserver'   ,
+            \ 'coc-lists'      ,
+            \ 'coc-vimlsp'     , 'coc-tailwindcss' ,
+            \ 'coc-stylelint'  , 'coc-tslint'      ,
+            \ 'coc-sourcekit'
+            \ ]
 
 let g:coc_filetype_map = {
-    \ 'html.swig'      : 'html',
-    \ 'wxss'           : 'css',
-    \ 'javascript.jsx' : 'javascriptreact',
-    \ 'typescript.tsx' : 'typescriptreact'
-    \ }
+            \ 'html.swig'      : 'html',
+            \ 'wxss'           : 'css',
+            \ 'javascript.jsx' : 'javascriptreact',
+            \ 'typescript.tsx' : 'typescriptreact'
+            \ }
 
 " Add (Neo)Vim's native statusline support.
 " NOTE: `:h coc-status` 查看与提供自定义状态栏的外部插件的集成的帮助
@@ -224,9 +226,6 @@ nmap <Leader>r <Plug>(coc-translator-rv)
 
 "=============================================================================================
 
-
-nmap ;tt :CocCommand explorer<CR>
-
 " call CocRequest('tslint', 'textDocument/tslint/allFixes',
     " \  {'textDocument': {'uri': 'file:///tmp'}})
 
@@ -261,7 +260,7 @@ let g:coc_snippet_prev = '<c-k>'
 nmap [g <Plug>(coc-git-prevchunk)
 nmap ]g <Plug>(coc-git-nextchunk)
 " show chunk diff at current position
-nmap gs <Plug>(coc-git-chunkinfo)
+nmap gd <Plug>(coc-git-chunkinfo)
 " show commit contains current position
 nmap gc <Plug>(coc-git-commit)
 " create text object for git chunks
@@ -269,8 +268,4 @@ omap ig <Plug>(coc-git-chunk-inner)
 xmap ig <Plug>(coc-git-chunk-inner)
 omap ag <Plug>(coc-git-chunk-outer)
 xmap ag <Plug>(coc-git-chunk-outer)
-
-"================
-"=== coc-code ===
-"================
 

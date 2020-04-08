@@ -69,9 +69,6 @@
     // coc-yank
     "yank.limit" : 100, // 最多保存多少条复制记录
     // coc-python
-    // "python.pythonPath"               : "D:\\Development\\Python\\Python38\\python.exe",
-    // "python.linting.pylintPath"       : "",
-    // "python.formatting.yapfPath"      : "",
     "python.formatting.provider"      : "yapf", // 使用"yapf"对python代码格式化,结合插件vim-python-pep8-indent(pep8)
     "python.formatting.yapfArgs"      : [
         "--style",
@@ -88,6 +85,11 @@
         "--max-line-length=120",
         "--ignore=E402,F841,F401,E302,E305,W503,W293"
         ],
+    // coc-json
+    "json.enable":true, // 启用json语言服务
+    "json.format.enable" : true, // 启用json格式
+    // coc-html
+    "html.format.enable" : true,
     // "prettier.statusItemText": "ⓟ ",
     // "prettier.stylelintIntegration": true,
     // "prettier.onlyUseLocalVersion": true,
@@ -132,9 +134,6 @@
 
     "tslint.autoFixOnSave" : true,
 
-    "html.format.enable" : true,
-
-    "json.format.enable" : true,
 
     "javascript.format.enabled": true,
     "javascript.showUnused": true,

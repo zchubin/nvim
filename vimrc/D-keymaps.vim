@@ -21,9 +21,8 @@ cnoremap <C-s> <C-u>write<CR>
 inoremap ;f <Esc>/<++><CR>:nohlsearch<CR>c4l
 inoremap ;q <ESC>
 inoremap <LEADER><Del> <ESC>c4l
-inoremap <LEADER>o <ESC>o<CR><CR><ESC>kI
-inoremap <LEADER>O <ESC>O<CR><CR><ESC>kI
 nnoremap <lEADER>q :q<CR>
+nnoremap <lEADER>Q :q!<CR>
 
 nnoremap <LEADER><CR> :nohlsearch<CR>
 nnoremap <LEADER>fd :e $MYVIMRC<CR>
@@ -60,7 +59,7 @@ noremap `1 :set nonumber!<CR>:set foldcolumn=0<CR>
 " 在不切换输入法时输入中文符号
 inoremap <LEADER>\\ 、
 inoremap <LEADER>.. 。
-" inoremap <LEADER>-- ——
+inoremap <LEADER>-- ——
 
 " Yank buffer's relative/absolute path to clipboard
 " nnoremap `y :let @+=expand("%:~:.")<CR>:echo 'Yanked relative path'<CR>
