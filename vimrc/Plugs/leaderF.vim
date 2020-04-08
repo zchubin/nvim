@@ -31,3 +31,4 @@ let g:Lf_PreviewResult = {
     \ 'Line': 1,
     \ 'Colorscheme': 0
     \}
+
