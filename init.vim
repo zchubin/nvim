@@ -29,7 +29,7 @@ set guifont=GoMono\ Nerd\ Font\ Mono:h16
 
 " 设置中文提示
 language messages zh_CN.utf-8
-
+"set clipboard=unnamedplus
 " 设置中文帮助
 set helplang=cn
 let &termencoding=&encoding
@@ -49,6 +49,12 @@ let s:home = fnamemodify(resolve(expand('<sfile>:p')), ':h')
 command! -nargs=1 LocalScript exec 'so '.s:home.'/'.'<args>'
 " 将本目录加入 runtimepath
 exec 'set rtp+='.s:home
+
+let has_machine_specific_file = 1
+if empty(glob('$HOME/AppData/Local/nvim/vimrc/A-path.vim'))
+    let has_machine_specific_file = 0
+    silent! exec "!nvim $HOME/AppData/Local/nvim/vimrc/A-path.vim"
+endif
 
 " autocmd BufWritePost $MYVIMRC source $MYVIMRC " 让配置变更立即生效
 

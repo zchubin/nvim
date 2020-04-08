@@ -2,6 +2,7 @@
 "=== LeaderF
 "===
 
+scriptencoding utf-8
 let g:Lf_HideHelp = 1
 let g:Lf_UseCache = 0
 let g:Lf_UseVersionControlTool = 0

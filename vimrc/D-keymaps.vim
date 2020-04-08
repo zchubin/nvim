@@ -55,6 +55,7 @@ noremap `<Tab> :set signcolumn=no<CR>
 noremap `<CR> :set signcolumn=yes<CR>
 noremap `0 :set relativenumber<CR>
 noremap `1 :set nonumber!<CR>:set foldcolumn=0<CR>
+noremap `2 :set spell!<CR>
 
 " 在不切换输入法时输入中文符号
 inoremap <LEADER>\\ 、
