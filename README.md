@@ -51,6 +51,7 @@ git clone https://github.com/zchubin/nvim.git
     - [ ] Python3
     - [ ] Ruby
     - [ ] Nodejs
+    - [ ] Perl
 
 ```shell
 # Python
