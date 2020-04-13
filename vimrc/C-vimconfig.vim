@@ -70,8 +70,8 @@ endfunction
 "=== 功能键超时（毫秒）===
 "=========================
 
-if &ttimeoutlen > 80 || &ttimeoutlen <= 0
-	set ttimeoutlen=80
+if &ttimeoutlen > 50 || &ttimeoutlen <= 0
+	set ttimeoutlen=50
 endif
 
 "=========================

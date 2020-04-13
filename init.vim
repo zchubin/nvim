@@ -1,3 +1,8 @@
+"========================
+"=== 禁用 vi 兼容模式 ===
+"========================
+set nocompatible
+
 "====================
 "=== 自动配置插件 ===
 "====================
@@ -21,27 +26,6 @@ endif
 "================
 "=== 运行环境 ===
 "================
-
-" 设置字体
-set guifont=GoMono\ Nerd\ Font\ Mono:h16
-" DroidSansMono\ Nerd\ Font:h18
-" set gfw=仿宋:h18:cGB2312
-
-" 设置中文提示
-language messages zh_CN.utf-8
-"set clipboard=unnamedplus
-" 设置中文帮助
-set helplang=cn
-let &termencoding=&encoding
-
-" 256色彩支持
-set t_Co=256
-
-set background=dark    " for the dark version
-" set background=light " for the light version
-
-colorscheme gruvbox
-" colorscheme hybrid_reverse
 
 " 取得本文件所在的目录
 let s:home = fnamemodify(resolve(expand('<sfile>:p')), ':h')
@@ -157,7 +141,6 @@ Plug 'airblade/vim-gitgutter'
 
 call plug#end()
 
-LocalScript vimrc/Plugs/devicons.vim
 LocalScript vimrc/Plugs/startify.vim
 LocalScript vimrc/Plugs/airline.vim
 " LocalScript vimrc/Plugs/lightline.vim
@@ -177,3 +160,4 @@ LocalScript vimrc/Plugs/emmet.vim
 LocalScript vimrc/Plugs/markdown.vim
 LocalScript vimrc/Plugs/gitgutter.vim
 LocalScript vimrc/Plugs/whichkeys.vim
+LocalScript vimrc/Plugs/devicons.vim

@@ -9,7 +9,26 @@
 * Please don't download **without reading this document**.
     - 请不要只下载而不读本文档。
 
-![Screenshot.png](./Screenshot.png)
+```txt
+************************************************************************************************
+* ┌───┐   ┌───┬───┬───┬───┐ ┌───┬───┬───┬───┐ ┌───┬───┬───┬───┐ ┌───┬───┬───┐                  *
+* │Esc│   │ F1│ F2│ F3│ F4│ │ F5│ F6│ F7│ F8│ │ F9│F10│F11│F12│ │P/S│S L│P/B│  ┌┐    ┌┐    ┌┐  *
+* └───┘   └───┴───┴───┴───┘ └───┴───┴───┴───┘ └───┴───┴───┴───┘ └───┴───┴───┘  └┘    └┘    └┘  *
+*┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───────┐ ┌───┬───┬───┐ ┌───┬───┬───┬───┐ *
+*│~ `│! 1│@ 2│# 3│$ 4│% 5│^ 6│& 7│* 8│( 9│) 0│_ -│+ =│ BacSp │ │Ins│Hom│PUp│ │N L│ / │ * │ - │ *
+*├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─────┤ ├───┼───┼───┤ ├───┼───┼───┼───┤ *
+*│ Tab │ Q │ W │ E │ R │ T │ Y │ U │ I │ O │ P │{ [│} ]│ | \ │ │Del│End│PDn│ │ 7 │ 8 │ 9 │   │ *
+*├─────┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴─────┤ └───┴───┴───┘ ├───┼───┼───┤ + │ *
+*│ Caps │ A │ S │ D │ F │ G │ H │ J │ K │ L │: ;│" '│ Enter  │               │ 4 │ 5 │ 6 │   │ *
+*├──────┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴────────┤     ┌───┐     ├───┼───┼───┼───┤ *
+*│ Shift  │ Z │ X │ C │ V │ B │ N │ M │< ,│> .│? /│  Shift   │     │ ↑ │     │ 1 │ 2 │ 3 │   │ *
+*├─────┬──┴─┬─┴──┬┴───┴───┴───┴───┴───┴──┬┴───┼───┴┬────┬────┤ ┌───┼───┼───┐ ├───┴───┼───┤ E││ *
+*│ Ctrl│    │Alt │         Space         │ Alt│    │    │Ctrl│ │ ← │ ↓ │ → │ │   0   │ . │←─┘│ *
+*└─────┴────┴────┴───────────────────────┴────┴────┴────┴────┘ └───┴───┴───┘ └───────┴───┴───┘ *
+************************************************************************************************
+```
+* The above is my keyboard layout
+    - 以上是我的键盘布局
 
 ## Installation
 
@@ -142,9 +161,10 @@ cmd /c gem list -ra ^^neovim$ # 查看是否安装成功
 | \`0        | `:set relativenumber<CR>`                                          |
 | \`1        | `:set nonumber!<CR>:set foldcolumn=0<CR>`                          |
 | \`9        | `:<C-u>call <SID>toggle_background()<CR>`                          |
-| <C-s>      | `<ESC>ma:w<CR>'a`                                                  |
+| `<C-s>`    | `<ESC>ma:w<CR>'a`                                                  |
 
-**Command**<++>
+**Command**
+
 * Allow typos
     - 允许输入错误
 
@@ -169,19 +189,20 @@ cmd /c gem list -ra ^^neovim$ # 查看是否安装成功
 
 #### 3.1 Exterior (外观) -- Not necessary
 
+> No Keymaps -- 以下插件没有映射快捷键
+
 | Function                    | Plugin                           |
 | :---:                       | ---                              |
 | 向 vim 提供文件类型标志符号 | 'ryanoasis/vim-devicons'         |
 | 为 (N)vim 更改开始屏幕      | 'mhinz/vim-startify'             |
 | 状态栏                      | 'vim-airline/vim-airline'        |
 |                             | 'vim-airline/vim-airline-themes' |
-| 显示复制范围                | 'machakann/vim-highlightedyank'  |
 | 用彩色突出显示括号方阵      | 'ccampbell/rainbow'              |
 | 显示缩进线                  | 'Yggdroot/indentLine'            |
 | 给关键字添加下划线          | 'vim-scripts/vim-cursorword'     |
 | 中文排版                    | 'hotoo/pangu.vim'                |
 
-> No Keymaps -- 没有映射快捷键
+> 显示复制范围:'machakann/vim-highlightedyank'被`Coc-yank`取代
 
 #### 3.2 Commonly Used (常用插件)
 
@@ -194,6 +215,7 @@ cmd /c gem list -ra ^^neovim$ # 查看是否安装成功
 | 模糊查找工具     | 'Yggdroot/LeaderF'             |
 | 快速注释         | 'preservim/nerdcommenter'      |
 | 多项选择修改     | 'terryma/vim-multiple-cursors' |
+| 按键提示         | 'liuchengxu/vim-which-key'     |
 
 #### 3.3 NERDTree
 

@@ -2,8 +2,26 @@
 "=== 基础设置 ===
 "================
 
-" 禁用 vi 兼容模式
-set nocompatible
+" 设置字体
+set guifont=GoMono\ Nerd\ Font\ Mono:h16
+" DroidSansMono\ Nerd\ Font:h18
+" set gfw=仿宋:h18:cGB2312
+
+" 设置中文提示
+language messages zh_CN.utf-8
+"set clipboard=unnamedplus
+" 设置中文帮助
+set helplang=cn
+let &termencoding=&encoding
+
+" 256色彩支持
+set t_Co=256
+
+set background=dark    " for the dark version
+" set background=light " for the light version
+
+colorscheme gruvbox
+" colorscheme hybrid_reverse
 
 " 设置 Backspace 键模式
 set bs=eol,start,indent
