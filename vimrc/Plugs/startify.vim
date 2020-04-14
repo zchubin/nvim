@@ -5,6 +5,8 @@
 " 是否自动加载目录下的Session.vim, 很好用
 " let g:startify_session_autoload = 1
 
+let g:webdevicons_enable_startify = 1
+
 " 过滤列表，支持正则表达式
 let g:startify_skiplist = [
        \ '\.vimgolf',

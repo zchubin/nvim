@@ -4,6 +4,7 @@
 
 " 设置字体
 set guifont=GoMono\ Nerd\ Font\ Mono:h16
+" set guifont=JetBrains\ Mono:h16
 " DroidSansMono\ Nerd\ Font:h18
 " set gfw=仿宋:h18:cGB2312
 

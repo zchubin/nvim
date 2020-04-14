@@ -86,13 +86,13 @@ cmd /c gem list -ra ^^neovim$ # 查看是否安装成功
 ## About The Configuration
 
 ### 1. Plugin manager:vim-Plug 插件管理器
-`:PlugStatus`  来查看当前你的插件状态，
-`:PlugClean`   来清理注释 ( 无用 ) 的插件，
-`:PlugInstall` 来安装插件，
-`:PlugUpgrad`  来升级你的插件，
-`:PlugUpdate`  来升级你的插件。
+- `:PlugStatus`  来查看当前你的插件状态，
+- `:PlugClean`   来清理注释 ( 无用 ) 的插件，
+- `:PlugInstall` 来安装插件，
+- `:PlugUpgrad`  来升级你的插件，
+- `:PlugUpdate`  来升级你的插件。
 
-### 2. Main Keymaps 主快捷键
+### 2. Main Keymaps 快捷键(无插件)
 
 **About <LEADER>**
 
@@ -116,16 +116,17 @@ cmd /c gem list -ra ^^neovim$ # 查看是否安装成功
 | ;q     | `<ESC>`                           |
 | \<C-s> | `<ESC>ma:w<CR>'a`                 |
 
-*Installed plugin, no longer needed*
-    - 以下快捷键被插件取代了
-| key | mapkeys                                              |
-| --- | ---                                                  |
-| '   | ''<++><ESC>5ha                                       |
-| "   | ""<++><ESC>5ha                                       |
-| (   | ()<++><ESC>5ha                                       |
-| [   | []<++><ESC>5ha                                       |
-| {   | {}<++><ESC>5ha                                       |
-| "=  | "===<CR>===<SPACE><CR>===<CR><ESC>0C<CR><++><ESC>3kA |
+> * *Installed plugin, no longer needed*
+>     - 以下快捷键被插件取代了
+>
+> | key | mapkeys                                              |
+> | --- | ---                                                  |
+> | '   | ''<++><ESC>5ha                                       |
+> | "   | ""<++><ESC>5ha                                       |
+> | (   | ()<++><ESC>5ha                                       |
+> | [   | []<++><ESC>5ha                                       |
+> | {   | {}<++><ESC>5ha                                       |
+> | "=  | "===<CR>===<SPACE><CR>===<CR><ESC>0C<CR><++><ESC>3kA |
 
 **vmap**
 
@@ -167,7 +168,7 @@ cmd /c gem list -ra ^^neovim$ # 查看是否安装成功
 **Command**
 
 * Allow typos
-    - 允许输入错误
+    - 允许输入错误(防止手抽(ToT)/~~~)
 
 | input command | out command |
 | :---:         | :---:       |
@@ -178,7 +179,15 @@ cmd /c gem list -ra ^^neovim$ # 查看是否安装成功
 | Bd            | bd          |
 | bD            | bd          |
 
-**在不切换输入法时输入一些与英文差异较大的中文符号**
+* Enter some Chinese symbols that are quite different from English without switching input methods
+    - 在不切换输入法时输入一些中文符号
+    > #### 情景
+    > - 由于经常写代码,中文符号在代码中不能被使用,比如破折号、顿号、句号等。
+    > - 但写中文文章时你又需要用到这些符号。
+    > #### 我的解决方案:
+    > 1. 我将输入法的符号输入设置为默认输入半角符号!!!
+    > 2. 但我并不希望是失去全角符号,于是利用 vim 的`map`功能将符号找回!!
+    > 3. 当然这些是我觉得全角符号与半角符号差距较大的符号,至于那些看着基本一致,且只是半角和全角占位大小不一致的,我还是只用半角符号,当然可以继续添加一些其它的 '符号',也是很有趣的!
 
 | key          | mapkeys |
 | :---:        | :---:   |
@@ -203,7 +212,7 @@ cmd /c gem list -ra ^^neovim$ # 查看是否安装成功
 | 给关键字添加下划线          | 'vim-scripts/vim-cursorword'     |
 | 中文排版                    | 'hotoo/pangu.vim'                |
 
-> 显示复制范围:'machakann/vim-highlightedyank'被`Coc-yank`取代
+> **显示复制范围:'machakann/vim-highlightedyank'被`Coc-yank`取代**
 
 #### 3.2 Commonly Used (常用插件)
 
@@ -218,7 +227,7 @@ cmd /c gem list -ra ^^neovim$ # 查看是否安装成功
 | 多项选择修改     | 'terryma/vim-multiple-cursors' |
 | 按键提示         | 'liuchengxu/vim-which-key'     |
 
-#### 3.3 NERDTree
+#### 3.3 NERDTree (树形文件结构)
 
 * 'preservim/nerdtree'
 * 'Xuyuanp/nerdtree-git-plugin'
@@ -244,4 +253,3 @@ cmd /c gem list -ra ^^neovim$ # 查看是否安装成功
 #### 3.5 coc.nvim 补全框架
 
 * 'neoclide/coc.nvim'
-
