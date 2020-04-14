@@ -49,30 +49,37 @@ git clone https://github.com/zchubin/nvim.git
 ## Requirements
 
     - [ ] Python3
-    - [ ] Ruby
     - [ ] Nodejs
-    - [ ] Perl
+    - [ ] Ruby
+    - [x] Perl
 
 ```shell
 # Python
-# 国内下载
+# 安装依赖
+# 从国内(清华大学)源中下载
 pip3 install -i https://pypi.tuna.tsinghua.edu.cn/simple pynvim
 pip3 install -i https://pypi.tuna.tsinghua.edu.cn/simple neovim
-# or 官网下载
+# or 从国外(官网)下载
 pip3 install pynvim
 pip3 install neovim
 
 # Nodejs
-npm config set registry https://registry.npm.taobao.org # 修改国内源
+# 修改国内(阿里镜像)源
+npm config set registry https://registry.npm.taobao.org
+# 安装依赖
 npm install -g neovim
 
 # Ruby
+# 改用国内源和阿里镜像
 gem sources --remove https://rubygems.org/
 gem sources -a http://gems.ruby-china.com/
-gem sources --add https://ruby.taobao.org/ # 改用国内源
+gem sources --add https://ruby.taobao.org/
 
-gem install minitest-neovim # 修复了使用 neovim 的终端在 vim-dispatch-neovim 中运行 minitest 测试
-cmd /c gem list -ra ^^neovim$ # 查看是否安装成功
+# 安装依赖
+# 修复了使用 neovim 的终端在 vim-dispatch-neovim 中运行 minitest 测试
+gem install minitest-neovim
+# 查看是否安装成功
+cmd /c gem list -ra ^^neovim$
 ```
 
 * You can use `: checkhealth` to see if your Neovim configuration is still problematic.
