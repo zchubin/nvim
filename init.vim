@@ -141,11 +141,11 @@ Plug 'airblade/vim-gitgutter'
 
 call plug#end()
 
+LocalScript vimrc/Plugs/devicons.vim
 LocalScript vimrc/Plugs/startify.vim
 LocalScript vimrc/Plugs/airline.vim
+LocalScript vimrc/Plugs/snippets.vim
 " LocalScript vimrc/Plugs/lightline.vim
-LocalScript vimrc/Plugs/airline.vim
-LocalScript vimrc/Plugs/airline.vim
 LocalScript vimrc/Plugs/coc.vim
 LocalScript vimrc/Plugs/rainbow.vim
 LocalScript vimrc/Plugs/leaderF.vim
@@ -153,11 +153,9 @@ LocalScript vimrc/Plugs/indentLine.vim
 " LocalScript vimrc/Plugs/vimIndentGuides.vim
 LocalScript vimrc/Plugs/nerdCommenter.vim
 LocalScript vimrc/Plugs/tabular.vim
-LocalScript vimrc/Plugs/snipMate.vim
 LocalScript vimrc/Plugs/ale.vim
+LocalScript vimrc/Plugs/whichkeys.vim
 LocalScript vimrc/Plugs/nerdTree.vim
 LocalScript vimrc/Plugs/emmet.vim
 LocalScript vimrc/Plugs/markdown.vim
 LocalScript vimrc/Plugs/gitgutter.vim
-LocalScript vimrc/Plugs/whichkeys.vim
-LocalScript vimrc/Plugs/devicons.vim

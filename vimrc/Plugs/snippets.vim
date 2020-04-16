@@ -1,6 +1,22 @@
 "===
 "=== snipMate
 "===
+let g:UltiSnipsExpandTrigger=";e"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+
+let s:unite_source = {
+      \ 'name': 'ultisnips',
+      \ 'hooks': {},
+      \ 'action_table': {},
+      \ 'syntax' : 'uniteSource__Ultisnips',
+      \ 'default_action': 'expand',
+      \ }
+
+let s:unite_source.action_table.preview = {
+      \ 'description' : 'ultisnips snippets',
+      \ 'is_quit' : 0,
+      \ }
 
 let g:tex_flavor = "latex"
 

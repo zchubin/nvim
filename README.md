@@ -1,6 +1,6 @@
 # Neovim Configuration
 
-[Documentation](https://neovim.io/doc)
+[Documentation(官方文档)](https://neovim.io/doc)
 
 * This is a Neovim configuration for ~~newbies~~ mainly on **Windows10**.
     - 这是一个新手主要在 windows10 上的 Neovim 配置。
@@ -30,12 +30,15 @@
 * The above is my keyboard layout
     - 以上是我的键盘布局
 
+
+<div>
+    <img src="./doc/demo.png" alt="demo" style="width: 100%;height: 100%;border-radius: 5px;">
+</div>
+
 ## Installation
 
 * You can use `git` to get it.( 你可使用 git 来下载配置。 )
 ```shell
-cd ~\Desktop\
-
 git clone https://github.com/zchubin/nvim.git
 ```
 
@@ -260,3 +263,15 @@ cmd /c gem list -ra ^^neovim$
 #### 3.5 coc.nvim 补全框架
 
 * 'neoclide/coc.nvim'
+
+---
+
+```txt
+                            _           _     _
+                           | |         | |   (_)
+                    _______| |__  _   _| |__  _ _ __
+                   |_  / __| |_ \| | | | |_ \| |  _ \
+                    / / (__| | | | |_| | |_) | | | | |
+                   /___\___|_| |_|\__,_|_.__/|_|_| |_|
+
+```
