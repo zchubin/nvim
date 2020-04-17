@@ -1,13 +1,17 @@
 # Neovim Configuration
 
-[Documentation(官方文档)](https://neovim.io/doc)
-
+* [**Documentation(官方文档)**](https://neovim.io/doc)
+    - [*个人理解文档(新手文档*)](./doc/Vim.md)
+----
 * This is a Neovim configuration for ~~newbies~~ mainly on **Windows10**.
     - 这是一个新手主要在 windows10 上的 Neovim 配置。
 * I have limited expressive power,but your understanding is outstanding
     - 你的理解能力肯定比我的写得好。
 * Please don't download **without reading this document**.
     - 请不要只下载而不读本文档。
+
+* This is my keyboard layout
+    - 这是我的键盘布局
 
 ```txt
 ************************************************************************************************
@@ -23,13 +27,10 @@
 *├──────┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴────────┤     ┌───┐     ├───┼───┼───┼───┤ *
 *│ Shift  │ Z │ X │ C │ V │ B │ N │ M │< ,│> .│? /│  Shift   │     │ ↑ │     │ 1 │ 2 │ 3 │   │ *
 *├─────┬──┴─┬─┴──┬┴───┴───┴───┴───┴───┴──┬┴───┼───┴┬────┬────┤ ┌───┼───┼───┐ ├───┴───┼───┤ E││ *
-*│ Ctrl│    │Alt │         Space         │ Alt│    │    │Ctrl│ │ ← │ ↓ │ → │ │   0   │ . │←─┘│ *
+*│ Ctrl│ Win│ Alt│         Space         │ Alt│ FN │    │Ctrl│ │ ← │ ↓ │ → │ │   0   │ . │←─┘│ *
 *└─────┴────┴────┴───────────────────────┴────┴────┴────┴────┘ └───┴───┴───┘ └───────┴───┴───┘ *
 ************************************************************************************************
 ```
-* The above is my keyboard layout
-    - 以上是我的键盘布局
-
 
 <div>
     <img src="./doc/demo.png" alt="demo" style="width: 100%;height: 100%;border-radius: 5px;">
@@ -51,10 +52,11 @@ git clone https://github.com/zchubin/nvim.git
 
 ## Requirements
 
-    - [ ] Python3
-    - [ ] Nodejs
-    - [ ] Ruby
-    - [x] Perl
+
+- [ ] Python3
+- [ ] Nodejs
+- [ ] Ruby
+- [x] Perl
 
 ```shell
 # Python

@@ -43,7 +43,7 @@ noremap sv <C-w>t<C-w>H
 noremap srh <C-w>b<C-w>K
 noremap srv <C-w>b<C-w>H
 
-noremap <C-w> <C-w>w
+" noremap <C-w> <C-w>w
 
 noremap `<up> :res +5<CR>
 noremap `<down> :res -5<CR>
