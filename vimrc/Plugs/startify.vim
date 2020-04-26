@@ -66,6 +66,6 @@ endfunction
 let g:startify_custom_header = Zhong_startify_center(g:startify_custom_header)
 let g:startify_custom_footer = Zhong_startify_center(g:startify_custom_footer)
 
-" autocmd! FileType startify
-" autocmd  FileType startify set laststatus=0 showtabline=0
-"     \| autocmd BufLeave <buffer> set laststatus=2 showtabline=2
+autocmd! FileType startify
+autocmd  FileType startify set laststatus=0 showtabline=0
+    \| autocmd BufLeave <buffer> set laststatus=2 showtabline=2

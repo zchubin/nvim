@@ -11,9 +11,9 @@
     - 请不要只下载而不读本文档。
 
 * This is my keyboard layout
-    - 这是我的键盘布局
+    - 这是我的键盘布局(没什么特别的(╯▽╰ ))
 
-```txt
+```shell
 ************************************************************************************************
 * ┌───┐   ┌───┬───┬───┬───┐ ┌───┬───┬───┬───┐ ┌───┬───┬───┬───┐ ┌───┬───┬───┐                  *
 * │Esc│   │ F1│ F2│ F3│ F4│ │ F5│ F6│ F7│ F8│ │ F9│F10│F11│F12│ │P/S│S L│P/B│  ┌┐    ┌┐    ┌┐  *
@@ -33,7 +33,7 @@
 ```
 
 <div>
-    <img src="./doc/demo.png" alt="demo" style="width: 100%;height: 100%;border-radius: 5px;">
+    <img src="./doc/demo.PNG" alt="demo" style="width: 100%;height: 100%;border-radius: 5px;">
 </div>
 
 ## Installation
@@ -53,10 +53,10 @@ git clone https://github.com/zchubin/nvim.git
 ## Requirements
 
 
-- [ ] Python3
-- [ ] Nodejs
-- [ ] Ruby
-- [x] Perl
+- [x] Python3
+- [x] Nodejs
+- [x] Ruby
+- [ ] perl
 
 ```shell
 # Python
@@ -87,13 +87,20 @@ gem install minitest-neovim
 cmd /c gem list -ra ^^neovim$
 ```
 
-* You can use `: checkhealth` to see if your Neovim configuration is still problematic.
-    - 你可以使用`:checkhealth`来查看你的 Neovim 配置是否还有问题。
+* You can use `: checkhealth` and `:messages` to see if your Neovim configuration is still problematic.
+    - 你可以使用`:checkhealth`和`:messages`来查看你的 Neovim 配置是否还有问题。
 
 ## Options
 
-* It can be better for your editor when you install `./need/font`.
-    - 安装`./need`里的字体文件，它不是必须但它可以使你的 (Neo)vim 更“好看”。
+* Install these fonts to make your toilet look better
+    - 安装这些字体是你的便器更好看
+
+1. **Go-Mono**
+3. **Envy Conde R PR17**
+2. Operator Mono
+4. JetBrains
+5. Microsoft Yahei
+6. Source Han Sans
 
 ## About The Configuration
 
@@ -119,6 +126,7 @@ cmd /c gem list -ra ^^neovim$
 | `<lEADER>q`     | `:q<CR>`                       |
 | `<lEADER>Q`     | `:q!<CR>`                      |
 | `<lEADER>rr`    | `:call CompileRunGcc()<CR>`    |
+| `<lEADER>0`     | `:call Replace_Chinese()<CR>`  |
 
 **imap**
 
@@ -194,7 +202,7 @@ cmd /c gem list -ra ^^neovim$
 * Enter some Chinese symbols that are quite different from English without switching input methods
     - 在不切换输入法时输入一些中文符号
     > #### 情景
-    > - 由于经常写代码,中文符号在代码中不能被使用,比如破折号、顿号、句号等。
+    > - 由于经常写代码,中文符号在代码中不能被识别,比如破折号、顿号、句号等。
     > - 但写中文文章时你又需要用到这些符号。
     > #### 我的解决方案:
     > 1. 我将输入法的符号输入设置为默认输入半角符号!!!!
@@ -207,6 +215,9 @@ cmd /c gem list -ra ^^neovim$
 | `<LEADER>\\` | `、`    |
 | `<LEADER>..` | `。`    |
 | `<LEADER>--` | `——`    |
+| `<LEADER>}}` | `』`    |
+| `<LEADER>{{` | `『`    |
+| `<LEADER>`\` | `·`     |
 
 ### 3. Plugin 插件
 
@@ -239,6 +250,7 @@ cmd /c gem list -ra ^^neovim$
 | 快速注释         | 'preservim/nerdcommenter'      |
 | 多项选择修改     | 'terryma/vim-multiple-cursors' |
 | 按键提示         | 'liuchengxu/vim-which-key'     |
+| 快速添加项目符号 | 'dkarter/bullets.vim'          |
 
 #### 3.3 NERDTree (树形文件结构)
 
@@ -257,24 +269,39 @@ cmd /c gem list -ra ^^neovim$
     'tmhedberg/SimpylFold'
     'Vimjas/vim-python-pep8-indent'
 
+* git
+    'airblade/vim-gitgutter'
+
 * markdown
     'iamcco/markdown-preview.nvim'
 
-* git
-    'airblade/vim-gitgutter'
+<div>
+    <img src="./doc/demo2.png" alt="demo" style="width: 100%;height: 100%;border-radius: 5px;">
+</div>
 
 #### 3.5 coc.nvim 补全框架
 
 * 'neoclide/coc.nvim'
 
----
-
-```txt
-                            _           _     _
-                           | |         | |   (_)
-                    _______| |__  _   _| |__  _ _ __
-                   |_  / __| |_ \| | | | |_ \| |  _ \
-                    / / (__| | | | |_| | |_) | | | | |
-                   /___\___|_| |_|\__,_|_.__/|_|_| |_|
+### 4. Question and Answer
 
 ```
+                                    _           _     _
+                                   | |         | |   (_)
+                            _______| |__  _   _| |__  _ _ __
+                           |_  / __| |_ \| | | | |_ \| |  _ \
+                            / / (__| | | | |_| | |_) | | | | |
+                           /___\___|_| |_|\__,_|_.__/|_|_| |_|
+
+                          *(⊙_⊙)？这是我遇到的问题，我写在这里~*
+
+```
+1. Q: 安装了"MarkdownPreview"怎么不起做用？
+   A: 1. 查看是否安装完全，重新安装是个不错的办法。
+      2. 在`Windows10`上可能在执行文件时不能自动安装，可到插件目录手动安装；
+      执行插件目录下的`markdown-preview.nvim/app/install.cmd`即可。
+
+2. Q: Coc.nvim 并没有启动。
+   A: 1. 可能是`Nodejs`没有安装或是配置完成，请查看本文开头重新配置和安装依赖；
+      2. 最好是吧`Nodejs`的工具都装上，执行`Nodejs`目录下的`install_tools.bat`即可
+

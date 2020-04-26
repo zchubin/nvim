@@ -88,7 +88,6 @@ autocmd BufWrite * :call DeleteTrailingWS()
 map <LEADER>w :call DeleteTrailingWS()<CR>
 nmap <silent> `9 :<C-u>call <SID>toggle_background()<CR>
 noremap <lEADER>rr :call CompileRunGcc()<CR>
-noremap <lEADER>0 :call Replace_Chinese()<CR>
 
 " 编译调用的插件
 func! CompileRunGcc()
@@ -96,30 +95,39 @@ func! CompileRunGcc()
 	if &filetype == 'c'
 		exec "!g++ % -o %<"
 		exec "!time ./%<"
+
 	elseif &filetype == 'cpp'
 		set splitbelow
 		exec "!g++ -std=c++11 % -Wall -o %<"
 		:sp
 		:res -15
 		:term ./%<
+
 	elseif &filetype == 'java'
         exec "!javac -encoding utf-8 %"
 		exec "!time java %<"
+
 	elseif &filetype == 'sh'
 		:!time bash %
+
 	elseif &filetype == 'python'
 		set splitbelow
 		:sp
 		:term python %
+
 	elseif &filetype == 'html'
 		silent! exec "!".g:mkdp_browser." % &"
+
 	elseif &filetype == 'markdown'
 		exec "MarkdownPreview"
-    " elseif &filetype == 'vimwiki'
-    "     exec "MarkdownPreview"
+
+    elseif &filetype == 'vimwiki'
+        exec "MarkdownPreview"
+
 	elseif &filetype == 'tex'
 		silent! exec "VimtexStop"
 		silent! exec "VimtexCompile"
+
 	elseif &filetype == 'go'
 		set splitbelow
 		:sp
@@ -175,8 +183,8 @@ func! Replace_Chinese()
         \ "℃" : "\\\\textcelsius",
         \ "μ" : "$\\\\mu$"
         \ }
-	for i in keys(chinese)
+	for insert in keys(chinese)
 		silent! exec '%substitute/' . i . '/'. chinese[i] . '/g'
 	endfor
 endfunc
-
+noremap <lEADER>0 :call Replace_Chinese()<CR>
