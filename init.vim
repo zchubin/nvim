@@ -58,7 +58,7 @@ LocalScript vimrc/C-vimconfig.vim
 " 自定义按键
 LocalScript vimrc/D-keymaps.vim
 
-call plug#begin('~/AppData/Local/nvim/plugged')
+call plug#begin('$HOME/AppData/Local/nvim/plugged')
 
 " 向各种 vim 插件提供文件类型标志符号 ( 图标 )
 Plug 'ryanoasis/vim-devicons'
@@ -96,6 +96,12 @@ Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 " 缩进线
 Plug 'Yggdroot/indentLine'
 " Plug 'nathanaelkane/vim-indent-guides'
+
+" 快速添加项目符号
+Plug 'dkarter/bullets.vim'
+let g:bullets_mapping_leader = '<SPACE>'
+let g:bullets_enabled_file_types = [ 'markdown', 'text', 'gitcommit', 'scratch']
+
 " 快速注释
 Plug 'preservim/nerdcommenter'
 " 快速对齐对 markdown 表格尤为友好

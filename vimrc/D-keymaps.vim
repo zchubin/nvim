@@ -61,6 +61,9 @@ noremap `2 :set spell!<CR>
 inoremap <LEADER>\\ 、
 inoremap <LEADER>.. 。
 inoremap <LEADER>-- ——
+inoremap <LEADER>}} 』
+inoremap <LEADER>{{ 『
+inoremap <LEADER>` ·
 
 " Yank buffer's relative/absolute path to clipboard
 " nnoremap `y :let @+=expand("%:~:.")<CR>:echo 'Yanked relative path'<CR>
@@ -85,6 +88,7 @@ autocmd BufWrite * :call DeleteTrailingWS()
 map <LEADER>w :call DeleteTrailingWS()<CR>
 nmap <silent> `9 :<C-u>call <SID>toggle_background()<CR>
 noremap <lEADER>rr :call CompileRunGcc()<CR>
+noremap <lEADER>0 :call Replace_Chinese()<CR>
 
 " 编译调用的插件
 func! CompileRunGcc()
@@ -146,3 +150,33 @@ function! s:toggle_background()
 		endif
 	endif
 endfunction
+
+func! Replace_Chinese()
+	let chinese={
+        \ "（" : "(",
+        \ "）" : ")",
+        \ "【" : "[",
+        \ "】" : "]",
+        \ "』" : "}",
+        \ "『" : "{",
+        \ "，" : ",",
+        \ "；" : ";",
+        \ "：" : ":",
+        \ "。" : ".",
+        \ "？" : "?",
+        \ "！" : "!",
+        \ "￥" : "$",
+        \ "“" : "\"",
+        \ "”" : "\"",
+        \ "’" : "'",
+        \ "·" : "`",
+        \ "》" : ">",
+        \ "《" : "<",
+        \ "℃" : "\\\\textcelsius",
+        \ "μ" : "$\\\\mu$"
+        \ }
+	for i in keys(chinese)
+		silent! exec '%substitute/' . i . '/'. chinese[i] . '/g'
+	endfor
+endfunc
+

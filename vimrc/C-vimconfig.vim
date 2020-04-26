@@ -175,11 +175,14 @@ augroup InitFileTypesGroup
 	autocmd FileType qf setlocal nonumber
 
 	" 强制对某些扩展名的 filetype 进行纠正
-	autocmd BufNewFile,BufRead *.as setlocal filetype=actionscript
+	autocmd BufNewFile,BufRead *.as  setlocal filetype=actionscript
 	autocmd BufNewFile,BufRead *.pro setlocal filetype=prolog
-	autocmd BufNewFile,BufRead *.es setlocal filetype=erlang
+	autocmd BufNewFile,BufRead *.es  setlocal filetype=erlang
 	autocmd BufNewFile,BufRead *.asc setlocal filetype=asciidoc
-	autocmd BufNewFile,BufRead *.vl setlocal filetype=verilog
+	autocmd BufNewFile,BufRead *.vl  setlocal filetype=verilog
+
+    autocmd BufRead,BufNewFile *.{md,mkd,markdown,mdown,mkdn,mdwn} set filetype=markdown
+    autocmd BufRead,BufNewFile *.{json} set filetype=jsonc
 
     autocmd BufNewFile,BufRead */playbooks/*.{yml,yaml} setfiletype yaml.ansible
 	autocmd BufNewFile,BufRead */inventory/*            setfiletype ansible_hosts
@@ -200,5 +203,4 @@ augroup InitFileTypesGroup
 	autocmd BufNewFile,BufRead Jenkinsfile*         setfiletype groovy
 	autocmd BufNewFile,BufRead Tmuxfile,tmux/config setfiletype tmux
 	autocmd BufNewFile,BufRead Brewfile             setfiletype ruby
-
 augroup END

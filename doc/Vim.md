@@ -1,5 +1,8 @@
 # Vim 命令
 [回到 README](../README.md)
+----
+
+![VimKeys](./vi-vim-cheat-sheet-sch.gif)
 ## 关于 Vim
 Vim 是我最喜欢的编辑器，也是 Linux 下最强的编辑器之一。如果初学 vi, 查看 tutor 和 help 文档是个明智的决定。
 
