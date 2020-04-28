@@ -276,7 +276,7 @@ cmd /c gem list -ra ^^neovim$
     'iamcco/markdown-preview.nvim'
 
 <div>
-    <img src="./doc/demo2.png" alt="demo" style="width: 100%;height: 100%;border-radius: 5px;">
+    <img src="./doc/demo2.PNG" alt="demo" style="width: 100%;height: 100%;border-radius: 5px;">
 </div>
 
 #### 3.5 coc.nvim 补全框架

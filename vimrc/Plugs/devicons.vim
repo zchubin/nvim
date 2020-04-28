@@ -3,9 +3,9 @@
 "===
 
 if has('mac') || has('macunix')
-  let g:WebDevIconsOS = 'Darwint'
+    let g:WebDevIconsOS = 'Darwint'
 else
-  let g:WebDevIconsOS = 'linux'
+    let g:WebDevIconsOS = 'linux'
 endif
 
 " loading the plugin
@@ -16,7 +16,7 @@ let g:webdevicons_enable_airline_tabline = 1
 let g:webdevicons_enable_airline_statusline = 1
 let g:webdevicons_enable_startify = 1
 " 设置标志占位2个字符，保证垂直对齐
-let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
+let g:WebDevIconsNerdTreeGitPluginForceVAlign = 2
 " 遇到未知文件使用以下图标表示
 let g:WebDevIconsUnicodeDecorateFileNodesDefaultSymbol = '' "‽
 " 启用文件夹/目录字形图标
