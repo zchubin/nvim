@@ -40,6 +40,7 @@ let g:startify_files_number = 5
 let g:startify_change_to_vcs_root = 1
 let g:startify_session_sort = 1
 let g:startify_relative_path = 1
+
 let g:startify_bookmarks = [
             \ '~/Desktop/text.txt',
             \ '~/Desktop/README.md',
@@ -53,8 +54,6 @@ let g:startify_custom_footer = [
             \ '| - zchubin -work-menuヾ(≧▽≦*)o- |',
             \ '+--------------------------------+',
             \ ]
-
-
 
 function! Zhong_startify_center(lines) abort
     let longest_line   = max(map(copy(a:lines), 'strwidth(v:val)'))

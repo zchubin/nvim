@@ -130,7 +130,7 @@ command! -bang -bar -nargs=+ SnipMateLoadScope
 			\ call s:load_scopes(<bang>0, <f-args>)
 
 " Edit snippet files
-command! SnipMateOpenSnippetFiles call snipMate#OpenSnippetFiles()
+" command! SnipMateOpenSnippetFiles call snipMate#OpenSnippetFiles()
 
 " restore(恢复/修复) 'cpo'
 let &cpo = s:save_cpo

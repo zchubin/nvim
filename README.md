@@ -297,11 +297,13 @@ cmd /c gem list -ra ^^neovim$
 
 ```
 1. Q: 安装了"MarkdownPreview"怎么不起做用？
+
    A: 1. 查看是否安装完全，重新安装是个不错的办法。
       2. 在`Windows10`上可能在执行文件时不能自动安装，可到插件目录手动安装；
       执行插件目录下的`markdown-preview.nvim/app/install.cmd`即可。
 
 2. Q: Coc.nvim 并没有启动。
+
    A: 1. 可能是`Nodejs`没有安装或是配置完成，请查看本文开头重新配置和安装依赖；
       2. 最好是吧`Nodejs`的工具都装上，执行`Nodejs`目录下的`install_tools.bat`即可
 

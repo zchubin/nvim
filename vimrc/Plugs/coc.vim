@@ -18,7 +18,7 @@ set shortmess+=c
 set updatetime=300
 " set signcolumn=yes
 
-" 修正COC Bug
+" 修正COC
 silent! au BufEnter,BufRead,BufNewFile * silent! unmap if
 
 "  Coc-Plugs
