@@ -1,11 +1,11 @@
 @PowerShell -ExecutionPolicy Bypass -Command Invoke-Expression $('$args=@(^&{$args} %*);'+[String]::Join(';',(Get-Content '%~f0') -notmatch '^^@PowerShell.*EOF$')) & goto :EOF
 
-echo "               _           _     _       "
-echo "              | |         | |   (_)      "
-echo "       _______| |__  _   _| |__  _ _ __  "
-echo "      |_  / __| |_ \| | | | |_ \| |  _ \ "
-echo "       / / (__| | | | |_| | |_) | | | | |"
-echo "      /___\___|_| |_|\__,_|_.__/|_|_| |_|"
+echo "                  _           _     _       "
+echo "                 | |         | |   (_)      "
+echo "          _______| |__  _   _| |__  _ _ __  "
+echo "         |_  / __| |_ \| | | | |_ \| |  _ \ "
+echo "          / / (__| | | | |_| | |_) | | | | |"
+echo "         /___\___|_| |_|\__,_|_.__/|_|_| |_|"
 
 Push-Location ~
 
@@ -62,7 +62,6 @@ echo "==> Testing 'Python' command"
 if (Get-Command "Python" -ErrorAction SilentlyContinue) {
   echo ($(python --version) -split '\n')[0]
   echo (python -m pip install --upgrade pip)
-  echo (pip ——version)
   echo (pip3 install pynvim neovim)
   echo "[OK] The test is successful, start the next test ..."
   sleep 1

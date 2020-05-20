@@ -188,3 +188,4 @@ func! Replace_Chinese()
 	endfor
 endfunc
 noremap <lEADER>0 :call Replace_Chinese()<CR>
+

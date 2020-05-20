@@ -10,7 +10,9 @@ set guifont=GoMono\ Nerd\ Font\ Mono:h16
 
 " 设置中文提示
 language messages zh_CN.utf-8
+
 "set clipboard=unnamedplus
+
 " 设置中文帮助
 set helplang=cn
 let &termencoding=&encoding

@@ -151,8 +151,8 @@ augroup mygroup
 augroup end
 
 " 为选定范围添加代码功能
-xmap <leader>a <Plug>(coc-codeaction-selected)
-nmap <leader>a <Plug>(coc-codeaction-selected)
+xmap <leader>ca <Plug>(coc-codeaction-selected)
+nmap <leader>ca <Plug>(coc-codeaction-selected)
 
 " 为当前行添加 codeAction
 nmap <leader>ac  <Plug>(coc-codeaction)
@@ -185,23 +185,21 @@ command! -nargs=0 OR     :call CocAction('runCommand', 'editor.action.organizeIm
 
 " Using CocList
 " Show all diagnostics 展示所有诊断信息
-nnoremap <silent> ;a  :<C-u>CocList diagnostics<cr>
+nnoremap <silent> ;A  :<C-u>CocList diagnostics<cr>
 " Manage extensions 管理扩展
-nnoremap <silent> ;e  :<C-u>CocList extensions<cr>
+nnoremap <silent> ;E  :<C-u>CocList extensions<cr>
 " Show commands 显示命令
-nnoremap <silent> ;c  :<C-u>CocList commands<cr>
+nnoremap <silent> ;C  :<C-u>CocList commands<cr>
 " Find symbol of current document 查看当前文档的标记
-nnoremap <silent> ;o  :<C-u>CocList outline<cr>
+nnoremap <silent> ;O  :<C-u>CocList outline<cr>
 " Search workspace symbols 查找工作区标记
-nnoremap <silent> ;s  :<C-u>CocList -I symbols<cr>
+nnoremap <silent> ;S  :<C-u>CocList -I symbols<cr>
 " Do default action for next item. 对下项目执行默认操作
-nnoremap <silent> ;j  :<C-u>CocNext<CR>
+nnoremap <silent> ;J  :<C-u>CocNext<CR>
 " Do default action for previous item. 对上一项执行默认操作
-nnoremap <silent> ;k  :<C-u>CocPrev<CR>
-" Resume latest coc list 恢复最新的 coc 列表
-nnoremap <silent> ;e  :<C-u>CocList extensions<cr>
+nnoremap <silent> ;K  :<C-u>CocPrev<CR>
 " Show commands 显示命令
-nnoremap <silent> ;p  :<C-u>CocListResume<CR>
+nnoremap <silent> ;P  :<C-u>CocListResume<CR>
 
 "================
 "=== coc-yank ===
@@ -218,11 +216,11 @@ nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
 nmap <Leader>t <Plug>(coc-translator-p)
 vmap <Leader>t <Plug>(coc-translator-pv)
 " echo 发音
-nmap <Leader>e <Plug>(coc-translator-e)
-nmap <Leader>e <Plug>(coc-translator-ev)
+nmap <Leader>te <Plug>(coc-translator-e)
+vmap <Leader>te <Plug>(coc-translator-ev)
 " replace 替换
-nmap <Leader>r <Plug>(coc-translator-r)
-nmap <Leader>r <Plug>(coc-translator-rv)
+nmap <Leader>tr <Plug>(coc-translator-r)
+vmap <Leader>tr <Plug>(coc-translator-rv)
 
 "=============================================================================================
 
@@ -257,8 +255,8 @@ let g:coc_snippet_prev = '<c-k>'
 "===============
 
 " navigate chunks of current buffer
-nmap [g <Plug>(coc-git-prevchunk)
-nmap ]g <Plug>(coc-git-nextchunk)
+nmap {g <Plug>(coc-git-prevchunk)
+nmap }g <Plug>(coc-git-nextchunk)
 " show chunk diff at current position
 nmap gd <Plug>(coc-git-chunkinfo)
 " show commit contains current position
@@ -268,4 +266,3 @@ omap ig <Plug>(coc-git-chunk-inner)
 xmap ig <Plug>(coc-git-chunk-inner)
 omap ag <Plug>(coc-git-chunk-outer)
 xmap ag <Plug>(coc-git-chunk-outer)
-

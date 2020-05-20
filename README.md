@@ -38,7 +38,9 @@
 
 ## Installation
 
-* You can use `git` to get it.( 你可使用 git 来下载配置。 )
+* You can use `git` to get it.
+    - 你可使用 git 来下载配置。
+
 ```shell
 git clone https://github.com/zchubin/nvim.git
 ```
@@ -46,12 +48,19 @@ git clone https://github.com/zchubin/nvim.git
 * If you don't have git, you can find the corresponding version of your system from [here](https://gitforwindows.org).
     - 如果你没有 git，你可从 [这里](https://gitforwindows.org) 你系统对应的版本
 
-
 * Note:  See [Requires](##Requirements), if you aren't sure whethre you have this.
     - 注意：参看[需求列表](##Requirements), 如果你不确定你是否已安装。
 
-## Requirements
+1. Automatic installation
+    - 通过脚本**自动安装**。
 
+* Click `./install.cmd`
+    - 运行`.install.cmd`
+
+2. Manual installation
+    - 参考本文档**手动安装**。
+
+## Requirements
 
 - [x] Python3
 - [x] Nodejs
@@ -298,12 +307,16 @@ cmd /c gem list -ra ^^neovim$
 ```
 1. Q: 安装了"MarkdownPreview"怎么不起做用？
 
-   A: 1. 查看是否安装完全，重新安装是个不错的办法。
-      2. 在`Windows10`上可能在执行文件时不能自动安装，可到插件目录手动安装；
+   A:
+    1. 查看是否安装完全，重新安装是个不错的办法。
+
+    2. 在`Windows10`上可能在执行文件时不能自动安装，可到插件目录手动安装；
       执行插件目录下的`markdown-preview.nvim/app/install.cmd`即可。
 
 2. Q: Coc.nvim 并没有启动。
 
-   A: 1. 可能是`Nodejs`没有安装或是配置完成，请查看本文开头重新配置和安装依赖；
-      2. 最好是吧`Nodejs`的工具都装上，执行`Nodejs`目录下的`install_tools.bat`即可
+   A:
+    1. 可能是`Nodejs`没有安装或是配置完成，请查看本文开头重新配置和安装依赖；
+
+    2. 最好是吧`Nodejs`的工具都装上，执行`Nodejs`目录下的`install_tools.bat`即可
 
