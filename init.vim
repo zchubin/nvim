@@ -93,6 +93,8 @@ Plug 'ccampbell/rainbow'
 Plug 'tpope/vim-surround'
 " 模糊查找工具
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+" fzf 模糊查找
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 " 缩进线
 Plug 'Yggdroot/indentLine'
 " Plug 'nathanaelkane/vim-indent-guides'
@@ -165,3 +167,4 @@ LocalScript vimrc/Plugs/nerdTree.vim
 LocalScript vimrc/Plugs/emmet.vim
 LocalScript vimrc/Plugs/markdown.vim
 LocalScript vimrc/Plugs/gitgutter.vim
+LocalScript vimrc/Plugs/FZF.vim

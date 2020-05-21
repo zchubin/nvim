@@ -33,7 +33,7 @@
 ```
 
 <div>
-    <img src="./doc/demo.PNG" alt="demo" style="width: 100%;height: 100%;border-radius: 5px;">
+    <img src="./doc/Screenshot/Startify.PNG" alt="demo" style="width: 100%;height: 100%;border-radius: 5px;">
 </div>
 
 ## Installation
@@ -285,7 +285,7 @@ cmd /c gem list -ra ^^neovim$
     'iamcco/markdown-preview.nvim'
 
 <div>
-    <img src="./doc/demo2.PNG" alt="demo" style="width: 100%;height: 100%;border-radius: 5px;">
+    <img src="./doc/Screenshot/MarkdownPreview" alt="demo" style="width: 100%;height: 100%;border-radius: 5px;">
 </div>
 
 #### 3.5 coc.nvim 补全框架
@@ -319,4 +319,15 @@ cmd /c gem list -ra ^^neovim$
     1. 可能是`Nodejs`没有安装或是配置完成，请查看本文开头重新配置和安装依赖；
 
     2. 最好是吧`Nodejs`的工具都装上，执行`Nodejs`目录下的`install_tools.bat`即可
+
+3. Q: 我的运行环境是否搭建成功？
+
+   A: 可以尝试运行`install.cmd`来判断，同时如果安装了运行环境，此文件还将帮您安装 Nvim
+   的相关依赖。
+
+<div>
+    <center> ** ./install.cmd 运行结果如下: ** </center>
+    <img src="./doc/Screenshot/Install.PNG" alt="demo" style="width: 100%;height: 100%;border-radius: 5px;">
+</div>
+
 
