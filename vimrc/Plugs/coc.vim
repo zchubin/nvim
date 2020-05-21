@@ -26,10 +26,11 @@ let g:coc_global_extensions = [
             \ 'coc-json'       ,
             \ 'coc-html'       , 'coc-css'         ,
             \ 'coc-python'     , 'coc-pyright'     ,
+            \ 'coc-tsserver'   ,
             \ 'coc-yank'       ,
             \ 'coc-translator' ,
             \ 'coc-git'        , 'coc-gitignore'   ,
-            \ 'coc-tsserver'   ,
+            \ 'coc-explorer'   ,
             \ 'coc-lists'      ,
             \ 'coc-vimlsp'     , 'coc-tailwindcss' ,
             \ 'coc-stylelint'  , 'coc-tslint'      ,
@@ -183,7 +184,10 @@ command! -nargs=0 OR     :call CocAction('runCommand', 'editor.action.organizeIm
 
 "=============================================================================================
 
-" Using CocList
+"===============
+"=== CocList ===
+"===============
+
 " Show all diagnostics 展示所有诊断信息
 nnoremap <silent> ;A  :<C-u>CocList diagnostics<cr>
 " Manage extensions 管理扩展
@@ -266,3 +270,9 @@ omap ig <Plug>(coc-git-chunk-inner)
 xmap ig <Plug>(coc-git-chunk-inner)
 omap ag <Plug>(coc-git-chunk-outer)
 xmap ag <Plug>(coc-git-chunk-outer)
+
+"====================
+"=== coc-explorer ===
+"====================
+
+nmap ee :CocCommand explorer<CR>
