@@ -1,444 +1,311 @@
 {
-    "suggest.autoTrigger"                       : "none", // 关闭自动补全
-    "suggest.triggerAfterInsertEnter"           : false,  // 进入插入模块即触发自动补全
-    "suggest.timeout"                           : 500,    // 调整补全超时时间
-    "suggest.noselect"                          : false,  // 补全开启时选中第一项
-    "suggest.keepCompleteopt"                   : true,   // 保留使用当前的 completeopt
-    "suggest.enablePreview"                     : true,   // 让 vim 弹出预览窗口
-    "suggest.minTriggerInputLength"             : 2,      // 设置最少补全触发字符数
-    "suggest.snippetIndicator"                  : "▶",    // 改变代码片段的提示字符
-    "suggest.detailMaxLength"                   : 50,     // 补全提示最大宽度
-    "suggest.enablePreselect"                   : false,
-    "suggest.floatEnable"                       : true,
-    "suggest.detailField"                       : "preview",
-    "suggest.triggerCompletionWait"             : 100,
-    "suggest.echodocSupport"                    : true,
-    "suggest.completionItemKindLabels" : {
-            "class"         : "\uf0e8",
-            "color"         : "\ue22b",
-            "constant"      : "\uf8fe",
-            "default"       : "\uf29c",
-            "enum"          : "\uf435",
-            "enumMember"    : "\uf02b",
-            "event"         : "\ufacd",
-            "field"         : "\uf93d",
-            "file"          : "\uf723",
-            "folder"        : "\uf115",
-            "function"      : "\u0192",
-            "interface"     : "\uf417",
-            "keyword"       : "\uf1de",
-            "method"        : "\uf6a6",
-            "module"        : "\uf40d",
-            "operator"      : "\uf915",
-            "property"      : "\ue624",
-            "reference"     : "\ufa46",
-            "snippet"       : "\ue60b",
-            "struct"        : "\ufb44",
-            "text"          : "\ue612",
-            "typeParameter" : "\uf728",
-            "unit"          : "\uf475",
-            "value"         : "\uf89f",
-            "variable"      : "\ue71b"
-    },
+  "suggest.autoTrigger"                       : "none", // 关闭自动补全
+  "suggest.triggerAfterInsertEnter"           : false,  // 进入插入模块即触发自动补全
+  "suggest.timeout"                           : 500,    // 调整补全超时时间
+  "suggest.noselect"                          : false,  // 补全开启时选中第一项
+  "suggest.keepCompleteopt"                   : true,   // 保留使用当前的 completeopt
+  "suggest.enablePreview"                     : true,   // 让 vim 弹出预览窗口
+  "suggest.minTriggerInputLength"             : 2,      // 设置最少补全触发字符数
+  "suggest.snippetIndicator"                  : "▶",    // 改变代码片段的提示字符
+  "suggest.detailMaxLength"                   : 50,     // 补全提示最大宽度
+  "suggest.enablePreselect"                   : false,
+  "suggest.floatEnable"                       : true,
+  "suggest.detailField"                       : "preview",
+  "suggest.triggerCompletionWait"             : 100,
+  "suggest.echodocSupport"                    : true,
+  "suggest.completionItemKindLabels" : {
+    "class"         : "\uf0e8",
+    "color"         : "\ue22b",
+    "constant"      : "\uf8fe",
+    "default"       : "\uf29c",
+    "enum"          : "\uf435",
+    "enumMember"    : "\uf02b",
+    "event"         : "\ufacd",
+    "field"         : "\uf93d",
+    "file"          : "\uf723",
+    "folder"        : "\uf115",
+    "function"      : "\u0192",
+    "interface"     : "\uf417",
+    "keyword"       : "\uf1de",
+    "method"        : "\uf6a6",
+    "module"        : "\uf40d",
+    "operator"      : "\uf915",
+    "property"      : "\ue624",
+    "reference"     : "\ufa46",
+    "snippet"       : "\ue60b",
+    "struct"        : "\ufb44",
+    "text"          : "\ue612",
+    "typeParameter" : "\uf728",
+    "unit"          : "\uf475",
+    "value"         : "\uf89f",
+    "variable"      : "\ue71b"
+  },
 
-    "diagnostic.signOffset"          : 1,      // 错误信息标志
-    "diagnostic.refreshOnInsertMode" : false,  // 不要再插入模式检测错误信息
-    "diagnostic.refreshAfterSave"    : true,   // 保存检测并刷新错误信息
-    "diagnostic.checkCurrentLine"    : true,   // 检测当前行的错误
-    "diagnostic.errorSign"           : "",    // "×",
-    "diagnostic.warningSign"         : "",    // "»",
-    "diagnostic.hintSign"            : "",    // "ღ",
-    "diagnostic.infoSign"            : "",    // "ஐ",
-    "diagnostic.displayByAle"        : false,  // 不显示 Ale 的标志
-    "diagnostic.virtualTextPrefix"   : "❯❯ ", // 错误信息标志符号提示字符
-    "diagnostic.virtualText"         : true,   // 错误信息
+  "diagnostic.signOffset"          : 1,      // 错误信息标志
+  "diagnostic.refreshOnInsertMode" : false,  // 不要再插入模式检测错误信息
+  "diagnostic.refreshAfterSave"    : true,   // 保存检测并刷新错误信息
+  "diagnostic.checkCurrentLine"    : true,   // 检测当前行的错误
+  "diagnostic.errorSign"           : "",    // "×",
+  "diagnostic.warningSign"         : "",    // "»",
+  "diagnostic.hintSign"            : "",    // "ღ",
+  "diagnostic.infoSign"            : "",    // "ஐ",
+  "diagnostic.displayByAle"        : false,  // 不显示 Ale 的标志
+  "diagnostic.virtualTextPrefix"   : "❯❯ ", // 错误信息标志符号提示字符
+  "diagnostic.virtualText"         : true,   // 错误信息
 
-    // Coc-Lists
-    "list.source.grep.defaultArgs"       : ["-regex"], // 配置 grep 源默认使用正则匹配,默认参数仅在命令行调用参数为空时生效
-    "list.source.symbols.defaultOptions" : ["--interactive", "--number-select"], // 让 symbols 列表启用 interactive 模式,同时支持数字键选中
-    "list.previewHighlightGroup"         : "Statement",
-    "list.nextKeymap"                    : "<C-j>",
-    "list.previousKeymap"                : "<C-k>",
+  // Coc-Lists
+  "list.source.grep.defaultArgs"       : ["-regex"], // 配置 grep 源默认使用正则匹配,默认参数仅在命令行调用参数为空时生效
+  "list.source.symbols.defaultOptions" : ["--interactive", "--number-select"], // 让 symbols 列表启用 interactive 模式,同时支持数字键选中
+  "list.previewHighlightGroup"         : "Statement",
+  "list.nextKeymap"                    : "<C-j>",
+  "list.previousKeymap"                : "<C-k>",
 
-    "coc.preferences.hoverTarget"           : "preview", // 显示当前位置的悬浮信息
-    "coc.preferences.enableFloatHighlight"  : true,
-    "coc.prefere  "python": {
-    "command": "python",
-    "args": [
-      "-mpyls",
-      "-vv",
-      "--log-file",
-      "/tmp/lsp_python.log"
-    ],
-    "trace.server": "verbose",
-    "filetypes": [
-      "python"
-    ],
-    "settings": {
-      "pyls": {
-        "enable": true,
-        "trace": {
-          "server": "verbose"
-        },
-        "commandPath": "",
-        "configurationSources": [
-          "pycodestyle"
-        ],
-        "plugins": {
-          "jedi_completion": {
-            "enabled": true
-          },
-          "jedi_hover": {
-            "enabled": true
-          },
-          "jedi_references": {
-            "enabled": true
-          },
-          "jedi_signature_help": {
-            "enabled": true
-          },
-          "jedi_symbols": {
-            "enabled": true,
-            "all_scopes": true
-          },
-          "mccabe": {
-            "enabled": true,
-            "threshold": 15
-          },
-          "preload": {
-            "enabled": true
-          },
-          "pycodestyle": {
-            "enabled": true
-          },
-          "pydocstyle": {
-            "enabled": false,
-            "match": "(?!test_).*\\.py",
-            "matchDir": "[^\\.].*"
-          },
-          "pyflakes": {
-            "enabled": true
-          },
-          "rope_completion": {
-            "enabled": true
-          },
-          "yapf": {
-            "enabled": true
-          }
-        }
-      }
-    }
-  }
-}nces.highlightTimeout"      : 5000,
-    "coc.preferences.snippetStatusText"     : "",//"Ⓢ "
-    "coc.preferences.extensionUpdateCheck"  : "weekly",
-    "coc.preferences.formatOnType"          : true,
-    // 文件目录管理器
-    "explorer.quitOnOpen" : true,
-	"explorer.sources"    : [
+  "coc.preferences.hoverTarget"           : "preview", // 显示当前位置的悬浮信息
+  "coc.preferences.enableFloatHighlight"  : true,
+  "coc.preferences.snippetStatusText"     : "",//"Ⓢ "
+  "coc.preferences.extensionUpdateCheck"  : "weekly",
+  "coc.preferences.formatOnType"          : true,
+
+  // 文件目录管理器
+  "explorer.quitOnOpen" : true,
+  "explorer.sources": [
 		{
-			"name"   : "buffer",
-			"expand" : false
+			"name": "buffer",
+			"expand": false
 		},
 		{
-			"name"   : "file",
-			"exp  "python": {
-    "command": "python",
-    "args": [
-      "-mpyls",
-      "-vv",
-      "--log-file",
-      "/tmp/lsp_python.log"
-    ],
-    "trace.server": "verbose",
-    "filetypes": [
-      "python"
-    ],
-    "settings": {
-      "pyls": {
-        "enable": true,
-        "trace": {
-          "server": "verbose"
-        },
-        "commandPath": "",
-        "configurationSources": [
-          "pycodestyle"
-        ],
-        "plugins": {
-          "jedi_completion": {
-            "enabled": true
-          },
-          "jedi_hover": {
-            "enabled": true
-          },
-          "jedi_references": {
-            "enabled": true
-          },
-          "jedi_signature_help": {
-            "enabled": true
-          },
-          "jedi_symbols": {
-            "enabled": true,
-            "all_scopes": true
-          },
-          "mccabe": {
-            "enabled": true,
-            "threshold": 15
-          },
-          "preload": {
-            "enabled": true
-          },
-          "pycodestyle": {
-            "enabled": true
-          },
-          "pydocstyle": {
-            "enabled": false,
-            "match": "(?!test_).*\\.py",
-            "matchDir": "[^\\.].*"
-          },
-          "pyflakes": {
-            "enabled": true
-          },
-          "rope_completion": {
-            "enabled": true
-          },
-          "yapf": {
-            "enabled": true
-          }
-        }
-      }
-    }
-  }
-}and" : true
+			"name": "file",
+			"expand": true
 		}
 	],
-    "explorer.file.column.indent.indentLine"   : true,   // 是否显示对对齐线
-    "explorer.file.showHiddenFiles"            : true,   // 显示隐藏文件
-    "explorer.icon.enableNerdfont"             : true,   // 字体支持
-    "explorer.file.column.git.showIgnored"     : true,   // 在 git 列表显示隐藏文件
-    "explorer.keyMappingMode"                  : "none", // 取消默认键盘隐射
-    // "explorer.buffer.showHiddenBuffers"     : false,  // 不显示隐藏缓冲区
-    // "explorer.icon.enableVimDevicons"       : true,
-    "explorer.width"                           : 25,
-    "explorer.file.column.git.icon.mixed"      : "*", // 混合
-    "explorer.file.column.git.icon.unmodified" : " ", // 未修改
-    "explorer.file.column.git.icon.modified"   : "M", // 修改
-    "explorer.file.column.git.icon.added"      : "A", // 添加
-    "explorer.file.column.git.icon.deleted"    : "D", // 删除
-    "explorer.file.column.git.icon.renamed"    : "R", // 重命名
-    "explorer.file.column.git.icon.copied"     : "C", // 复制
-    "explorer.file.column.git.icon.unmerged"   : "U", // 合并
-    "explorer.file.column.git.icon.untracked"  : "?", // 未追踪
-    "explorer.file.column.git.icon.ignored"    : ".", // 忽略
-    "explorer.keyMappings": {
-        "<esc>" : "esc",
-        "?"     : "help",
-        "q"     : "quit",
-        "j"     : "nodeNext",
-        "k"     : "nodePrev",
-        "h"     : "gotoParent",
-        "<bs>"  : "gotoParent",
-        "l"     : "open",
-        "<Tab>" : "toggleSelection",     // 选中
-        "*"     : "toggleSelection",
-        "m"     : "actionMenu",          // 菜单
-        "n"     : "collapse",
-        "gl"    : "expandRecursive",
-        "gh"    : "collapseRecursive",
-        "t"     : "openInTab",
-        "<cr>"  : ["expandable?", "cd", "open"],
-        "i"     : "openInVsplit",
-        "o"     : ["expanded?", "collapse", "expand"],
-        "yp"    : "copyFilepath",
-        "yn"    : "copyFilename",
-        "yy"    : "copyFile",
-        "dd"    : "cutFile",
-        "p"     : "pasteFile",
-        "D"     : "deleteForever",
-        "mk"    : "addFile",
-        "M"     : "addDirectory",
-        "cw"    : "rename",
-        "."     : "toggleHidden",
-        "R"     : "refresh",
-        "./"    : "systemExecute",      // 执行文本程序
-        "cd"    : "listDrive",          // 切换驱动器
-        "f"     : "search",
-        "F"     : "searchRecursive",
-        "gf"    : "gotoSource:file",
-        "gb"    : "gotoSource:buffer",
-        "[["    : "sourcePrev",
-        "]]"    : "sourceNext",
-        "[d"    : "diagnosticPrev",
-        "]d"    : "diagnosticNext",
-        "[g"    : "gitPrev",
-        "]g"    : "gitNext",
-        "<<"    : "gitStage",
-        ">>"    : "gitUnstage",
-        "<2-LeftMouse>": [
-              "expandable?",
-              ["expanded?", "collapse", "expand"],
-              "open"
-        ]
-    },
-    // coc-yank
-    "yank.limit" : 100, // 最多保存多少条复制记录
-    // coc-python
-    "python.formatting.provider"      : "yapf", // 使用"yapf"对python代码格式化,结合插件vim-python-pep8-indent(pep8)
-    "python.formatting.yapfArgs"      : [
-        "--style",
-        "pep8",
-        "{SPACES_AROUND_POWER_OPERATOR: True, SPACES_BEFORE_COMMENT: 1}"
-    ], // 传入参数,每个参数在数组中都是单独的项目{格式化自动插入空格,注释符空格后空格数}
-    "python.jediEnabled"              : false,  // To use Microsoft Python Language Server
-    "python.autoComplete.addBrackets" : true,   // 自动添加功能括号，不适用于MPLS
-    "python.linting.pylintArgs": [
-        "--generate-members",
-        "--enable=F,E,W"
-    ],
-    "python.linting.flake8Args": [
-        "--max-line-length=120",
-        "--ignore=E402,F841,F401,E302,E305,W503,W293"
-        ],
-    // coc-json
-    "json.enable":true, // 启用json语言服务
-    "json.format.enable" : true, // 启用json格式
-    // coc-html
-    "html.format.enable" : true,
-    // "prettier.statusItemText": "ⓟ ",
-    // "prettier.stylelintIntegration": true,
-    // "prettier.onlyUseLocalVersion": true,
+  "explorer.file.column.indent.indentLine"   : true,   // 是否显示对对齐线
+  "explorer.file.showHiddenFiles"            : true,   // 显示隐藏文件
+  "explorer.icon.enableNerdfont"             : true,   // 字体支持
+  "explorer.file.column.git.showIgnored"     : true,   // 在 git 列表显示隐藏文件
+  "explorer.keyMappingMode"                  : "none", // 取消默认键盘隐射
+  // "explorer.buffer.showHiddenBuffers"     : false,  // 不显示隐藏缓冲区
+  // "explorer.icon.enableVimDevicons"       : true,
+  "explorer.width"                           : 25,
+  "explorer.file.column.git.icon.mixed"      : "*", // 混合
+  "explorer.file.column.git.icon.unmodified" : " ", // 未修改
+  "explorer.file.column.git.icon.modified"   : "M", // 修改
+  "explorer.file.column.git.icon.added"      : "A", // 添加
+  "explorer.file.column.git.icon.deleted"    : "D", // 删除
+  "explorer.file.column.git.icon.renamed"    : "R", // 重命名
+  "explorer.file.column.git.icon.copied"     : "C", // 复制
+  "explorer.file.column.git.icon.unmerged"   : "U", // 合并
+  "explorer.file.column.git.icon.untracked"  : "?", // 未追踪
+  "explorer.file.column.git.icon.ignored"    : ".", // 忽略
+  "explorer.keyMappings": {
+    "<esc>" : "esc",
+    "?"     : "help",
+    "q"     : "quit",
+    "j"     : "nodeNext",
+    "k"     : "nodePrev",
+    "h"     : "gotoParent",
+    "<bs>"  : "gotoParent",
+    "l"     : "open",
+    "<Tab>" : "toggleSelection",     // 选中
+    "*"     : "toggleSelection",
+    "m"     : "actionMenu",          // 菜单
+    "n"     : "collapse",
+    "gl"    : "expandRecursive",
+    "gh"    : "collapseRecursive",
+    "t"     : "openInTab",
+    "<cr>"  : ["expandable?", "cd", "open"],
+    "i"     : "openInVsplit",
+    "o"     : ["expanded?", "collapse", "expand"],
+    "yp"    : "copyFilepath",
+    "yn"    : "copyFilename",
+    "yy"    : "copyFile",
+    "dd"    : "cutFile",
+    "p"     : "pasteFile",
+    "D"     : "deleteForever",
+    "mk"    : "addFile",
+    "M"     : "addDirectory",
+    "cw"    : "rename",
+    "."     : "toggleHidden",
+    "R"     : "refresh",
+    "./"    : "systemExecute",      // 执行文本程序
+    "cd"    : "listDrive",          // 切换驱动器
+    "f"     : "search",
+    "F"     : "searchRecursive",
+    "gf"    : "gotoSource:file",
+    "gb"    : "gotoSource:buffer",
+    "[["    : "sourcePrev",
+    "]]"    : "sourceNext",
+    "[d"    : "diagnosticPrev",
+    "]d"    : "diagnosticNext",
+    "[g"    : "gitPrev",
+    "]g"    : "gitNext",
+    "<<"    : "gitStage",
+    ">>"    : "gitUnstage",
+    "<2-LeftMouse>": [
+          "expandable?",
+          ["expanded?", "collapse", "expand"],
+          "open"
+    ]
+  },
+  // coc-yank
+  "yank.limit" : 100, // 最多保存多少条复制记录
+  // coc-python
+  "python.formatting.provider"      : "yapf", // 使用"yapf"对python代码格式化,结合插件vim-python-pep8-indent(pep8)
+  "python.formatting.yapfArgs"      : [
+    "--style",
+    "pep8",
+    "{SPACES_AROUND_POWER_OPERATOR: True, SPACES_BEFORE_COMMENT: 1}"
+  ], // 传入参数,每个参数在数组中都是单独的项目{格式化自动插入空格,注释符空格后空格数}
+  "python.jediEnabled"              : false,  // To use Microsoft Python Language Server
+  "python.autoComplete.addBrackets" : true,   // 自动添加功能括号，不适用于MPLS
+  "python.linting.pylintArgs": [
+      "--generate-members",
+      "--enable=F,E,W"
+  ],
+  "python.linting.flake8Args": [
+      "--max-line-length=120",
+      "--ignore=E402,F841,F401,E302,E305,W503,W293"
+      ],
 
-    // coc-git
-    "git.signOffset"                : 9, // 符号偏移量,值越大可以防止被其它符号覆盖
-    "git.enableGlobalStatus"        : false, // 启用全局 coc_git_status
-    "git.virtualTextPrefix"         : "❯❯ ",
-    "git.branchCharacter"           : "",
-    "git.enableGutters"             : true,
-    "git.addGBlameToBufferVar"      : false,
-    "git.addGBlameToVirtualText"    : false,
-    "git.addedSign.hlGroup"         : "GitGutterAdd",
-    "git.changedSign.hlGroup"       : "GitGutterChange",
-    "git.removedSign.hlGroup"       : "GitGutterDelete",
-    "git.topRemovedSign.hlGroup"    : "GitGutterDelete",
-    "git.changeRemovedSign.hlGroup" : "GitGutterChangeDelete",
-    "git.addedSign.text"            :  "螺", // "▎",
-    "git.changedSign.text"          :  "蘿", // "░",
-    "git.removedSign.text"          :  "羅", // "▏",
-    "git.topRemovedSign.text"       :  "ﬂ ", // "▔",
-    "git.changeRemovedSign.text"    :  "ﬃ ", // "▒",
-    // "git.semanticCommit.filetypes":  ["gitcommit", "gina-commit"]
+  // coc-json
+  "json.enable":true, // 启用json语言服务
+  "json.format.enable" : true, // 启用json格式
+  // coc-html
+  "html.format.enable" : true,
+  // "prettier.statusItemText": "ⓟ ",
+  // "prettier.stylelintIntegration": true,
+  // "prettier.onlyUseLocalVersion": true,
 
-    // "eslint.filetypes": [
-    //     "javascript",
-    //     "javascript.jsx",
-    //     "javascriptreact",
-    //     "typescript",
-    //     "typescript.tsx",
-    //     "typescriptreact"
-    // ],
-    // "eslint.autoFix": true,
-    // "eslint.autoFixOnSave": true,
-    // "eslint.packageManager": "yarn",
+  // coc-git
+  "git.signOffset"                : 9, // 符号偏移量,值越大可以防止被其它符号覆盖
+  "git.enableGlobalStatus"        : false, // 启用全局 coc_git_status
+  "git.virtualTextPrefix"         : "❯❯ ",
+  "git.branchCharacter"           : "",
+  "git.enableGutters"             : true,
+  "git.addGBlameToBufferVar"      : false,
+  "git.addGBlameToVirtualText"    : false,
+  "git.addedSign.hlGroup"         : "GitGutterAdd",
+  "git.changedSign.hlGroup"       : "GitGutterChange",
+  "git.removedSign.hlGroup"       : "GitGutterDelete",
+  "git.topRemovedSign.hlGroup"    : "GitGutterDelete",
+  "git.changeRemovedSign.hlGroup" : "GitGutterChangeDelete",
+  "git.addedSign.text"            :  "螺", //"▎",
+  "git.changedSign.text"          :  "蘿", //"░",
+  "git.removedSign.text"          :  "羅", //"▏",
+  "git.topRemovedSign.text"       :  "ﬂ ", //"▔",
+  "git.changeRemovedSign.text"    :  "ﬃ ", //"▒",
+  // "git.semanticCommit.filetypes":  ["gitcommit", "gina-commit"]
 
-    "signature.target": "float",
-    "signature.enable": true,
+  // "eslint.filetypes": [
+  //     "javascript",
+  //     "javascript.jsx",
+  //     "javascriptreact",
+  //     "typescript",
+  //     "typescript.tsx",
+  //     "typescriptreact"
+  // ],
+  // "eslint.autoFix": true,
+  // "eslint.autoFixOnSave": true,
+  // "eslint.packageManager": "yarn",
 
-    "codeLens.enable": true,
+  "signature.target": "float",
+  "signature.enable": true,
 
-    "tslint.autoFixOnSave" : true,
+  "codeLens.enable": true,
+
+  "tslint.autoFixOnSave" : true,
 
 
-    "javascript.format.enabled": true,
-    "javascript.showUnused": true,
+  "javascript.format.enabled": true,
+  "javascript.showUnused": true,
 
-    "languageserver": {
-        "golang": {
-            "command": "gopls",
-            "rootPatterns": ["go.mod"],
-            "filetypes": ["go"]
-        },
-        "metals": {
-            "command": "metals-vim",
-            "rootPatterns": ["build.sbt"],
-            "filetypes": ["scala", "sbt"]
-        },
-        "ccls": {
-            "command"      : "ccls",
-            "filetypes"    : ["c", "cpp", "cuda", "objc", "objcpp"],
-            "rootPatterns" : [".ccls-root", "compile_commands.json"],
-            "initializationOptions": {
-                "cache": {
-                    "directory": ".ccls-cache"
-                 }
-             }
-        },
+  "languageserver": {
+      "golang": {
+          "command": "gopls",
+          "rootPatterns": ["go.mod"],
+          "filetypes": ["go"]
+      },
+      "metals": {
+          "command": "metals-vim",
+          "rootPatterns": ["build.sbt"],
+          "filetypes": ["scala", "sbt"]
+      },
+      "ccls": {
+          "command"      : "ccls",
+          "filetypes"    : ["c", "cpp", "cuda", "objc", "objcpp"],
+          "rootPatterns" : [".ccls-root", "compile_commands.json"],
+          "initializationOptions": {
+              "cache": {
+                  "directory": ".ccls-cache"
+               }
+           }
+      },
 
-        "python": {
-            "command": "python",
-            "args": [
-              "-mpyls",
-              "-vv",
-              "--log-file",
-              "/tmp/lsp_python.log"
-            ],
-            "trace.server": "verbose",
-            "filetypes": [
-              "python"
-            ],
-            "settings": {
-              "pyls": {
-                "enable": true,
-                "trace": {
-                  "server": "verbose"
+      "python": {
+          "command": "python",
+          "args": [
+            "-mpyls",
+            "-vv",
+            "--log-file",
+            "/tmp/lsp_python.log"
+          ],
+          "trace.server": "verbose",
+          "filetypes": [
+            "python"
+          ],
+          "settings": {
+            "pyls": {
+              "enable": true,
+              "trace": {
+                "server": "verbose"
+              },
+              "commandPath": "",
+              "configurationSources": [
+                "pycodestyle"
+              ],
+              "plugins": {
+                "jedi_completion": {
+                  "enabled": true
                 },
-                "commandPath": "",
-                "configurationSources": [
-                  "pycodestyle"
-                ],
-                "plugins": {
-                  "jedi_completion": {
-                    "enabled": true
-                  },
-                  "jedi_hover": {
-                    "enabled": true
-                  },
-                  "jedi_references": {
-                    "enabled": true
-                  },
-                  "jedi_signature_help": {
-                    "enabled": true
-                  },
-                  "jedi_symbols": {
-                    "enabled": true,
-                    "all_scopes": true
-                  },
-                  "mccabe": {
-                    "enabled": true,
-                    "threshold": 15
-                  },
-                  "preload": {
-                    "enabled": true
-                  },
-                  "pycodestyle": {
-                    "enabled": true
-                  },
-                  "pydocstyle": {
-                    "enabled": false,
-                    "match": "(?!test_).*\\.py",
-                    "matchDir": "[^\\.].*"
-                  },
-                  "pyflakes": {
-                    "enabled": true
-                  },
-                  "rope_completion": {
-                    "enabled": true
-                  },
-                  "yapf": {
-                    "enabled": true
-                  }
+                "jedi_hover": {
+                  "enabled": true
+                },
+                "jedi_references": {
+                  "enabled": true
+                },
+                "jedi_signature_help": {
+                  "enabled": true
+                },
+                "jedi_symbols": {
+                  "enabled": true,
+                  "all_scopes": true
+                },
+                "mccabe": {
+                  "enabled": true,
+                  "threshold": 15
+                },
+                "preload": {
+                  "enabled": true
+                },
+                "pycodestyle": {
+                  "enabled": true
+                },
+                "pydocstyle": {
+                  "enabled": false,
+                  "match": "(?!test_).*\\.py",
+                  "matchDir": "[^\\.].*"
+                },
+                "pyflakes": {
+                  "enabled": true
+                },
+                "rope_completion": {
+                  "enabled": true
+                },
+                "yapf": {
+                  "enabled": true
                 }
               }
             }
-        }
-    }
+          }
+      }
+  }
 }
