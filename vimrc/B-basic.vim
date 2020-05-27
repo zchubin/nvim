@@ -4,9 +4,12 @@
 
 " 设置字体
 set guifont=GoMono\ Nerd\ Font\ Mono:h16
-" JetBrains\ Mono:h16
-" DroidSansMono\ Nerd\ Font:h18
-" 仿宋:h18:cGB2312
+" if has('win32')
+"     set guifont=GoMono\ Nerd\ Font\ Mono:h16:cANSI:qDRAFT
+" endif
+"   if has('unix')
+"     set guifont=FantasqueSansMono\ NF\ 16
+" endif
 
 " 设置中文提示
 language messages zh_CN.utf-8
@@ -38,10 +41,12 @@ set autoindent
 set formatoptions-=tc
 
 " 设置 TAB 宽度
-set ts=4
+set ts=2
 
 " 设置缩进宽度
-set sw=4
+set sw=2
+
+autocmd FileType php,java set tabstop=4|set shiftwidth=4|set expandtab
 
 " 如果后面设置了 expandtab 那么展开 tab 为多少字符
 set softtabstop=4
@@ -77,9 +82,16 @@ set ttimeout
 " 显示光标位置
 set ruler
 
-" 禁止显示菜单和工具条
-set guioptions-=m
-set guioptions-=T
+" GUI-only options
+if has("gui_running")
+  set guioptions-=m                                 " Remove menu bar
+  set guioptions-=T                                 " Remove toolbar
+  set guioptions-=r                                 " Remove right-hand scroll bar
+  set guioptions-=L                                 " Remove left-hand scroll bar
+endif
+
+" 允许光标移至行尾
+" set virtualedit=onemore
 
 " 启用正则表达式
 set magic
@@ -240,9 +252,9 @@ endif
 
 " 用▸示缩进,▫显示空格,显示扩充‹»
 set list
-set listchars=tab:▸\ ,trail:▫,extends:»,precedes:‹
+set listchars=tab:▸\ ,trail:▫,extends:»,precedes:‹,nbsp:+
 " TXT/Markdown/XML 等比较需要换行
-" autocmd FileType text,html,xml set wrap
+autocmd FileType text,xml set wrap
 
 " 换行时，以单词为界
 set linebreak

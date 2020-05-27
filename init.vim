@@ -113,7 +113,7 @@ Plug 'terryma/vim-multiple-cursors'
 " 拼写检查
 Plug 'dense-analysis/ale'
 " 按键提示
-Plug 'liuchengxu/vim-which-key'
+" Plug 'liuchengxu/vim-which-key'
 
 " NERDTree
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -162,7 +162,7 @@ LocalScript vimrc/Plugs/indentLine.vim
 LocalScript vimrc/Plugs/nerdCommenter.vim
 LocalScript vimrc/Plugs/tabular.vim
 LocalScript vimrc/Plugs/ale.vim
-LocalScript vimrc/Plugs/whichkeys.vim
+" LocalScript vimrc/Plugs/whichkeys.vim
 LocalScript vimrc/Plugs/nerdTree.vim
 LocalScript vimrc/Plugs/emmet.vim
 LocalScript vimrc/Plugs/markdown.vim

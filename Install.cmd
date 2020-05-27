@@ -1,5 +1,6 @@
 @PowerShell -ExecutionPolicy Bypass -Command Invoke-Expression $('$args=@(^&{$args} %*);'+[String]::Join(';',(Get-Content '%~f0') -notmatch '^^@PowerShell.*EOF$')) & goto :EOF
 
+echo COLOR fc
 echo "                  _           _     _       "
 echo "                 | |         | |   (_)      "
 echo "          _______| |__  _   _| |__  _ _ __  "
@@ -29,6 +30,9 @@ echo ""
 sleep 1
 
 
+echo "=========="
+echo "== Git ==="
+echo "=========="
 echo "==> Testing git command!"
 if (Get-Command "git" -ErrorAction SilentlyContinue) {
   git version
@@ -44,6 +48,9 @@ if (Get-Command "git" -ErrorAction SilentlyContinue) {
 
 echo ""
 
+echo "==========="
+echo "== Nvim ==="
+echo "==========="
 echo "==> Testing 'nvim' command"
 if (Get-Command "nvim" -ErrorAction SilentlyContinue) {
   echo ($(nvim --version) -split '\n')[0]
@@ -58,6 +65,9 @@ if (Get-Command "nvim" -ErrorAction SilentlyContinue) {
 
 echo ""
 
+echo "============="
+echo "== Python ==="
+echo "============="
 echo "==> Testing 'Python' command"
 if (Get-Command "Python" -ErrorAction SilentlyContinue) {
   echo ($(python --version) -split '\n')[0]
@@ -74,6 +84,9 @@ if (Get-Command "Python" -ErrorAction SilentlyContinue) {
 
 echo ""
 
+echo "==========="
+echo "== Ruby ==="
+echo "==========="
 echo "==> Testing 'Ruby' command"
 if (Get-Command "Ruby" -ErrorAction SilentlyContinue) {
   echo ($(ruby --version) -split '\n')[0]
@@ -89,6 +102,9 @@ if (Get-Command "Ruby" -ErrorAction SilentlyContinue) {
 
 echo ""
 
+echo "============="
+echo "== Nodejs ==="
+echo "============="
 echo "==> Testing 'Nodejs' command"
 if (Get-Command "Node" -ErrorAction SilentlyContinue) {
   echo ($(node --version) -split '\n')[0]
@@ -141,6 +157,12 @@ if (!(Test-Path "$HOME\AppData\Local\nvim")) {
   echo "[OK] $HOME\AppData\Local\nvim already exists."
   sleep 1
 }
+
+echo ""
+
+echo copy ./doc/Font/Envy-Code-R-PR7/*.ttf C:\Windows\Fonts
+echo copy ./doc/Font/Go-Mono/*.ttf C:\Windows\Fonts
+echo "[OK] Installed Fonts"
 
 echo ""
 echo "The installation is complete!"
