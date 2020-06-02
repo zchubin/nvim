@@ -82,7 +82,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " 显示复制范围
 " Plug 'machakann/vim-highlightedyank'
 " let g:highlightedyank_highlight_duration = 100
-
+" 可视化寄存器
+Plug 'junegunn/vim-peekaboo'
 " 给关键字添加下划线，方便关注
 Plug 'vim-scripts/vim-cursorword'
 " 自动匹配括号
@@ -98,6 +99,9 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 " 缩进线
 Plug 'Yggdroot/indentLine'
 " Plug 'nathanaelkane/vim-indent-guides'
+" Undo Tree
+Plug 'mbbill/undotree'
+nnoremap <leader>u :UndotreeToggle<cr>
 
 " 快速添加项目符号
 Plug 'dkarter/bullets.vim'
@@ -112,6 +116,7 @@ Plug 'godlygeek/tabular'
 Plug 'terryma/vim-multiple-cursors'
 " 拼写检查
 Plug 'dense-analysis/ale'
+" Plug 'kamykn/spelunker.vim'
 " 按键提示
 " Plug 'liuchengxu/vim-which-key'
 
@@ -149,7 +154,7 @@ Plug 'airblade/vim-gitgutter'
 
 call plug#end()
 
-LocalScript vimrc/Plugs/devicons.vim
+"LocalScript vimrc/Plugs/devicons.vim
 LocalScript vimrc/Plugs/startify.vim
 LocalScript vimrc/Plugs/airline.vim
 LocalScript vimrc/Plugs/snippets.vim
@@ -162,9 +167,11 @@ LocalScript vimrc/Plugs/indentLine.vim
 LocalScript vimrc/Plugs/nerdCommenter.vim
 LocalScript vimrc/Plugs/tabular.vim
 LocalScript vimrc/Plugs/ale.vim
+" LocalScript vimrc/Plugs/Spelunker.vim
 " LocalScript vimrc/Plugs/whichkeys.vim
 LocalScript vimrc/Plugs/nerdTree.vim
 LocalScript vimrc/Plugs/emmet.vim
 LocalScript vimrc/Plugs/markdown.vim
 LocalScript vimrc/Plugs/gitgutter.vim
 LocalScript vimrc/Plugs/FZF.vim
+

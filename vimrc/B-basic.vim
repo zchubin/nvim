@@ -16,6 +16,9 @@ language messages zh_CN.utf-8
 
 "set clipboard=unnamedplus
 
+" 禁用 vim 拼写检查，配合 Spelunker
+set nospell
+
 " 设置中文帮助
 set helplang=cn
 let &termencoding=&encoding
@@ -126,11 +129,6 @@ set mousemodel=popup
 
 " 相当于 i 模式 <C-X><C-K> = <C-N> 查看字典,进行补全
 set complete-=k complete+=k
-
-if has('persistent_undo')
-    set undofile
-    set undodir=$VIM/undo
-endif
 
 " silent !mkdir -p ~/nvim/tmp/backup
 " silent !mkdir -p ~/nvim/tmp/undo

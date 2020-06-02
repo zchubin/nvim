@@ -275,4 +275,4 @@ xmap ag <Plug>(coc-git-chunk-outer)
 "=== coc-explorer ===
 "====================
 
-nmap ee :CocCommand explorer<CR>
+nmap tt :CocCommand explorer<CR>

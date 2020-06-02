@@ -1,7 +1,10 @@
 " 本机配置文件位置
 
-" 字典
-set dictionary=LocalScript/dict/engspchk.dict
+" 撤销记录
+if has('persistent_undo')
+    set undofile
+    set undodir=$VIM/undo
+endif
 
 " 浏览器
 let g:mkdp_browser = 'firefox'

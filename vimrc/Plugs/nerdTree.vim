@@ -2,7 +2,7 @@
 "=== NERDTree
 "===
 
-map tt :NERDTreeToggle<CR>
+map nt :NERDTreeToggle<CR>
 
 let NERDTreeShowHidden=1
 let NERDTreeWinSize=25
