@@ -57,6 +57,8 @@ noremap `0 :set relativenumber<CR>
 noremap `1 :set nonumber!<CR>:set foldcolumn=0<CR>
 noremap `2 :set spell!<CR>
 
+nmap <silent> `9 :<C-u>call <SID>toggle_background()<CR>
+
 " 在不切换输入法时输入中文符号
 inoremap <LEADER>\\ 、
 inoremap <LEADER>.. 。
@@ -78,89 +80,79 @@ autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches() " for performance
 " 函数通过替换命令删除行尾空格
 func! DeleteTrailingWS()
- 	exec "normal mz"
-	%s/\s\+$//ge
-	exec "normal `z"
+  exec "normal mz"
+  %s/\s\+$//ge
+  exec "normal `z"
 endfunc
 " 保存时自动删除行尾空格
 autocmd BufWrite * :call DeleteTrailingWS()
 
 map <LEADER>w :call DeleteTrailingWS()<CR>
-nmap <silent> `9 :<C-u>call <SID>toggle_background()<CR>
 noremap <lEADER>rr :call CompileRunGcc()<CR>
 
 " 编译调用的插件
 func! CompileRunGcc()
-	exec "w"
-	if &filetype == 'c'
-		exec "!g++ % -o %<"
-		exec "!time ./%<"
-
-	elseif &filetype == 'cpp'
-		set splitbelow
-		exec "!g++ -std=c++11 % -Wall -o %<"
-		:sp
-		:res -15
-		:term ./%<
-
-	elseif &filetype == 'java'
+  exec "w"
+  if &filetype == 'c'
+    exec "!g++ % -o %<"
+    exec "!time ./%<"
+  elseif &filetype == 'cpp'
+    set splitbelow
+    exec "!g++ -std=c++11 % -Wall -o %<"
+    :sp
+    :res -15
+    :term ./%<
+  elseif &filetype == 'java'
         exec "!javac -encoding utf-8 %"
-		exec "!time java %<"
-
-	elseif &filetype == 'sh'
-		:!time bash %
-
-	elseif &filetype == 'python'
-		set splitbelow
-		:sp
-		:term python %
-
-	elseif &filetype == 'html'
-		silent! exec "!".g:mkdp_browser." % &"
-
-	elseif &filetype == 'markdown'
-		exec "MarkdownPreview"
-
+    exec "!time java %<"
+  elseif &filetype == 'sh'
+    :!time bash %
+  elseif &filetype == 'python'
+    set splitbelow
+    :sp
+    :term python %
+  elseif &filetype == 'html'
+    silent! exec "!".g:mkdp_browser." % &"
+  elseif &filetype == 'markdown'
+    exec "MarkdownPreview"
     elseif &filetype == 'vimwiki'
         exec "MarkdownPreview"
-
-	elseif &filetype == 'tex'
-		silent! exec "VimtexStop"
-		silent! exec "VimtexCompile"
-
-	elseif &filetype == 'go'
-		set splitbelow
-		:sp
-		:term go run %
-	endif
+  elseif &filetype == 'tex'
+    silent! exec "VimtexStop"
+    silent! exec "VimtexCompile"
+  elseif &filetype == 'go'
+    set splitbelow
+    :sp
+    :term go run %
+  endif
 endfunc
 
 function! s:toggle_background()
-	if ! exists('g:colors_name')
-		echomsg 'No colorscheme set'
-		return
-	endif
-	let l:scheme = g:colors_name
+  if ! exists('g:colors_name')
+    echomsg 'No colorscheme set'
+    return
+  endif
+  let l:scheme = g:colors_name
 
-	if l:scheme =~# 'dark' || l:scheme =~# 'light'
-		" Rotate between different theme backgrounds
-		execute 'colorscheme' (l:scheme =~# 'dark'
-					\ ? substitute(l:scheme, 'dark', 'light', '')
-					\ : substitute(l:scheme, 'light', 'dark', ''))
-	else
-		execute 'set background='.(&background ==# 'dark' ? 'light' : 'dark')
-		if ! exists('g:colors_name')
-			execute 'colorscheme' l:scheme
-			echomsg 'The colorscheme `'.l:scheme
-				\ .'` doesn''t have background variants!'
-		else
-			echo 'Set colorscheme to '.&background.' mode'
-		endif
-	endif
+  if l:scheme =~# 'dark' || l:scheme =~# 'light'
+    " Rotate between different theme backgrounds
+    execute 'colorscheme' (l:scheme =~# 'dark'
+          \ ? substitute(l:scheme, 'dark', 'light', '')
+          \ : substitute(l:scheme, 'light', 'dark', ''))
+  else
+    execute 'set background='.(&background ==# 'dark' ? 'light' : 'dark')
+    if ! exists('g:colors_name')
+      execute 'colorscheme' l:scheme
+      echomsg 'The colorscheme `'.l:scheme
+        \ .'` doesn''t have background variants!'
+    else
+      echo 'Set colorscheme to '.&background.' mode'
+    endif
+  endif
 endfunction
 
 func! Replace_Chinese()
-	let chinese={
+  let chinese={
         \ "（" : "(",
         \ "）" : ")",
         \ "【" : "[",
@@ -183,9 +175,24 @@ func! Replace_Chinese()
         \ "℃" : "\\\\textcelsius",
         \ "μ" : "$\\\\mu$"
         \ }
-	for insert in keys(chinese)
-		silent! exec '%substitute/' . i . '/'. chinese[i] . '/g'
-	endfor
+  for insert in keys(chinese)
+    silent! exec '%substitute/' . i . '/'. chinese[i] . '/g'
+  endfor
 endfunc
-noremap <lEADER>0 :call Replace_Chinese()<CR>
+noremap <lEADER>ch :call Replace_Chinese()<CR>
 
+function DeletAllBufferslnWindow()
+  let s:curWinNr = winnr()
+  if winbufnr(s:curWinNr) == 1
+    ret
+  endif
+  let s:curWinNr = bufnr("%")
+  exe "bn"
+  let s:nextBufNr = bufnr("%")
+  while s:nextBufNr != s:curWinNr
+    exe "bn"
+    exe "bdel".s:nextBufNr
+    let s:nextBufNr = bufnr("%")
+  endwhile
+endfunction
+map <LEADER>bda :call DeletAllBufferslnWindow()<CR>

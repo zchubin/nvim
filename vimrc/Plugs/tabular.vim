@@ -7,7 +7,7 @@
 " :Tab /:\zs     冒号后的文字对齐
 
 " inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
-vnoremap \ <Bar>   <Bar><Esc>:call <SID>align()<CR>
+vnoremap | <Bar>   <Bar><Esc>:call <SID>align()<CR>
 
 function! s:align()
   let p = '^\s*|\s.*\s|\s*$'

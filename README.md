@@ -45,11 +45,11 @@
 git clone https://github.com/zchubin/nvim.git
 ```
 
-* If you don't have git, you can find the corresponding version of your system from [here](https://gitforwindows.org).
-    - 如果你没有 git，你可从 [这里](https://gitforwindows.org) 你系统对应的版本
+> * If you don't have git, you can find the corresponding version of your system from [here](https://gitforwindows.org).
+>   - 如果你没有 git，你可从 [这里](https://gitforwindows.org) 你系统对应的版本
 
-* Note:  See [Requires](##Requirements), if you aren't sure whethre you have this.
-    - 注意：参看[需求列表](##Requirements), 如果你不确定你是否已安装。
+> * Note:  See [Requires](##Requirements), if you aren't sure whethre you have this.
+>     - 注意：参看[需求列表](##Requirements), 如果你不确定你是否已安装。
 
 1. Automatic installation
     - 通过脚本**自动安装**。
@@ -65,7 +65,6 @@ git clone https://github.com/zchubin/nvim.git
 - [x] Python3
 - [x] Nodejs
 - [x] Ruby
-- [ ] perl
 
 ```shell
 # Python
@@ -124,18 +123,19 @@ cmd /c gem list -ra ^^neovim$
 
 **About <LEADER>**
 
-| key             | mapkyes                        |
-| :---:           | :---                           |
-| `<LEADER>`      | `<SPACE>`                      |
-| `<LEADER><CR>`  | `:nolsearch<CR>`               |
-| `<LEADER><DEL>` | `<ESC>lc5l`                    |
-| `<LEADER>fw`    | `/\(\<\w\+\)\_s*\1`            |
-| `<LEADER>fd`    | `:e $MYVIMRC<CR>`              |
-| `<LEADER>w`     | `:call DeleteTrailingWS()<CR>` |
-| `<lEADER>q`     | `:q<CR>`                       |
-| `<lEADER>Q`     | `:q!<CR>`                      |
-| `<lEADER>rr`    | `:call CompileRunGcc()<CR>`    |
-| `<lEADER>0`     | `:call Replace_Chinese()<CR>`  |
+| key             | mapkyes                               |
+| :---:           | :---                                  |
+| `<LEADER>`      | `<SPACE>`                             |
+| `<LEADER><CR>`  | `:nolsearch<CR>`                      |
+| `<LEADER><DEL>` | `<ESC>lc5l`                           |
+| `<LEADER>fw`    | `/\(\<\w\+\)\_s*\1`                   |
+| `<LEADER>fd`    | `:e $MYVIMRC<CR>`                     |
+| `<LEADER>w`     | `:call DeleteTrailingWS()<CR>`        |
+| `<lEADER>q`     | `:q<CR>`                              |
+| `<lEADER>Q`     | `:q!<CR>`                             |
+| `<lEADER>rr`    | `:call CompileRunGcc()<CR>`           |
+| `<lEADER>ch`    | `:call Replace_Chinese()<CR>`         |
+| `<LEADER>bda`   | `:call DeletAllBufferslnWindow()<CR>` |
 
 **imap**
 
@@ -210,14 +210,6 @@ cmd /c gem list -ra ^^neovim$
 
 * Enter some Chinese symbols that are quite different from English without switching input methods
     - 在不切换输入法时输入一些中文符号
-    > #### 情景
-    > - 由于经常写代码,中文符号在代码中不能被识别,比如破折号、顿号、句号等。
-    > - 但写中文文章时你又需要用到这些符号。
-    > #### 我的解决方案:
-    > 1. 我将输入法的符号输入设置为默认输入半角符号!!!!
-    > 2. 但我并不希望是失去全角符号,于是利用 vim 的`map`功能将符号找回!!!
-    > 3. 当然这些是我觉得全角符号与半角符号差距较大的符号,至于那些看着基本一致,且只是半角和全角占位大小不一致的,我还是只用半角符号,当然可以继续添加一些其它的 '符号',也是很有趣的!!
-    > 4. 当然你也可是用`<LEADER>0`来一键替换全文的中文符号!
 
 | key          | mapkeys |
 | :---:        | :---:   |
@@ -261,28 +253,29 @@ cmd /c gem list -ra ^^neovim$
 | 按键提示         | 'liuchengxu/vim-which-key'     |
 | 快速添加项目符号 | 'dkarter/bullets.vim'          |
 
-#### 3.3 NERDTree (树形文件结构)
-
-* 'preservim/nerdtree'
-* 'Xuyuanp/nerdtree-git-plugin'
+> 以下插件被`coc-explorer`取代了(但还未删除，使用`tn`仍然可以打开)
+> #### 3.3 NERDTree (树形文件结构)
+>
+> * 'preservim/nerdtree'
+> * 'Xuyuanp/nerdtree-git-plugin'
 
 #### 3.4 Programming language 编程语言
 
 * Html,css
-    'mattn/emmet-vim'
-    'othree/html5.vim'
-    'cakebaker/scss-syntax.vim'
-    'gko/vim-coloresque'
+   - 'mattn/emmet-vim'
+   - 'othree/html5.vim'
+   - 'cakebaker/scss-syntax.vim'
+   - 'gko/vim-coloresque'
 
 * python
-    'tmhedberg/SimpylFold'
-    'Vimjas/vim-python-pep8-indent'
+   - 'tmhedberg/SimpylFold'
+   - 'Vimjas/vim-python-pep8-indent'
 
 * git
-    'airblade/vim-gitgutter'
+   - 'airblade/vim-gitgutter'
 
 * markdown
-    'iamcco/markdown-preview.nvim'
+   - 'iamcco/markdown-preview.nvim'
 
 <div>
     <img src="./doc/Screenshot/MarkdownPreview.PNG" alt="demo" style="width: 100%;height: 100%;border-radius: 5px;">
@@ -291,6 +284,24 @@ cmd /c gem list -ra ^^neovim$
 #### 3.5 coc.nvim 补全框架
 
 * 'neoclide/coc.nvim'
+
+1. Language
+  - coc-json
+  - coc-html + coc-css
+  - coc-python + coc-pyright
+
+2. Tools
+  - coc-tsserver
+  - coc-yank
+  - coc-translator
+  - coc-git + coc-gitignore
+  - coc-explorer
+  - coc-lists
+  - coc-vimlsp
+  - coc-tailwindcss
+  - coc-stylelint
+  - coc-tslint
+  - coc-sourcekit
 
 ### 4. Question and Answer
 
