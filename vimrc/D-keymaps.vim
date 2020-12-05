@@ -43,6 +43,10 @@ noremap sv <C-w>t<C-w>H
 noremap srh <C-w>b<C-w>K
 noremap srv <C-w>b<C-w>H
 
+" 左右两屏上下翻滚
+noremap <M-u> <C-w>p<C-u><C-w>p
+noremap <M-d> <C-w>p<C-d><C-w>p
+
 " noremap <C-w> <C-w>w
 
 noremap `<up> :res +5<CR>
